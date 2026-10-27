@@ -66,10 +66,12 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: clip;
 }
 
 body {
   margin: 0;
+  overflow-x: clip;
   background: var(--color-background);
   color: var(--color-text-primary);
   font-family: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;

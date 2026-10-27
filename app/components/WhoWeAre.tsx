@@ -4,7 +4,7 @@ export function WhoWeAre() {
   return (
     <section
       id="about"
-      className="relative bg-(--color-background-white) py-20 sm:py-24 lg:py-16"
+      className="relative overflow-hidden bg-(--color-background-white) py-20 sm:py-24 lg:py-16"
     >
       {/* Soft pink ambient blobs — clipped at section edges only via these */}
       <div

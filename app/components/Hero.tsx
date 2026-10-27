@@ -66,7 +66,7 @@ export function Hero() {
                   index === 0 ? "sm:pl-0" : "sm:border-l sm:border-border"
                 }`}
               >
-                <dt className="font-display text-[2.25rem] text-primary font-semibold tracking-tight sm:text-[2.25rem] 2xl:text-[2.5rem]">
+                <dt className="text-[2.25rem] text-primary font-semibold tracking-tight sm:text-[2.05rem]">
                   {stat.value}
                 </dt>
                 <dd className="2xl:text-[15px] text-[13px] font-medium leading-snug text-secondary">

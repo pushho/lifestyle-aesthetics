@@ -4,13 +4,14 @@ import { Header } from "./components/Header";
 import { Hero } from "./components/Hero";
 import { OurSolutions } from "./components/OurSolutions";
 import { PartnerCta } from "./components/PartnerCta";
+import { Reviews } from "./components/Reviews";
 import { TrainingSupport } from "./components/TrainingSupport";
 import { WhoWeAre } from "./components/WhoWeAre";
 import { WhyPartner } from "./components/WhyPartner";
 
 export default function Home() {
   return (
-    <div className="min-h-svh">
+    <div>
       <Header />
       <main>
         <Hero />
@@ -19,6 +20,7 @@ export default function Home() {
         <WhyPartner />
         <TrainingSupport />
         <EducationHub />
+        <Reviews />
         <PartnerCta />
       </main>
       <Footer />
