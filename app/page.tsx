@@ -12,7 +12,7 @@ import { WhyPartner } from "./components/WhyPartner";
 export default function Home() {
   return (
     <div>
-      <Header />
+      <Header activeHref="/" />
       <main>
         <Hero />
         <WhoWeAre />

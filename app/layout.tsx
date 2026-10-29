@@ -19,7 +19,7 @@ const cormorant = Cormorant_Garamond({
 export const metadata: Metadata = {
   title: "Lifestyle Aesthetics | Solutions for Aesthetic Clinics",
   description:
-    "Dubai-based B2B distributor of aesthetic injectables, professional skincare, and medical devices for clinics across the UAE, Qatar, Bahrain, Oman, Egypt, and Kuwait.",
+    "Dubai-based B2B distributor of aesthetic injectables, clinical peels, and medical devices for clinics across the UAE, Qatar, Bahrain, Oman, Egypt, and Kuwait.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

@@ -4,32 +4,32 @@ const columns = [
   {
     title: "Company",
     links: [
-      { label: "About Us", href: "#about" },
-      { label: "Our Story", href: "#about" },
-      { label: "Regional Presence", href: "#about" },
-      { label: "Partner With Us", href: "#contact" },
+      { label: "About Us", href: "/#about" },
+      { label: "Our Story", href: "/#about" },
+      { label: "Regional Presence", href: "/#about" },
+      { label: "Partner With Us", href: "/#contact" },
     ],
   },
   {
     title: "Solutions",
     links: [
-      { label: "Injectables", href: "#injectables" },
-      { label: "Skincare", href: "#skincare" },
-      { label: "Devices", href: "#devices" },
-      { label: "Training & Support", href: "#training" },
+      { label: "Injectables", href: "/products?category=injectables" },
+      { label: "Clinical Peels", href: "/products?category=peels" },
+      { label: "Devices", href: "/products?category=devices" },
+      { label: "Training & Support", href: "/#training" },
     ],
   },
   {
-    title: "Resources",
+    title: "Brands",
     links: [
-      { label: "Our Brands", href: "#brands" },
-      { label: "Neauvia", href: "#brands" },
-      { label: "Janssen Cosmetics", href: "#brands" },
-      { label: "LC Cell", href: "#brands" },
-      { label: "Nithya", href: "#brands" },
-      { label: "FineMEC", href: "#brands" },
-      { label: "ShenB", href: "#brands" },
-      { label: "Enerjet", href: "#brands" },
+      { label: "All Products", href: "/products" },
+      { label: "Hyalure", href: "/products/hyalure" },
+      { label: "Mitelier", href: "/products/mitelier" },
+      { label: "Supernova", href: "/products/supernova" },
+      { label: "FineMEC", href: "/products/finemec" },
+      { label: "ShenB", href: "/products/shenb" },
+      { label: "Wontech", href: "/products/wontech" },
+      { label: "GTG", href: "/products/gtg" },
     ],
   },
 ];
@@ -83,8 +83,8 @@ export function Footer() {
           <div className="max-w-xs">
             <Logo />
             <p className="mt-4 text-[13.5px] leading-relaxed text-secondary">
-              Dubai-based distributor of aesthetic injectables, professional
-              skincare, and medical devices for clinics across the Middle East.
+              Dubai-based distributor of aesthetic injectables, clinical peels,
+              and medical devices for clinics across the Middle East.
             </p>
             <ul className="mt-5 flex list-none gap-2.5">
               {socials.map((social) => (

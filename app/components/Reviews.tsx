@@ -1,7 +1,7 @@
 const reviews = [
   {
     quote:
-      "Lifestyle Aesthetics made it straightforward to bring Neauvia into our practice. Training was clear, supply is reliable, and their team understands how a clinic actually runs.",
+      "Lifestyle Aesthetics made it straightforward to bring Hyalure into our practice. Training was clear, supply is reliable, and their team understands how a clinic actually runs.",
     name: "Dr. Sara Al Mansoori",
     role: "Dermatologist",
     practice: "DermCare Clinic, Dubai",
@@ -15,7 +15,7 @@ const reviews = [
   },
   {
     quote:
-      "We needed a partner who could cover injectables, skincare, and devices without fragmenting our vendors. Lifestyle Aesthetics became that single, trusted relationship.",
+      "We needed a partner who could cover injectables, peels, and devices without fragmenting our vendors. Lifestyle Aesthetics became that single, trusted relationship.",
     name: "Dr. Layla Farouk",
     role: "Medical Director",
     practice: "Atelier Skin, Cairo",

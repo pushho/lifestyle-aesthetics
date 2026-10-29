@@ -1,12 +1,13 @@
 import Image from "next/image";
+import Link from "next/link";
 
 const solutions = [
   {
     category: "Injectables",
-    title: "Fillers and Collagen for Practice.",
+    title: "Fillers and Biostimulators.",
     description:
-      "Neauvia hyaluronic acid fillers and Nithya Type I collagen for aesthetic medicine.",
-    href: "#injectables",
+      "Hyalure HA and CMC injectables, plus Mitelier PLLA for collagen-focused volume support.",
+    href: "/products?category=injectables",
     image: {
       src: "/assets/skincare-portrait.webp",
       alt: "Serene beauty portrait highlighting natural glowing skin",
@@ -17,11 +18,11 @@ const solutions = [
     },
   },
   {
-    category: "Skincare",
-    title: "Skincare for Clinical Treatments.",
+    category: "Clinical Peels",
+    title: "Professional Peel Protocols.",
     description:
-      "Janssen Cosmetics ampoules, plus LC Cell stem-cell-extract hair and scalp care.",
-    href: "#skincare",
+      "Supernova Nebula ACTO2 biphasic TCA peels for acne, pigment, and clinical renewal.",
+    href: "/products?category=peels",
     image: {
       src: "/assets/skincare-collection.webp",
       alt: "Polished pink glass skincare bottles on a soft gradient",
@@ -33,10 +34,10 @@ const solutions = [
   },
   {
     category: "Devices",
-    title: "Lasers, Energy, and Jet Technology.",
+    title: "Lasers, RF, and Clinic Systems.",
     description:
-      "FineMEC lasers, ShenB radiofrequency systems, and Enerjet jet-based treatments.",
-    href: "#devices",
+      "FineMEC, ShenB, Wontech, and GTG platforms for laser, RF, plasma, and facial care.",
+    href: "/products?category=devices",
     image: {
       src: "/assets/treatment-machine.webp",
       alt: "Modern white aesthetic treatment device with applicator",
@@ -72,8 +73,7 @@ export function OurSolutions() {
             A Comprehensive Portfolio for Aesthetic Success
           </h2>
           <p className="mx-auto mt-5 max-w-4xl text-[15px] leading-relaxed text-secondary sm:text-base">
-            Seven brands across injectable aesthetics, professional skincare,
-            and{" "}
+            Seven brands across injectable aesthetics, clinical peels, and{" "}
             <span className="font-semibold text-foreground">
               aesthetic technology
             </span>
@@ -84,7 +84,7 @@ export function OurSolutions() {
         <ul className="mt-12 grid list-none grid-cols-1 gap-5 md:grid-cols-2 lg:mt-14 lg:grid-cols-3 lg:gap-6">
           {solutions.map((solution) => (
             <li key={solution.category}>
-              <a
+              <Link
                 href={solution.href}
                 className="group relative flex flex-col overflow-hidden rounded-[1.5rem] border border-border/50 bg-(--color-background-white) p-7 shadow-(--shadow-card) transition-[transform,box-shadow] duration-300 hover:-translate-y-0.5 hover:shadow-(--shadow-hover) sm:p-8"
               >
@@ -136,7 +136,7 @@ export function OurSolutions() {
                     />
                   </svg>
                 </span>
-              </a>
+              </Link>
             </li>
           ))}
         </ul>

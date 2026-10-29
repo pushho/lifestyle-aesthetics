@@ -1,20 +1,12 @@
 import Image from "next/image";
+import Link from "next/link";
+import { BRANDS } from "../lib/products";
 
 const stats = [
-  { value: "7", label: "Global Brands" },
+  { value: String(BRANDS.length), label: "Global Brands" },
   { value: "6", label: "Countries" },
   { value: "2011", label: "Founded in Dubai" },
   { value: "3", label: "Solution Areas" },
-];
-
-const brands = [
-  "Neauvia",
-  "Janssen Cosmetics",
-  "LC Cell",
-  "Nithya",
-  "FineMEC",
-  "ShenB",
-  "Enerjet",
 ];
 
 export function Hero() {
@@ -43,13 +35,13 @@ export function Hero() {
           </p>
 
           <div className="animate-fade-up delay-3 mt-7 flex flex-wrap items-center gap-3">
-            <a
-              href="#brands"
+            <Link
+              href="/products"
               className="inline-flex items-center gap-1.5 rounded-xl bg-[var(--color-button-primary)] px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-[var(--color-button-primary-hover)] hover:shadow-[var(--shadow-hover)]"
             >
               Explore Our Brands
               <span aria-hidden="true">→</span>
-            </a>
+            </Link>
             <a
               href="#about"
               className="inline-flex items-center rounded-xl border border-border-accent bg-transparent px-6 py-3 text-sm font-semibold text-foreground transition-colors hover:border-primary hover:bg-primary-light"
@@ -110,14 +102,17 @@ export function Hero() {
         className="relative z-10 animate-fade-up delay-5 border-t border-border bg-[var(--color-background-white)]"
       >
         <ul className="mx-auto flex max-w-[1440px] list-none flex-wrap items-center justify-between gap-x-2 gap-y-3 px-6 py-5 sm:px-10 xl:px-16">
-          {brands.map((brand) => (
+          {BRANDS.map((brand) => (
             <li
-              key={brand}
+              key={brand.slug}
               className="flex flex-1 items-center justify-center border-border px-3 py-1 sm:border-l sm:first:border-l-0"
             >
-              <span className="whitespace-nowrap text-[11px] font-semibold tracking-[0.18em] text-muted uppercase opacity-70 transition-opacity hover:opacity-100 sm:text-[12px]">
-                {brand}
-              </span>
+              <Link
+                href={`/products/${brand.slug}`}
+                className="whitespace-nowrap text-[11px] font-semibold tracking-[0.18em] text-muted uppercase opacity-70 transition-opacity hover:opacity-100 hover:text-primary sm:text-[12px]"
+              >
+                {brand.name}
+              </Link>
             </li>
           ))}
         </ul>
