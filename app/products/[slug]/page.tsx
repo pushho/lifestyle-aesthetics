@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
-import { Footer } from "../../components/Footer";
-import { Header } from "../../components/Header";
 import { getAllProducts, getProductBySlug } from "../../lib/products";
 import { ProductDetail } from "./ProductDetail";
 
@@ -44,14 +42,10 @@ function ProductFallback() {
 
 export default function ProductPage({ params }: ProductPageProps) {
   return (
-    <div>
-      <Header activeHref="/products" />
-      <main>
-        <Suspense fallback={<ProductFallback />}>
-          <ProductDetail params={params} />
-        </Suspense>
-      </main>
-      <Footer />
-    </div>
+    <main>
+      <Suspense fallback={<ProductFallback />}>
+        <ProductDetail params={params} />
+      </Suspense>
+    </main>
   );
 }

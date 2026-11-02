@@ -1,14 +1,14 @@
 import { CategoryFilter } from "../components/products/CategoryFilter";
 import { ProductCard } from "../components/products/ProductCard";
+import { ProductSearch } from "../components/products/ProductSearch";
 import {
   getProductsByCategory,
   isProductCategoryId,
-  PRODUCT_CATEGORIES,
   type ProductCategoryId,
 } from "../lib/products";
 
 type ProductsCatalogueProps = {
-  searchParams: Promise<{ category?: string | string[] }>;
+  searchParams: Promise<{ category?: string | string[]; q?: string | string[] }>;
 };
 
 export async function ProductsCatalogue({
@@ -18,38 +18,51 @@ export async function ProductsCatalogue({
   const rawCategory = Array.isArray(params.category)
     ? params.category[0]
     : params.category;
+  const rawQuery = Array.isArray(params.q) ? params.q[0] : params.q;
+  const query = rawQuery?.trim() ?? "";
+
   const activeCategory: ProductCategoryId | "all" =
     rawCategory && isProductCategoryId(rawCategory) ? rawCategory : "all";
-  const products = getProductsByCategory(activeCategory);
-  const categoryMeta =
-    activeCategory === "all"
-      ? null
-      : PRODUCT_CATEGORIES.find((category) => category.id === activeCategory);
+
+  const categoryProducts = getProductsByCategory(activeCategory);
+  const normalizedQuery = query.toLowerCase();
+  const products = normalizedQuery
+    ? categoryProducts.filter(
+        (product) =>
+          product.name.toLowerCase().includes(normalizedQuery) ||
+          product.brandName.toLowerCase().includes(normalizedQuery) ||
+          product.summary.toLowerCase().includes(normalizedQuery) ||
+          product.indications?.some((indication) =>
+            indication.toLowerCase().includes(normalizedQuery),
+          ),
+      )
+    : categoryProducts;
 
   return (
-    <>
-      <div className="mt-8">
-        <CategoryFilter active={activeCategory} />
+    <div>
+      <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+        <CategoryFilter active={activeCategory} query={query} />
+        <ProductSearch initialQuery={query} />
       </div>
-      {categoryMeta ? (
-        <p className="mx-auto mt-5 max-w-xl text-[14px] leading-relaxed text-muted">
-          {categoryMeta.description}
-        </p>
-      ) : null}
 
-      <div className="mx-auto mt-12 max-w-430 px-6 sm:mt-14 sm:px-10 xl:px-16">
+      <div className="mt-9 sm:mt-10">
         {products.length > 0 ? (
-          <ul className="grid list-none gap-5 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6">
+          <ul className="grid list-none gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 lg:gap-6">
             {products.map((product) => (
               <ProductCard key={product.slug} product={product} />
             ))}
           </ul>
         ) : (
-          <p className="rounded-2xl border border-border bg-(--color-background-white) px-6 py-10 text-center text-secondary">
-            No products found in this category.
-          </p>
+          <div className="rounded-2xl border border-border bg-(--color-background-white) px-6 py-14 text-center">
+            <p className="font-display text-[1.4rem] font-semibold text-foreground">
+              No matching products found
+            </p>
+            <p className="mt-1.5 text-[14px] text-secondary">
+              Try adjusting your search or selecting a different category.
+            </p>
+          </div>
         )}
       </div>
-    </>
+    </div>
   );
 }

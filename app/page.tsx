@@ -1,6 +1,4 @@
 import { EducationHub } from "./components/EducationHub";
-import { Footer } from "./components/Footer";
-import { Header } from "./components/Header";
 import { Hero } from "./components/Hero";
 import { OurSolutions } from "./components/OurSolutions";
 import { PartnerCta } from "./components/PartnerCta";
@@ -11,19 +9,15 @@ import { WhyPartner } from "./components/WhyPartner";
 
 export default function Home() {
   return (
-    <div>
-      <Header activeHref="/" />
-      <main>
-        <Hero />
-        <WhoWeAre />
-        <OurSolutions />
-        <WhyPartner />
-        <TrainingSupport />
-        <EducationHub />
-        <Reviews />
-        <PartnerCta />
-      </main>
-      <Footer />
-    </div>
+    <main>
+      <Hero />
+      <WhoWeAre />
+      <OurSolutions />
+      <WhyPartner />
+      <TrainingSupport />
+      <EducationHub />
+      <Reviews />
+      <PartnerCta />
+    </main>
   );
 }

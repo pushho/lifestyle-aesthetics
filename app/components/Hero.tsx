@@ -42,12 +42,12 @@ export function Hero() {
               Explore Our Products
               <span aria-hidden="true">→</span>
             </Link>
-            <a
-              href="#about"
+            <Link
+              href="/about#our-story"
               className="inline-flex items-center rounded-xl border border-border-accent bg-transparent px-6 py-3 text-sm font-semibold text-foreground transition-colors hover:border-primary hover:bg-primary-light"
             >
               Our Story
-            </a>
+            </Link>
           </div>
 
           <dl className="animate-fade-up delay-4 mt-10 grid grid-cols-2 gap-y-5 sm:flex sm:flex-wrap sm:items-stretch">

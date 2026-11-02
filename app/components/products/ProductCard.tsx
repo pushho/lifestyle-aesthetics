@@ -14,14 +14,14 @@ export function ProductCard({ product }: ProductCardProps) {
     <li>
       <Link
         href={`/products/${product.slug}`}
-        className="group flex h-full flex-col overflow-hidden rounded-[1.5rem] border border-border/50 bg-(--color-background-white) shadow-(--shadow-card) transition-[transform,box-shadow] duration-300 hover:-translate-y-0.5 hover:shadow-(--shadow-hover)"
+        className="group flex h-full flex-col overflow-hidden rounded-2xl border border-border/80 bg-(--color-background-white) transition-[transform,box-shadow,border-color] duration-300 hover:-translate-y-1 hover:border-border-accent hover:shadow-(--shadow-hover)"
       >
-        {product.image ? (
-          <div className="relative aspect-[4/3] overflow-hidden bg-(--color-background-soft)">
+        <div className="relative aspect-[4/3.4] overflow-hidden bg-linear-to-b from-(--color-background-soft) via-(--color-background-muted)/55 to-(--color-background-soft)">
+          {product.image ? (
             <div
               className={
                 product.image.fit === "contain"
-                  ? "absolute inset-3"
+                  ? "absolute inset-5"
                   : "absolute inset-0"
               }
             >
@@ -29,51 +29,48 @@ export function ProductCard({ product }: ProductCardProps) {
                 src={product.image.src}
                 alt={product.image.alt}
                 fill
-                sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                sizes="(min-width: 1280px) 25vw, (min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
                 className={
                   product.image.fit === "contain"
-                    ? "object-contain"
-                    : "object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+                    ? "object-contain transition-transform duration-500 group-hover:scale-[1.04]"
+                    : "object-cover transition-transform duration-500 group-hover:scale-[1.04]"
                 }
               />
             </div>
-          </div>
-        ) : (
-          <div
-            className="flex h-40 items-center justify-center bg-linear-to-br from-primary-light via-(--color-background-soft) to-(--color-background-muted) px-6"
-            aria-hidden="true"
-          >
-            <span className="text-center text-[12px] font-semibold tracking-[0.18em] text-primary/60 uppercase">
-              Product image placeholder
-            </span>
-          </div>
-        )}
+          ) : (
+            <div
+              className="flex h-full flex-col items-center justify-center gap-1.5 px-6 text-center"
+              aria-hidden="true"
+            >
+              <span className="font-display text-[1.6rem] font-semibold tracking-[-0.015em] text-primary/70">
+                {product.name}
+              </span>
+              <span className="text-[10.5px] font-semibold tracking-[0.2em] text-muted uppercase">
+                {product.brandName}
+              </span>
+            </div>
+          )}
+        </div>
 
-        <div className="flex flex-1 flex-col p-6 sm:p-7">
-          <p className="text-[11px] font-semibold tracking-[0.2em] text-primary uppercase">
-            {getCategoryLabel(product.category)} · {product.brandName}
-          </p>
-          <h3 className="mt-2 font-display text-[1.35rem] leading-[1.15] font-semibold tracking-[-0.01em] text-foreground">
+        <div className="flex flex-1 flex-col p-6">
+          <h3 className="font-display text-[1.5rem] leading-[1.15] font-semibold tracking-[-0.01em] text-foreground transition-colors group-hover:text-primary-dark">
             {product.name}
           </h3>
-          <p className="mt-2 flex-1 text-[14px] leading-relaxed text-secondary">
+          <p className="mt-1.5 text-[10.5px] font-semibold tracking-[0.18em] text-muted uppercase">
+            {getCategoryLabel(product.category)} · {product.brandName}
+          </p>
+          <p className="mt-3 flex-1 text-[13.5px] leading-relaxed text-secondary">
             {product.summary}
           </p>
-          {product.indications && product.indications.length > 0 ? (
-            <ul className="mt-4 flex list-none flex-wrap gap-2">
-              {product.indications.map((indication) => (
-                <li
-                  key={indication}
-                  className="rounded-full border border-border bg-(--color-background-soft) px-2.5 py-1 text-[11px] font-semibold tracking-wide text-secondary"
-                >
-                  {indication}
-                </li>
-              ))}
-            </ul>
-          ) : null}
-          <span className="mt-5 inline-flex items-center gap-1 text-[13px] font-semibold text-primary transition-colors group-hover:text-primary-hover">
-            View product
-            <span aria-hidden="true">→</span>
+
+          <span className="mt-5 inline-flex items-center gap-1.5 text-[13px] font-semibold text-primary-dark transition-colors group-hover:text-primary">
+            Explore product
+            <span
+              aria-hidden="true"
+              className="transition-transform duration-200 group-hover:translate-x-0.5"
+            >
+              →
+            </span>
           </span>
         </div>
       </Link>

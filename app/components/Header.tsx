@@ -1,9 +1,12 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const navItems = [
   { label: "Home", href: "/" },
-  { label: "About Us", href: "/#about" },
+  { label: "About Us", href: "/about" },
   { label: "Products", href: "/products" },
   { label: "Solutions", href: "/#solutions" },
   { label: "Training & Events", href: "/#training" },
@@ -11,11 +14,14 @@ const navItems = [
   { label: "Contact", href: "/#contact" },
 ];
 
-type HeaderProps = {
-  activeHref?: string;
-};
+function isNavActive(pathname: string, href: string) {
+  if (href === "/") return pathname === "/";
+  return pathname === href || pathname.startsWith(`${href}/`);
+}
 
-export function Header({ activeHref = "/" }: HeaderProps) {
+export function Header() {
+  const pathname = usePathname();
+
   return (
     <header className="relative z-20 border-b max-w-430 mx-auto border-border/70 bg-(--color-background-white)/90 backdrop-blur-md">
       <div className="mx-auto flex h-18 items-center justify-between gap-4 px-5 lg:px-8 xl:px-10">
@@ -33,7 +39,7 @@ export function Header({ activeHref = "/" }: HeaderProps) {
           aria-label="Primary"
         >
           {navItems.map((item) => {
-            const isActive = item.href === activeHref;
+            const isActive = isNavActive(pathname, item.href);
 
             return (
               <Link
