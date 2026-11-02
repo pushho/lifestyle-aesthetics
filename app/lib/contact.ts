@@ -1,10 +1,11 @@
 /** Update these when real numbers are confirmed. */
 export const CONTACT = {
-  phoneDisplay: "+971 4 123 4567",
-  phoneTel: "+97141234567",
-  whatsappE164: "97141234567",
+  email: "info@ls-aesthetics.com",
+  phoneDisplay: "+971 4 435 7689",
+  phoneTel: "+97144357689",
+  whatsappE164: "97144357689",
   whatsappMessage:
-    "Hello Lifestyle Aesthetics — I'd like to learn more about partnering with your team.",
+    "Hello Lifestyle Aesthetics team, I'd like to learn more about partnering with your team.",
 } as const;
 
 export function getWhatsAppHref() {

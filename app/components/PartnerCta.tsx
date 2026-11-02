@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export function PartnerCta() {
   return (
     <section id="contact" className="bg-(--color-background-white)">
@@ -42,13 +44,13 @@ export function PartnerCta() {
               Partner with a Dubai team that helps clinics adopt, operate, and
               market aesthetic solutions across the region.
             </p>
-            <a
-              href="mailto:info@laesthetics.com"
+            <Link
+              href="/contact"
               className="animate-fade-up delay-3 mt-7 inline-flex items-center gap-1.5 rounded-full bg-white px-6 py-3 text-[13.5px] font-semibold text-primary-dark shadow-[0_10px_30px_rgba(120,10,60,0.18)] transition-all hover:bg-primary-light hover:shadow-[0_14px_36px_rgba(120,10,60,0.24)]"
             >
               Get in Touch
               <span aria-hidden="true">→</span>
-            </a>
+            </Link>
           </div>
         </div>
       </div>

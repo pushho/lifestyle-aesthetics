@@ -8,10 +8,8 @@ const navItems = [
   { label: "Home", href: "/" },
   { label: "About Us", href: "/about" },
   { label: "Products", href: "/products" },
-  { label: "Solutions", href: "/#solutions" },
-  { label: "Training & Events", href: "/#training" },
-  { label: "Education", href: "/#insights" },
-  { label: "Contact", href: "/#contact" },
+  { label: "Blogs", href: "/blogs" },
+  { label: "Contact", href: "/contact" },
 ];
 
 function isNavActive(pathname: string, href: string) {
@@ -59,7 +57,7 @@ export function Header() {
 
         <div className="ml-auto flex shrink-0 items-center gap-2 sm:gap-3 xl:ml-4">
           <Link
-            href="/#contact"
+            href="/contact"
             className="inline-flex items-center gap-1.5 rounded-full bg-(--color-button-primary) px-4 py-2.5 text-[12.5px] font-semibold whitespace-nowrap text-white transition-colors hover:bg-(--color-button-primary-hover) sm:px-5"
           >
             Get in Touch

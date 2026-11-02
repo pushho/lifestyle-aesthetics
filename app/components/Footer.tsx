@@ -1,3 +1,4 @@
+import { CONTACT } from "@/app/lib/contact";
 import { Logo } from "./Logo";
 
 const columns = [
@@ -5,9 +6,10 @@ const columns = [
     title: "Company",
     links: [
       { label: "About Us", href: "/about" },
+      { label: "Journal", href: "/blogs" },
       { label: "Our Story", href: "/about#our-story" },
       { label: "Regional Presence", href: "/about#presence" },
-      { label: "Partner With Us", href: "/#contact" },
+      { label: "Partner With Us", href: "/contact" },
     ],
   },
   {
@@ -141,8 +143,8 @@ export function Footer() {
                   <rect x="3.5" y="5.5" width="17" height="13" rx="2" stroke="currentColor" strokeWidth="1.6" />
                   <path d="m4.5 7 7.5 6L19.5 7" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
-                <a href="mailto:info@laesthetics.com" className="transition-colors hover:text-primary">
-                  info@laesthetics.com
+                <a href={`mailto:${CONTACT.email}`} className="transition-colors hover:text-primary">
+                  {CONTACT.email}
                 </a>
               </li>
             </ul>

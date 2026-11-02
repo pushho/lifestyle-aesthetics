@@ -521,7 +521,7 @@ export default function AboutPage() {
 
             <div className="shrink-0">
               <Link
-                href="/#contact"
+                href="/contact"
                 className="inline-flex items-center gap-2.5 rounded-xl bg-white px-6 py-3.5 text-[13.5px] font-semibold text-primary-dark shadow-[0_10px_28px_rgba(90,6,48,0.22)] transition-all hover:bg-(--color-primary-light) hover:shadow-[0_14px_34px_rgba(90,6,48,0.3)]"
               >
                 Get in Touch
