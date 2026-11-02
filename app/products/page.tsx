@@ -19,7 +19,7 @@ function CatalogueFallback() {
   return (
     <div className="mx-auto mt-12 max-w-430 px-6 sm:mt-14 sm:px-10 xl:px-16">
       <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6">
-        {Array.from({ length: 6 }).map((_, index) => (
+        {Array.from({ length: 9 }).map((_, index) => (
           <div
             key={index}
             className="h-72 animate-pulse rounded-[1.5rem] border border-border/50 bg-(--color-background-white)"

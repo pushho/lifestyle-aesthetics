@@ -39,7 +39,7 @@ export function Hero() {
               href="/products"
               className="inline-flex items-center gap-1.5 rounded-xl bg-[var(--color-button-primary)] px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-[var(--color-button-primary-hover)] hover:shadow-[var(--shadow-hover)]"
             >
-              Explore Our Brands
+              Explore Our Products
               <span aria-hidden="true">→</span>
             </Link>
             <a
@@ -108,7 +108,7 @@ export function Hero() {
               className="flex flex-1 items-center justify-center border-border px-3 py-1 sm:border-l sm:first:border-l-0"
             >
               <Link
-                href={`/products/${brand.slug}`}
+                href={`/products/${brand.products[0]?.slug ?? ""}`}
                 className="whitespace-nowrap text-[11px] font-semibold tracking-[0.18em] text-muted uppercase opacity-70 transition-opacity hover:opacity-100 hover:text-primary sm:text-[12px]"
               >
                 {brand.name}

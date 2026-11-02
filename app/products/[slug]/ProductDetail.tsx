@@ -3,19 +3,23 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ProductCard } from "../../components/products/ProductCard";
 import { ProductEnquiryCta } from "../../components/products/ProductEnquiryCta";
-import { getBrandBySlug, getCategoryLabel } from "../../lib/products";
+import {
+  getCategoryLabel,
+  getProductBySlug,
+  getRelatedProducts,
+} from "../../lib/products";
 
-type BrandDetailProps = {
-  params: Promise<{ brand: string }>;
+type ProductDetailProps = {
+  params: Promise<{ slug: string }>;
 };
 
-export async function BrandDetail({ params }: BrandDetailProps) {
-  const { brand: brandSlug } = await params;
-  const brand = getBrandBySlug(brandSlug);
+export async function ProductDetail({ params }: ProductDetailProps) {
+  const { slug } = await params;
+  const product = getProductBySlug(slug);
 
-  if (!brand) notFound();
+  if (!product) notFound();
 
-  const cover = brand.products.find((product) => product.image)?.image;
+  const related = getRelatedProducts(product);
 
   return (
     <>
@@ -28,64 +32,91 @@ export async function BrandDetail({ params }: BrandDetailProps) {
           <nav aria-label="Breadcrumb" className="text-[13px] text-secondary">
             <ol className="flex list-none flex-wrap items-center gap-2">
               <li>
-                <Link href="/products" className="transition-colors hover:text-primary">
+                <Link
+                  href="/products"
+                  className="transition-colors hover:text-primary"
+                >
                   Products
                 </Link>
               </li>
               <li aria-hidden="true">/</li>
-              <li className="font-medium text-foreground">{brand.name}</li>
+              <li>
+                <Link
+                  href={`/products?category=${product.category}`}
+                  className="transition-colors hover:text-primary"
+                >
+                  {getCategoryLabel(product.category)}
+                </Link>
+              </li>
+              <li aria-hidden="true">/</li>
+              <li className="font-medium text-foreground">{product.name}</li>
             </ol>
           </nav>
 
-          <div className="mt-8 grid gap-8 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:items-end lg:gap-12">
+          <div className="mt-8 grid gap-8 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:items-center lg:gap-12">
             <div>
               <p className="text-[11px] font-semibold tracking-[0.22em] text-primary uppercase">
-                {getCategoryLabel(brand.category)}
+                {getCategoryLabel(product.category)} · {product.brandName}
               </p>
               <h1 className="mt-3 font-display text-[clamp(2.3rem,4.8vw,3.6rem)] leading-[1.05] font-semibold tracking-[-0.015em] text-foreground">
-                {brand.name}
+                {product.name}
               </h1>
-              <p className="mt-3 text-[16px] font-medium text-secondary">
-                {brand.tagline}
-              </p>
               <p className="mt-5 max-w-2xl text-[15px] leading-relaxed text-secondary sm:text-base">
-                {brand.description}
+                {product.summary}
               </p>
+
+              {product.indications && product.indications.length > 0 ? (
+                <ul className="mt-6 flex list-none flex-wrap gap-2">
+                  {product.indications.map((indication) => (
+                    <li
+                      key={indication}
+                      className="rounded-full border border-border bg-(--color-background-white) px-3 py-1.5 text-[12px] font-semibold tracking-wide text-secondary"
+                    >
+                      {indication}
+                    </li>
+                  ))}
+                </ul>
+              ) : null}
+
               <div className="mt-7 flex flex-wrap gap-3">
                 <a
-                  href={`mailto:info@laesthetics.com?subject=${encodeURIComponent(`Enquiry about ${brand.name}`)}`}
+                  href={`mailto:info@laesthetics.com?subject=${encodeURIComponent(`Enquiry about ${product.name}`)}`}
                   className="inline-flex items-center gap-1.5 rounded-full bg-(--color-button-primary) px-5 py-2.5 text-[13.5px] font-semibold text-white transition-colors hover:bg-(--color-button-primary-hover)"
                 >
                   Request information
                   <span aria-hidden="true">→</span>
                 </a>
                 <a
-                  href={brand.website}
+                  href={product.brandWebsite}
                   target="_blank"
                   rel="noreferrer"
                   className="inline-flex items-center rounded-full border border-border-accent bg-transparent px-5 py-2.5 text-[13.5px] font-semibold text-foreground transition-colors hover:border-primary hover:bg-primary-light"
                 >
-                  Manufacturer site
+                  {product.brandName} site
                 </a>
               </div>
             </div>
 
-            {cover ? (
+            {product.image ? (
               <div className="relative aspect-[4/3] overflow-hidden rounded-[1.5rem] border border-border/50 bg-(--color-background-soft) shadow-(--shadow-card)">
                 <div
                   className={
-                    cover.fit === "contain" ? "absolute inset-6" : "absolute inset-0"
+                    product.image.fit === "contain"
+                      ? "absolute inset-6"
+                      : "absolute inset-0"
                   }
                 >
                   <Image
-                    src={cover.src}
-                    alt={cover.alt}
+                    src={product.image.src}
+                    alt={product.image.alt}
                     fill
                     priority
                     loading="eager"
                     sizes="(min-width: 1024px) 40vw, 100vw"
                     className={
-                      cover.fit === "contain" ? "object-contain" : "object-cover"
+                      product.image.fit === "contain"
+                        ? "object-contain"
+                        : "object-cover"
                     }
                   />
                 </div>
@@ -96,7 +127,7 @@ export async function BrandDetail({ params }: BrandDetailProps) {
                 aria-hidden="true"
               >
                 <span className="font-display text-[2rem] font-semibold tracking-[-0.02em] text-primary/65 sm:text-[2.4rem]">
-                  {brand.name}
+                  {product.name}
                 </span>
               </div>
             )}
@@ -108,42 +139,37 @@ export async function BrandDetail({ params }: BrandDetailProps) {
         <div className="mx-auto max-w-430 px-6 sm:px-10 xl:px-16">
           <header className="max-w-2xl">
             <p className="text-[11px] font-semibold tracking-[0.22em] text-primary uppercase">
-              Why clinics choose {brand.name}
+              From {product.brandName}
             </p>
             <h2 className="mt-3 font-display text-[clamp(1.7rem,3vw,2.35rem)] leading-[1.12] font-semibold tracking-[-0.01em] text-foreground">
-              Built for professional adoption
+              {product.brandTagline}
             </h2>
+            <p className="mt-4 text-[15px] leading-relaxed text-secondary">
+              {product.brandDescription}
+            </p>
           </header>
-          <ul className="mt-8 grid list-none gap-4 sm:grid-cols-3">
-            {brand.highlights.map((highlight) => (
-              <li
-                key={highlight}
-                className="rounded-2xl border border-border/60 bg-(--color-background) px-5 py-5 text-[14.5px] leading-relaxed text-secondary"
-              >
-                {highlight}
-              </li>
-            ))}
-          </ul>
         </div>
       </section>
 
-      <section className="bg-(--color-background) py-14 sm:py-16">
-        <div className="mx-auto max-w-430 px-6 sm:px-10 xl:px-16">
-          <header className="max-w-2xl">
-            <p className="text-[11px] font-semibold tracking-[0.22em] text-primary uppercase">
-              Product range
-            </p>
-            <h2 className="mt-3 font-display text-[clamp(1.7rem,3vw,2.35rem)] leading-[1.12] font-semibold tracking-[-0.01em] text-foreground">
-              {brand.products.length} products in the {brand.name} line
-            </h2>
-          </header>
-          <ul className="mt-10 grid list-none gap-5 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6">
-            {brand.products.map((product) => (
-              <ProductCard key={product.slug} product={product} />
-            ))}
-          </ul>
-        </div>
-      </section>
+      {related.length > 0 ? (
+        <section className="bg-(--color-background) py-14 sm:py-16">
+          <div className="mx-auto max-w-430 px-6 sm:px-10 xl:px-16">
+            <header className="max-w-2xl">
+              <p className="text-[11px] font-semibold tracking-[0.22em] text-primary uppercase">
+                More from {product.brandName}
+              </p>
+              <h2 className="mt-3 font-display text-[clamp(1.7rem,3vw,2.35rem)] leading-[1.12] font-semibold tracking-[-0.01em] text-foreground">
+                Related products
+              </h2>
+            </header>
+            <ul className="mt-10 grid list-none gap-5 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6">
+              {related.map((item) => (
+                <ProductCard key={item.slug} product={item} />
+              ))}
+            </ul>
+          </div>
+        </section>
+      ) : null}
 
       <section className="border-y border-border bg-(--color-background-white) py-12">
         <div className="mx-auto flex max-w-430 flex-col gap-4 px-6 sm:flex-row sm:items-center sm:justify-between sm:px-10 xl:px-16">
@@ -161,7 +187,7 @@ export async function BrandDetail({ params }: BrandDetailProps) {
         </div>
       </section>
 
-      <ProductEnquiryCta brandName={brand.name} />
+      <ProductEnquiryCta productName={product.name} />
     </>
   );
 }

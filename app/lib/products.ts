@@ -581,12 +581,54 @@ export const BRANDS: Brand[] = [
   },
 ];
 
+export type CatalogueProduct = Product & {
+  brandSlug: string;
+  brandName: string;
+  brandWebsite: string;
+  brandTagline: string;
+  brandDescription: string;
+  category: ProductCategoryId;
+};
+
 export function getCategoryLabel(id: ProductCategoryId) {
   return PRODUCT_CATEGORIES.find((category) => category.id === id)?.label ?? id;
 }
 
 export function getBrandBySlug(slug: string) {
   return BRANDS.find((brand) => brand.slug === slug);
+}
+
+export function getAllProducts(): CatalogueProduct[] {
+  return BRANDS.flatMap((brand) =>
+    brand.products.map((product) => ({
+      ...product,
+      brandSlug: brand.slug,
+      brandName: brand.name,
+      brandWebsite: brand.website,
+      brandTagline: brand.tagline,
+      brandDescription: brand.description,
+      category: brand.category,
+    })),
+  );
+}
+
+export function getProductBySlug(slug: string) {
+  return getAllProducts().find((product) => product.slug === slug);
+}
+
+export function getProductsByCategory(category?: string) {
+  const products = getAllProducts();
+  if (!category || category === "all") return products;
+  return products.filter((product) => product.category === category);
+}
+
+export function getRelatedProducts(product: CatalogueProduct, limit = 3) {
+  return getAllProducts()
+    .filter(
+      (item) =>
+        item.slug !== product.slug && item.brandSlug === product.brandSlug,
+    )
+    .slice(0, limit);
 }
 
 export function getBrandsByCategory(category?: string) {

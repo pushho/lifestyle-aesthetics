@@ -1,10 +1,10 @@
 type ProductEnquiryCtaProps = {
-  brandName?: string;
+  productName?: string;
 };
 
-export function ProductEnquiryCta({ brandName }: ProductEnquiryCtaProps) {
-  const subject = brandName
-    ? `Enquiry about ${brandName}`
+export function ProductEnquiryCta({ productName }: ProductEnquiryCtaProps) {
+  const subject = productName
+    ? `Enquiry about ${productName}`
     : "Product partnership enquiry";
 
   return (
@@ -19,8 +19,8 @@ export function ProductEnquiryCta({ brandName }: ProductEnquiryCtaProps) {
             Partner With Lifestyle Aesthetics
           </p>
           <h2 className="mt-3 font-display text-[clamp(1.9rem,3.4vw,2.85rem)] leading-[1.08] font-semibold tracking-[-0.02em] text-white">
-            {brandName
-              ? `Interested in ${brandName}?`
+            {productName
+              ? `Interested in ${productName}?`
               : "Need help choosing a solution?"}
           </h2>
           <p className="mt-4 max-w-[42ch] text-[15px] leading-relaxed text-white/90">
