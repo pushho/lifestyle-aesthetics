@@ -8,7 +8,7 @@ import { ProductsCatalogue } from "./ProductsCatalogue";
 export const metadata: Metadata = {
   title: "Products | Lifestyle Aesthetics",
   description:
-    "Explore injectables, clinical peels, and aesthetic devices from Hyalure, Mitelier, Supernova, FineMEC, ShenB, Wontech, and GTG.",
+    "Explore injectables, clinical peels, and aesthetic devices from Hyalure, Mitelier, Supernova, FineMEC, ShenB, Wontech, GTG, and Zimmer Aesthetics.",
 };
 
 type ProductsPageProps = {

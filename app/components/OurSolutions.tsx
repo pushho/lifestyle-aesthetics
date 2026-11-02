@@ -36,7 +36,7 @@ const solutions = [
     category: "Devices",
     title: "Lasers, RF, and Clinic Systems.",
     description:
-      "FineMEC, ShenB, Wontech, and GTG platforms for laser, RF, plasma, and facial care.",
+      "FineMEC, ShenB, Wontech, GTG, and Zimmer platforms for laser, RF, cooling, and facial care.",
     href: "/products?category=devices",
     image: {
       src: "/assets/treatment-machine.webp",
@@ -73,7 +73,7 @@ export function OurSolutions() {
             A Comprehensive Portfolio for Aesthetic Success
           </h2>
           <p className="mx-auto mt-5 max-w-4xl text-[15px] leading-relaxed text-secondary sm:text-base">
-            Seven brands across injectable aesthetics, clinical peels, and{" "}
+            Eight brands across injectable aesthetics, clinical peels, and{" "}
             <span className="font-semibold text-foreground">
               aesthetic technology
             </span>

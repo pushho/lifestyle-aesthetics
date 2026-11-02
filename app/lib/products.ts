@@ -23,6 +23,11 @@ export type Product = {
   name: string;
   summary: string;
   indications?: string[];
+  image?: {
+    src: string;
+    alt: string;
+    fit?: "cover" | "contain";
+  };
 };
 
 export type Brand = {
@@ -56,42 +61,77 @@ export const BRANDS: Brand[] = [
         name: "Hyalure Volum",
         summary: "Hyaluronic acid filler for facial volume and contour support.",
         indications: ["Volume", "Contour"],
+        image: {
+          src: "/products/hyalure/hyalure-volum.jpg",
+          alt: "Hyalure Volum hyaluronic acid filler box",
+          fit: "contain",
+        },
       },
       {
         slug: "hyalure-volume-plus",
         name: "Hyalure Volume Plus",
         summary: "Higher-volume HA option for deeper structural support.",
         indications: ["Volume", "Structure"],
+        image: {
+          src: "/products/hyalure/hyalure-volume-plus.png",
+          alt: "Hyalure Volume Plus hyaluronic acid filler box",
+          fit: "contain",
+        },
       },
       {
         slug: "hyalure-lips",
         name: "Hyalure Lips",
         summary: "HA filler designed for lip definition and soft enhancement.",
         indications: ["Lips"],
+        image: {
+          src: "/products/hyalure/hyalure-lips.png",
+          alt: "Hyalure Lips hyaluronic acid filler box",
+          fit: "contain",
+        },
       },
       {
         slug: "hyalure-light",
         name: "Hyalure Light",
         summary: "Lighter HA profile for refined, subtle correction.",
         indications: ["Fine lines", "Subtle fill"],
+        image: {
+          src: "/products/hyalure/hyalure-light.png",
+          alt: "Hyalure Light hyaluronic acid filler box",
+          fit: "contain",
+        },
       },
       {
         slug: "erelle-volume",
         name: "Erelle Volume",
         summary: "CMC bioscaffold filler for stable volumetric shaping.",
         indications: ["Volume", "Contour"],
+        image: {
+          src: "/products/hyalure/erelle-volume.png",
+          alt: "Erelle Volume CMC bioscaffold filler box",
+          fit: "contain",
+        },
       },
       {
         slug: "erelle-revital",
         name: "Erelle Revital",
         summary: "CMC revitalisation product focused on skin quality support.",
         indications: ["Skin quality", "Revitalisation"],
+        image: {
+          src: "/products/hyalure/erelle-revital.png",
+          alt: "Erelle Revital CMC skin quality box",
+          fit: "contain",
+        },
       },
       {
         slug: "luxus-body",
         name: "Luxus Body",
         summary: "Body filler for silhouette and contour refinement.",
         indications: ["Body contour"],
+        image: {
+          src: "/products/hyalure/luxus-body.png",
+          alt: "Luxus Body contouring filler box",
+          fit: "contain",
+        },
       },
     ],
   },
@@ -115,6 +155,11 @@ export const BRANDS: Brand[] = [
         summary:
           "Collagen-stimulating injectable for gradual facial volume and firmness support.",
         indications: ["Biostimulation", "Volume", "Firmness"],
+        image: {
+          src: "/products/mitelier/mitelier.png",
+          alt: "Mitelier PLLA dermal filler vial",
+          fit: "contain",
+        },
       },
     ],
   },
@@ -138,6 +183,11 @@ export const BRANDS: Brand[] = [
         summary:
           "Biphasic peel with 10% TCA for renewal, pigment, and acne-related concerns.",
         indications: ["Acne", "Pigment", "Renewal"],
+        image: {
+          src: "/products/supernova/nebula-acto2.jpg",
+          alt: "Nebula ACTO2 biphasic peel vial",
+          fit: "contain",
+        },
       },
       {
         slug: "nebula-acto2-orion",
@@ -145,6 +195,11 @@ export const BRANDS: Brand[] = [
         summary:
           "Higher-strength biphasic peel with 14% TCA for moderate to severe acne and scarring support.",
         indications: ["Acne", "Scarring", "Deep renewal"],
+        image: {
+          src: "/products/supernova/nebula-acto2-orion.jpg",
+          alt: "Nebula ACTO2 Orion strong biphasic peel vial",
+          fit: "contain",
+        },
       },
     ],
   },
@@ -202,6 +257,11 @@ export const BRANDS: Brand[] = [
         name: "Vivace",
         summary: "Microneedle RF system with adjustable depth and LED modes.",
         indications: ["Tightening", "Texture", "Collagen"],
+        image: {
+          src: "/products/shenb/vivace.png",
+          alt: "ShenB Vivace microneedle RF device",
+          fit: "contain",
+        },
       },
       {
         slug: "virtue",
@@ -209,24 +269,44 @@ export const BRANDS: Brand[] = [
         summary:
           "Needle RF platform with cooling and multiple handpiece options.",
         indications: ["Tightening", "Wrinkles", "Remodelling"],
+        image: {
+          src: "/products/shenb/virtue.png",
+          alt: "ShenB Virtue RF needle platform",
+          fit: "contain",
+        },
       },
       {
         slug: "sunny",
         name: "Sunny",
         summary: "Monopolar and bipolar RF system with versatile handpieces.",
         indications: ["RF rejuvenation", "Tightening"],
+        image: {
+          src: "/products/shenb/sunny.png",
+          alt: "ShenB Sunny monopolar and bipolar RF device",
+          fit: "contain",
+        },
       },
       {
         slug: "pladuo",
         name: "Pladuo",
         summary: "Dual nitrogen and argon plasma system for tissue coagulation.",
         indications: ["Plasma", "Resurfacing"],
+        image: {
+          src: "/products/shenb/pladuo.png",
+          alt: "ShenB Pladuo dual plasma system",
+          fit: "contain",
+        },
       },
       {
         slug: "diacore",
         name: "Diacore",
         summary: "Electromagnetic-field device for targeted clinical applications.",
         indications: ["Muscle support"],
+        image: {
+          src: "/products/shenb/diacore.png",
+          alt: "ShenB Diacore electromagnetic treatment device",
+          fit: "contain",
+        },
       },
     ],
   },
@@ -249,24 +329,44 @@ export const BRANDS: Brand[] = [
         name: "Pastelle Pro",
         summary: "Q-switched Nd:YAG laser for toning, pigment, and tattoo work.",
         indications: ["Pigment", "Toning", "Tattoo"],
+        image: {
+          src: "/products/wontech/pastelle-pro.png",
+          alt: "Wontech Pastelle Pro Q-switched Nd:YAG laser",
+          fit: "contain",
+        },
       },
       {
         slug: "lavieen",
         name: "Lavieen",
         summary: "1927 nm thulium fractional laser for brightening and resurfacing.",
         indications: ["Brightening", "Melasma", "Texture"],
+        image: {
+          src: "/products/wontech/lavieen.png",
+          alt: "Wontech Lavieen thulium fractional laser",
+          fit: "contain",
+        },
       },
       {
         slug: "beladona",
         name: "Beladona",
         summary: "CO₂ fractional laser for ablative resurfacing protocols.",
         indications: ["Resurfacing", "Scars"],
+        image: {
+          src: "/products/wontech/beladona.png",
+          alt: "Wontech Beladona CO2 fractional laser",
+          fit: "contain",
+        },
       },
       {
         slug: "v-laser",
         name: "V Laser",
         summary: "Long-pulse 532/1064 nm system for vascular and pigment indications.",
         indications: ["Vascular", "Pigment"],
+        image: {
+          src: "/products/wontech/v-laser.png",
+          alt: "Wontech V Laser long-pulse vascular and pigment system",
+          fit: "contain",
+        },
       },
     ],
   },
@@ -289,6 +389,11 @@ export const BRANDS: Brand[] = [
         name: "Investa",
         summary: "Q-switched Nd:YAG laser for toning and pigment management.",
         indications: ["Toning", "Pigment"],
+        image: {
+          src: "/products/gtg/investa.jpg",
+          alt: "GTG Investa Q-switched Nd:YAG laser",
+          fit: "contain",
+        },
       },
       {
         slug: "inpure",
@@ -296,6 +401,181 @@ export const BRANDS: Brand[] = [
         summary:
           "Aqua peel, hydrogen water, and galvanic facial system for cleansing and permeation.",
         indications: ["Cleansing", "Hydration", "Prep"],
+        image: {
+          src: "/products/gtg/inpure.jpg",
+          alt: "GTG Inpure aqua peel and hydrogen facial system",
+          fit: "contain",
+        },
+      },
+    ],
+  },
+  {
+    slug: "zimmer",
+    name: "Zimmer Aesthetics",
+    category: "devices",
+    tagline: "German cooling, shaping, and stimulation systems",
+    description:
+      "Zimmer Aesthetics, part of Zimmer MedizinSysteme in Neu-Ulm, supplies non-invasive devices for skin cooling, body shaping, muscle stimulation, shockwave treatment, and professional facial care.",
+    highlights: [
+      "Cold-air cooling for laser, IPL, and injections",
+      "RF, shockwave, and magnetic muscle platforms",
+      "Facial ultrasound, hydration, and regenerative care",
+    ],
+    website: "https://zimmer-aesthetics.de/en/products/",
+    products: [
+      {
+        slug: "cryo-pro",
+        name: "Cryo Pro",
+        summary:
+          "Next-generation cold-air therapy with particulate and UVC filtration for skin cooling during laser procedures.",
+        indications: ["Skin cooling", "Laser", "Plume filtration"],
+        image: {
+          src: "/products/zimmer/cryo-pro.webp",
+          alt: "Zimmer Cryo Pro cold-air therapy device",
+        },
+      },
+      {
+        slug: "cryo-7",
+        name: "Cryo 7",
+        summary:
+          "Quiet all-day cold-air system, chilled to −30°C, for pain relief during laser and IPL treatments.",
+        indications: ["Skin cooling", "Laser", "IPL"],
+        image: {
+          src: "/products/zimmer/cryo-7.webp",
+          alt: "Zimmer Cryo 7 cold-air therapy device",
+        },
+      },
+      {
+        slug: "cryo-6",
+        name: "Cryo 6",
+        summary:
+          "High-performance cold-air cooling to −30°C for injections, laser, IPL, and RF microneedling.",
+        indications: ["Skin cooling", "Injections", "Laser"],
+        image: {
+          src: "/products/zimmer/cryo-6.webp",
+          alt: "Zimmer Cryo 6 cold-air therapy device",
+        },
+      },
+      {
+        slug: "cryo-mini",
+        name: "Cryo Mini",
+        summary:
+          "Compact cold-air device cooling to −18°C for injections and energy-based treatments in smaller rooms.",
+        indications: ["Skin cooling", "Compact", "Laser"],
+        image: {
+          src: "/products/zimmer/cryo-mini.webp",
+          alt: "Zimmer Cryo Mini compact cold-air device",
+        },
+      },
+      {
+        slug: "zface",
+        name: "ZFace",
+        summary:
+          "Two-in-one facial platform combining ultrasound and electrostimulation for wrinkles, toning, and skin quality.",
+        indications: ["Facial toning", "Wrinkles", "Skin quality"],
+        image: {
+          src: "/products/zimmer/zface.webp",
+          alt: "Zimmer ZFace ultrasound and electrostimulation device",
+        },
+      },
+      {
+        slug: "zshape",
+        name: "ZShape",
+        summary:
+          "Radiofrequency body-shaping system with vacuum for collagen contraction and contour refinement.",
+        indications: ["Body shaping", "RF", "Tightening"],
+        image: {
+          src: "/products/zimmer/zshape.jpg",
+          alt: "Zimmer ZShape radiofrequency body-shaping device",
+        },
+      },
+      {
+        slug: "zfield-dual",
+        name: "ZField Dual",
+        summary:
+          "High-energy inductive system with paired applicators for muscle development in arms, legs, abdomen, and buttocks.",
+        indications: ["Muscle toning", "Body forming"],
+        image: {
+          src: "/products/zimmer/zfield-dual.webp",
+          alt: "Zimmer ZField Dual muscle stimulation device",
+        },
+      },
+      {
+        slug: "ztone",
+        name: "ZTone",
+        summary:
+          "High-energy induction therapy for muscle development and fat reduction in 20- to 30-minute sessions.",
+        indications: ["Muscle toning", "Fat reduction"],
+        image: {
+          src: "/products/zimmer/ztone.webp",
+          alt: "Zimmer ZTone muscle toning device",
+        },
+      },
+      {
+        slug: "zstim",
+        name: "ZStim",
+        summary:
+          "Eight-channel electrotherapy device for muscle toning, blood flow, and volume across several regions at once.",
+        indications: ["Muscle stimulation", "Toning"],
+        image: {
+          src: "/products/zimmer/zstim.jpg",
+          alt: "Zimmer ZStim electrotherapy device",
+        },
+      },
+      {
+        slug: "zwave-pro",
+        name: "ZWave Pro",
+        summary:
+          "Radial shockwave system for collagen stimulation, cellulite, scars, stretch marks, and skin tightening.",
+        indications: ["Cellulite", "Skin tightening", "Scars"],
+        image: {
+          src: "/products/zimmer/zwave-pro.webp",
+          alt: "Zimmer ZWave Pro radial shockwave device",
+        },
+      },
+      {
+        slug: "zhydro",
+        name: "ZHydro",
+        summary:
+          "Professional hydration mask for deep moisture, used with ultrasound, electrostimulation, and microneedling.",
+        indications: ["Hydration", "Skin quality"],
+        image: {
+          src: "/products/zimmer/zhydro.jpg",
+          alt: "Zimmer ZHydro hydration mask sachets",
+        },
+      },
+      {
+        slug: "exo-z",
+        name: "Exo-Z",
+        summary:
+          "Plant-derived exosome treatment with peptides, vitamins, and antioxidants for regeneration and barrier support.",
+        indications: ["Regeneration", "Skin barrier", "Texture"],
+        image: {
+          src: "/products/zimmer/exo-z.jpg",
+          alt: "Zimmer Exo-Z treatment vials",
+        },
+      },
+      {
+        slug: "gentle-pro",
+        name: "Gentle Pro",
+        summary:
+          "Low-energy radial shockwave system for erectile dysfunction and Peyronie's disease.",
+        indications: ["Men's health", "Shockwave"],
+        image: {
+          src: "/products/zimmer/gentle-pro.webp",
+          alt: "Zimmer Gentle Pro shockwave device",
+        },
+      },
+      {
+        slug: "conticure",
+        name: "ContiCure",
+        summary:
+          "Magnetic-field chair system for pelvic-floor training, incontinence prevention, and continence treatment.",
+        indications: ["Pelvic floor", "Incontinence"],
+        image: {
+          src: "/products/zimmer/conticure.jpeg",
+          alt: "Zimmer ContiCure console and treatment chair",
+        },
       },
     ],
   },

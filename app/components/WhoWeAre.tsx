@@ -30,7 +30,7 @@ export function WhoWeAre() {
 
           <p className="mt-6 text-[15px] leading-relaxed text-secondary sm:text-base">
             Established in Dubai in December 2011, Lifestyle Aesthetics supplies
-            professional medical aesthetics. We represent seven international
+            professional medical aesthetics. We represent eight international
             brands in injectables, clinical peels, and aesthetic technology
             across the UAE, Qatar, Bahrain, Oman, Egypt, and Kuwait.
           </p>

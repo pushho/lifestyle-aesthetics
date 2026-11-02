@@ -30,6 +30,7 @@ const columns = [
       { label: "ShenB", href: "/products/shenb" },
       { label: "Wontech", href: "/products/wontech" },
       { label: "GTG", href: "/products/gtg" },
+      { label: "Zimmer Aesthetics", href: "/products/zimmer" },
     ],
   },
 ];

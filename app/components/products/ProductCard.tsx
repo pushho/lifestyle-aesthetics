@@ -1,3 +1,4 @@
+import Image from "next/image";
 import type { Product } from "../../lib/products";
 
 type ProductCardProps = {
@@ -7,14 +8,34 @@ type ProductCardProps = {
 export function ProductCard({ product }: ProductCardProps) {
   return (
     <li className="flex h-full flex-col overflow-hidden rounded-[1.35rem] border border-border/50 bg-(--color-background-white) shadow-(--shadow-card)">
-      <div
-        className="flex h-40 items-center justify-center bg-linear-to-br from-primary-light via-(--color-background-soft) to-(--color-background-muted) px-6"
-        aria-hidden="true"
-      >
-        <span className="text-center text-[12px] font-semibold tracking-[0.18em] text-primary/60 uppercase">
-          Product image placeholder
-        </span>
-      </div>
+      {product.image ? (
+        <div className="relative aspect-[4/3] overflow-hidden bg-(--color-background-soft)">
+          <div
+            className={
+              product.image.fit === "contain" ? "absolute inset-3" : "absolute inset-0"
+            }
+          >
+            <Image
+              src={product.image.src}
+              alt={product.image.alt}
+              fill
+              sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+              className={
+                product.image.fit === "contain" ? "object-contain" : "object-cover"
+              }
+            />
+          </div>
+        </div>
+      ) : (
+        <div
+          className="flex h-40 items-center justify-center bg-linear-to-br from-primary-light via-(--color-background-soft) to-(--color-background-muted) px-6"
+          aria-hidden="true"
+        >
+          <span className="text-center text-[12px] font-semibold tracking-[0.18em] text-primary/60 uppercase">
+            Product image placeholder
+          </span>
+        </div>
+      )}
 
       <div className="flex flex-1 flex-col p-6">
         <h3 className="font-display text-[1.3rem] leading-[1.15] font-semibold tracking-[-0.01em] text-foreground">

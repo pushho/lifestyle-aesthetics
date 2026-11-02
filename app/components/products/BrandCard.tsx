@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { getCategoryLabel, type Brand } from "../../lib/products";
 
@@ -10,6 +11,7 @@ export function BrandCard({ brand }: BrandCardProps) {
     .slice(0, 3)
     .map((product) => product.name)
     .join(" · ");
+  const cover = brand.products.find((product) => product.image)?.image;
 
   return (
     <li>
@@ -17,14 +19,36 @@ export function BrandCard({ brand }: BrandCardProps) {
         href={`/products/${brand.slug}`}
         className="group flex h-full flex-col overflow-hidden rounded-[1.5rem] border border-border/50 bg-(--color-background-white) p-7 shadow-(--shadow-card) transition-[transform,box-shadow] duration-300 hover:-translate-y-0.5 hover:shadow-(--shadow-hover) sm:p-8"
       >
-        <div
-          className="flex h-28 items-center justify-center rounded-2xl bg-linear-to-br from-primary-light via-(--color-background-soft) to-(--color-background-muted)"
-          aria-hidden="true"
-        >
-          <span className="font-display text-[1.65rem] font-semibold tracking-[-0.02em] text-primary/70 transition-colors group-hover:text-primary">
-            {brand.name}
-          </span>
-        </div>
+        {cover ? (
+          <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-(--color-background-soft)">
+            <div
+              className={
+                cover.fit === "contain" ? "absolute inset-3" : "absolute inset-0"
+              }
+            >
+              <Image
+                src={cover.src}
+                alt=""
+                fill
+                sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                className={
+                  cover.fit === "contain"
+                    ? "object-contain"
+                    : "object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+                }
+              />
+            </div>
+          </div>
+        ) : (
+          <div
+            className="flex h-28 items-center justify-center rounded-2xl bg-linear-to-br from-primary-light via-(--color-background-soft) to-(--color-background-muted)"
+            aria-hidden="true"
+          >
+            <span className="font-display text-[1.65rem] font-semibold tracking-[-0.02em] text-primary/70 transition-colors group-hover:text-primary">
+              {brand.name}
+            </span>
+          </div>
+        )}
 
         <p className="mt-5 text-[11px] font-semibold tracking-[0.2em] text-primary uppercase">
           {getCategoryLabel(brand.category)}

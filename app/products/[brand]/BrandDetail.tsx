@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ProductCard } from "../../components/products/ProductCard";
@@ -13,6 +14,8 @@ export async function BrandDetail({ params }: BrandDetailProps) {
   const brand = getBrandBySlug(brandSlug);
 
   if (!brand) notFound();
+
+  const cover = brand.products.find((product) => product.image)?.image;
 
   return (
     <>
@@ -67,14 +70,36 @@ export async function BrandDetail({ params }: BrandDetailProps) {
               </div>
             </div>
 
-            <div
-              className="flex min-h-48 items-center justify-center rounded-[1.5rem] border border-border/50 bg-linear-to-br from-primary-light via-(--color-background-soft) to-(--color-background-muted) px-6 shadow-(--shadow-card)"
-              aria-hidden="true"
-            >
-              <span className="font-display text-[2rem] font-semibold tracking-[-0.02em] text-primary/65 sm:text-[2.4rem]">
-                {brand.name}
-              </span>
-            </div>
+            {cover ? (
+              <div className="relative aspect-[4/3] overflow-hidden rounded-[1.5rem] border border-border/50 bg-(--color-background-soft) shadow-(--shadow-card)">
+                <div
+                  className={
+                    cover.fit === "contain" ? "absolute inset-6" : "absolute inset-0"
+                  }
+                >
+                  <Image
+                    src={cover.src}
+                    alt={cover.alt}
+                    fill
+                    priority
+                    loading="eager"
+                    sizes="(min-width: 1024px) 40vw, 100vw"
+                    className={
+                      cover.fit === "contain" ? "object-contain" : "object-cover"
+                    }
+                  />
+                </div>
+              </div>
+            ) : (
+              <div
+                className="flex min-h-48 items-center justify-center rounded-[1.5rem] border border-border/50 bg-linear-to-br from-primary-light via-(--color-background-soft) to-(--color-background-muted) px-6 shadow-(--shadow-card)"
+                aria-hidden="true"
+              >
+                <span className="font-display text-[2rem] font-semibold tracking-[-0.02em] text-primary/65 sm:text-[2.4rem]">
+                  {brand.name}
+                </span>
+              </div>
+            )}
           </div>
         </div>
       </section>
