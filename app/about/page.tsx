@@ -343,7 +343,7 @@ export default function AboutPage() {
                     </em>
                     , meaning a perception of beauty by the senses. At Lifestyle
                     Aesthetics, we have built our journey on this very
-                    philosophy — combining science, innovation and a deep
+                    philosophy - combining science, innovation and a deep
                     understanding of beauty to bring advanced, reliable and
                     results-driven solutions to the aesthetic industry.
                   </p>

@@ -6,7 +6,7 @@ export function WhoWeAre() {
       id="about"
       className="relative overflow-hidden bg-(--color-background-white) py-20 sm:py-24 lg:py-16"
     >
-      {/* Soft pink ambient blobs — clipped at section edges only via these */}
+      {/* Soft pink ambient blobs - clipped at section edges only via these */}
       <div
         className="pointer-events-none absolute top-1/4 right-0 h-72 w-72 translate-x-1/4 rounded-full bg-primary/10 blur-3xl"
         aria-hidden="true"

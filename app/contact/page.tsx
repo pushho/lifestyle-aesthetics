@@ -56,7 +56,7 @@ const topics = [
   {
     title: "Products",
     description:
-      "Injectables, clinical peels, and devices — including availability, indications, and what fits your treatment menu.",
+      "Injectables, clinical peels, and devices - including availability, indications, and what fits your treatment menu.",
   },
   {
     title: "Partnerships",

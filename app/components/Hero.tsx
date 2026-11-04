@@ -15,7 +15,7 @@ export function Hero() {
       {/* bg linear gradient to transparent */}
       <div className="absolute inset-0 bg-linear-to-t from-(--color-primary-light) via-color-primary-light/85 to-transparent" />
       <div className="relative mx-auto grid min-h-[calc(100svh-72px)] grid-cols-1 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)]">
-        {/* Copy — stays above the absolute portrait */}
+        {/* Copy - stays above the absolute portrait */}
         <div className="relative z-10 flex flex-col max-w-430 justify-center px-6 pb-12 pt-10 sm:px-10 lg:pb-8 lg:pt-6 xl:pl-16 xl:pr-6">
           <p className="animate-fade-up text-[11px] font-semibold tracking-[0.22em] text-primary uppercase">
             Dubai · Medical Aesthetics
@@ -69,13 +69,13 @@ export function Hero() {
           </dl>
         </div>
 
-        {/* Layout spacer — keeps grid balance; portrait is absolute over the hero */}
+        {/* Layout spacer - keeps grid balance; portrait is absolute over the hero */}
         <div
           className="pointer-events-none min-h-[min(58vw,420px)] lg:min-h-full"
           aria-hidden="true"
         />
 
-        {/* Portrait: absolute entity — oversized vs. the grid so silk can bleed over copy */}
+        {/* Portrait: absolute entity - oversized vs. the grid so silk can bleed over copy */}
         <div className="animate-image-reveal pointer-events-none absolute inset-y-[2%] right-0 z-[1] flex w-[min(96vw,620px)] items-center justify-end sm:w-[min(82vw,720px)] lg:w-[62%] xl:w-[58%]">
           <Image
             src="/glamorous-portrait.webp"

@@ -56,7 +56,7 @@ const brands = [
     origin: "Made in Germany · Since 2000",
     tagline: "German beauty engineering for professional skin",
     description:
-      "Aachen-based luxury skincare for studios, spas, medical spas, and dermatology practices. Natural and biotechnological actives — maximum effect, as natural as possible.",
+      "Aachen-based luxury skincare for studios, spas, medical spas, and dermatology practices. Natural and biotechnological actives - maximum effect, as natural as possible.",
     website: "https://www.inspira-cosmetics.com/en/service-support/about_us",
     logo: {
       src: "/brands/inspira/logo.svg",

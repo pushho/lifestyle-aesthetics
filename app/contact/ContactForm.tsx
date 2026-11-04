@@ -96,12 +96,12 @@ function greetingName(name: string) {
 }
 
 function buildMailto(values: FormValues) {
-  const subject = `Clinic enquiry — ${values.interest}`;
+  const subject = `Clinic enquiry - ${values.interest}`;
   const body = [
     `Name: ${values.name.trim()}`,
     `Clinic: ${values.clinic.trim()}`,
     `Email: ${values.email.trim()}`,
-    `Phone: ${values.phone.trim() || "—"}`,
+    `Phone: ${values.phone.trim() || "-"}`,
     `Country: ${values.country}`,
     `Interest: ${values.interest}`,
     "",
