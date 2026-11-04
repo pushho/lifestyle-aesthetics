@@ -29,6 +29,7 @@ export function Header() {
             alt="Lifestyle Aesthetics"
             width={1000}
             height={1000}
+            loading="eager"
             className="w-auto h-16"
           />
         </Link>

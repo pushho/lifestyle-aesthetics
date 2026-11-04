@@ -1,4 +1,5 @@
 import { EducationHub } from "./components/EducationHub";
+import { FeaturedBrands } from "./components/FeaturedBrands";
 import { Hero } from "./components/Hero";
 import { OurSolutions } from "./components/OurSolutions";
 import { PartnerCta } from "./components/PartnerCta";
@@ -13,6 +14,7 @@ export default function Home() {
       <Hero />
       <WhoWeAre />
       <OurSolutions />
+      <FeaturedBrands />
       <WhyPartner />
       <TrainingSupport />
       <EducationHub />
