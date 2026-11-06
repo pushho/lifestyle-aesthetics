@@ -1,122 +1,199 @@
 import Image from "next/image";
 import Link from "next/link";
-import { BRANDS } from "../lib/products";
 
-const stats = [
-  { value: String(BRANDS.length), label: "Global Brands" },
-  { value: "6", label: "Countries" },
-  { value: "2011", label: "Founded in Dubai" },
-  { value: "3", label: "Solution Areas" },
-];
+const highlights = [
+  {
+    title: "Global Brands",
+    detail: "Exclusive Distribution",
+    icon: HandshakeIcon,
+  },
+  {
+    title: "End-to-End Support",
+    detail: "Beyond Product Supply",
+    icon: AwardIcon,
+  },
+  {
+    title: "For Aesthetic Clinics",
+    detail: "& Medical Professionals",
+    icon: ClinicIcon,
+  },
+  {
+    title: "Regional Presence",
+    detail: "Across the Middle East",
+    icon: GlobeIcon,
+  },
+] as const;
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden bg-(--color-background)">
-      {/* bg linear gradient to transparent */}
-      <div className="absolute inset-0 bg-linear-to-t from-(--color-primary-light) via-color-primary-light/85 to-transparent" />
-      <div className="relative mx-auto grid min-h-[calc(100svh-72px)] grid-cols-1 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)]">
-        {/* Copy - stays above the absolute portrait */}
-        <div className="relative z-10 flex flex-col max-w-430 justify-center px-6 pb-12 pt-10 sm:px-10 lg:pb-8 lg:pt-6 xl:pl-16 xl:pr-6">
-          <p className="animate-fade-up text-[11px] font-semibold tracking-[0.22em] text-primary uppercase">
-            Dubai · Medical Aesthetics
+    <section className="relative overflow-hidden bg-[#f7f3f4]">
+      <div
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(90%_80%_at_78%_0%,rgba(255,255,255,0.95),transparent_58%)]"
+        aria-hidden="true"
+      />
+
+      <div className="relative mx-auto max-w-430 px-6 pt-10 pb-6 sm:px-10 sm:pt-14 lg:min-h-[min(68vh,620px)] lg:pt-10 lg:pb-8 xl:px-16">
+        <div className="pointer-events-none absolute inset-y-0 right-0 hidden w-[62%] lg:block xl:w-[58%]">
+          <Image
+            src="/assets/bg/hero_bg4.png"
+            alt="Liftera devices with Neauvia and Janssen Cosmetics professional products"
+            fill
+            priority
+            quality={90}
+            sizes="(min-width: 1024px) 58vw, 100vw"
+            className="object-contain object-right"
+          />
+        </div>
+
+        <div className="relative z-10 w-full max-w-xl @container lg:max-w-[48%] lg:py-8">
+          <p className="animate-fade-up text-[11px] font-semibold tracking-[0.22em] text-primary uppercase sm:text-[12px]">
+            Aesthetic Technologies &amp; Solutions
           </p>
 
-          <h1 className="animate-fade-up delay-1 mt-4 max-w-[20ch] font-display text-[clamp(2.2rem,4.8vw,3.5rem)] 2xl:text-[clamp(2.6rem,5.8vw,5rem)] leading-[1.08] font-semibold tracking-[-0.01em] text-foreground">
-            Trusted Solutions for{" "}
-            <em className="font-semibold text-primary not-italic sm:italic">
-              Aesthetic Practices
-            </em>
+          <h1
+            className={`animate-fade-up delay-1 mt-4 text-[clamp(1.85rem,10cqw,3.5rem)] leading-[1.08] text-foreground font-semibold`}
+          >
+            Your Trusted
+            <br />
+            Distribution Partner
+            <br />
+            <span className="text-primary">in Medical Aesthetics</span>
           </h1>
 
-          <p className="animate-fade-up delay-2 mt-5 max-w-xl 2xl:max-w-3xl text-[15px] leading-relaxed font-medium text-secondary sm:text-[16px]">
-            From Dubai, we connect international aesthetic manufacturers with
-            clinics, dermatologists, and healthcare businesses across the
+          <p className="animate-fade-up delay-2 mt-5 max-w-md text-[15px] leading-relaxed text-secondary sm:text-[16.5px]">
+            Supplying world-class aesthetic devices, injectables and
+            professional skincare to clinics and practitioners across the
             Middle East.
           </p>
 
           <div className="animate-fade-up delay-3 mt-7 flex flex-wrap items-center gap-3">
             <Link
-              href="/products"
-              className="inline-flex items-center gap-1.5 rounded-xl bg-[var(--color-button-primary)] px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-[var(--color-button-primary-hover)] hover:shadow-[var(--shadow-hover)]"
+              href="/#solutions"
+              className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-primary-hover"
             >
-              Explore Our Products
+              Explore Our Solutions
               <span aria-hidden="true">→</span>
             </Link>
             <Link
-              href="/about#our-story"
-              className="inline-flex items-center rounded-xl border border-border-accent bg-transparent px-6 py-3 text-sm font-semibold text-foreground transition-colors hover:border-primary hover:bg-primary-light"
+              href="/#brands"
+              className="inline-flex items-center rounded-full border border-[#e4dde1] bg-white px-6 py-3 text-sm font-semibold text-foreground transition-colors hover:border-primary hover:text-primary"
             >
-              Our Story
+              Our Brands
             </Link>
           </div>
-
-          <dl className="animate-fade-up delay-4 mt-10 grid grid-cols-2 gap-y-5 sm:flex sm:flex-wrap sm:items-stretch">
-            {stats.map((stat, index) => (
-              <div
-                key={stat.label}
-                className={`flex min-w-[132px] flex-col gap-0.5 sm:px-5 ${
-                  index === 0 ? "sm:pl-0" : "sm:border-l sm:border-border"
-                }`}
-              >
-                <dt className="text-[2.25rem] text-primary font-semibold tracking-tight sm:text-[2.05rem]">
-                  {stat.value}
-                </dt>
-                <dd className="2xl:text-[15px] text-[13px] font-medium leading-snug text-secondary">
-                  {stat.label}
-                </dd>
-              </div>
-            ))}
-          </dl>
         </div>
 
-        {/* Layout spacer - keeps grid balance; portrait is absolute over the hero */}
-        <div
-          className="pointer-events-none min-h-[min(58vw,420px)] lg:min-h-full"
-          aria-hidden="true"
-        />
-
-        {/* Portrait: absolute entity - oversized vs. the grid so silk can bleed over copy */}
-        <div className="animate-image-reveal pointer-events-none absolute inset-y-[2%] right-0 z-[1] flex w-[min(96vw,620px)] items-center justify-end sm:w-[min(82vw,720px)] lg:w-[62%] xl:w-[58%]">
+        <div className="relative mt-6 aspect-[1.72/1] w-full lg:hidden">
           <Image
-            src="/glamorous-portrait.webp"
-            alt="Portrait of a woman with glowing skin draped in flowing pink silk"
-            width={1313}
-            height={1198}
+            src="/assets/bg/hero_bg4.png"
+            alt="Liftera devices with Neauvia and Janssen Cosmetics professional products"
+            fill
             priority
-            sizes="(max-width: 1024px) 95vw, 62vw"
-            className="h-full w-auto max-w-none origin-right object-contain translate-x-[8%] lg:translate-x-[2%]"
+            quality={90}
+            sizes="100vw"
+            className="object-contain object-right"
           />
         </div>
-
-        <p
-          className="animate-fade-in delay-5 absolute top-[64%] right-4 z-[2] hidden origin-center text-[11px] tracking-[0.35em] text-secondary uppercase xl:right-26 xl:block"
-          aria-hidden="true"
-        >
-          Science <br /> People <br /> Aesthetics <br /> Together
-        </p>
       </div>
 
-      {/* Brand strip */}
-      <div
-        id="brands"
-        className="relative z-10 animate-fade-up delay-5 border-t border-border bg-[var(--color-background-white)]"
-      >
-        <ul className="mx-auto flex max-w-[1440px] list-none flex-wrap items-center justify-between gap-x-2 gap-y-3 px-6 py-5 sm:px-10 xl:px-16">
-          {BRANDS.map((brand) => (
-            <li
-              key={brand.slug}
-              className="flex flex-1 items-center justify-center border-border px-3 py-1 sm:border-l sm:first:border-l-0"
-            >
-              <Link
-                href={`/products/${brand.products[0]?.slug ?? ""}`}
-                className="whitespace-nowrap text-[11px] font-semibold tracking-[0.18em] text-muted uppercase opacity-70 transition-opacity hover:opacity-100 hover:text-primary sm:text-[12px]"
-              >
-                {brand.name}
-              </Link>
+      <div className="relative z-10 border-t border-[#efe6ea] bg-white">
+        <ul className="mx-auto grid max-w-430 list-none grid-cols-1 gap-5 px-6 py-6 sm:grid-cols-2 sm:px-10 lg:flex lg:items-center lg:justify-between lg:gap-8 lg:py-7 xl:px-16">
+          {highlights.map((item) => (
+            <li key={item.title} className="flex items-center gap-3.5">
+              <item.icon className="h-8 w-8 shrink-0 text-primary" />
+              <div>
+                <p className="text-[15px] leading-tight font-semibold text-foreground">
+                  {item.title}
+                </p>
+                <p className="mt-0.5 text-[13px] leading-tight text-secondary">
+                  {item.detail}
+                </p>
+              </div>
             </li>
           ))}
         </ul>
       </div>
     </section>
+  );
+}
+
+function HandshakeIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.6"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+      aria-hidden="true"
+    >
+      <path d="m11 17 2 2a1 1 0 1 0 3-3" />
+      <path d="m14 14 2.5 2.5a1 1 0 1 0 3-3l-3.88-3.88a3 3 0 0 0-4.24 0l-.88.88a1 1 0 1 1-3-3l2.81-2.81a5.79 5.79 0 0 1 7.06-.87l.47.28a2 2 0 0 0 1.42.25L21 4" />
+      <path d="m21 3 1 11h-2" />
+      <path d="M3 3 2 14l6.5 6.5a1 1 0 1 0 3-3" />
+      <path d="M3 4h8" />
+    </svg>
+  );
+}
+
+function AwardIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.6"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+      aria-hidden="true"
+    >
+      <circle cx="12" cy="8" r="6" />
+      <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11" />
+    </svg>
+  );
+}
+
+function ClinicIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.6"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+      aria-hidden="true"
+    >
+      <path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z" />
+      <path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2" />
+      <path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2" />
+      <path d="M10 6h4" />
+      <path d="M10 10h4" />
+      <path d="M10 14h4" />
+      <path d="M10 18h4" />
+    </svg>
+  );
+}
+
+function GlobeIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.6"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+      aria-hidden="true"
+    >
+      <circle cx="12" cy="12" r="10" />
+      <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
+      <path d="M2 12h20" />
+    </svg>
   );
 }

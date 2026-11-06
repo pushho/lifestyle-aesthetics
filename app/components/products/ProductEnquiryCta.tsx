@@ -21,17 +21,18 @@ export function ProductEnquiryCta({ productName }: ProductEnquiryCtaProps) {
           <h2 className="mt-3 font-display text-[clamp(1.9rem,3.4vw,2.85rem)] leading-[1.08] font-semibold tracking-[-0.02em] text-white">
             {productName
               ? `Interested in ${productName}?`
-              : "Need help choosing a solution?"}
+              : "Need pricing or product details?"}
           </h2>
           <p className="mt-4 max-w-[42ch] text-[15px] leading-relaxed text-white/90">
-            Our Dubai team helps clinics adopt, train on, and support the right
-            injectable, peel, or device for their practice.
+            Our Dubai team can share catalogue details, supply options,
+            training, and after-sales support for injectables, peels, and
+            devices.
           </p>
           <a
             href={`mailto:info@laesthetics.com?subject=${encodeURIComponent(subject)}`}
             className="mt-7 inline-flex items-center gap-1.5 rounded-full bg-white px-6 py-3 text-[13.5px] font-semibold text-primary-dark transition-all hover:bg-primary-light"
           >
-            Request information
+            Request a Quote
             <span aria-hidden="true">→</span>
           </a>
         </div>

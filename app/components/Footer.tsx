@@ -86,8 +86,8 @@ export function Footer() {
           <div className="max-w-xs">
             <Logo />
             <p className="mt-4 text-[13.5px] leading-relaxed text-secondary">
-              Dubai-based distributor of aesthetic injectables, clinical peels,
-              and medical devices for clinics across the Middle East.
+              Dubai-based B2B distributor of aesthetic injectables, clinical
+              peels, and medical devices across the Middle East.
             </p>
             <ul className="mt-5 flex list-none gap-2.5">
               {socials.map((social) => (

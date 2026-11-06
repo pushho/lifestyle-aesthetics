@@ -38,17 +38,17 @@ export function PartnerCta() {
               Partner With Lifestyle Aesthetics
             </p>
             <h2 className="animate-fade-up delay-1 mt-3 font-display text-[clamp(2.2rem,3.8vw,3.35rem)] leading-[1.04] font-semibold tracking-[-0.02em] text-white">
-              Let&apos;s Equip Your Practice
+              Source Products. Grow With Us.
             </h2>
             <p className="animate-fade-up delay-2 mt-4 max-w-[42ch] text-[15px] leading-relaxed text-white/90 sm:text-base">
-              Partner with a Dubai team that helps clinics adopt, operate, and
-              market aesthetic solutions across the region.
+              Work with a Dubai distributor for catalogue access, pricing,
+              installation, training, and after-sales support across the region.
             </p>
             <Link
               href="/contact"
               className="animate-fade-up delay-3 mt-7 inline-flex items-center gap-1.5 rounded-full bg-white px-6 py-3 text-[13.5px] font-semibold text-primary-dark shadow-[0_10px_30px_rgba(120,10,60,0.18)] transition-all hover:bg-primary-light hover:shadow-[0_14px_36px_rgba(120,10,60,0.24)]"
             >
-              Get in Touch
+              Request a Quote
               <span aria-hidden="true">→</span>
             </Link>
           </div>

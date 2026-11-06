@@ -1,3 +1,4 @@
+import { BrandStrip } from "./components/BrandStrip";
 import { EducationHub } from "./components/EducationHub";
 import { FeaturedBrands } from "./components/FeaturedBrands";
 import { Hero } from "./components/Hero";
@@ -12,9 +13,10 @@ export default function Home() {
   return (
     <main>
       <Hero />
-      <WhoWeAre />
+      <BrandStrip />
       <OurSolutions />
-      <FeaturedBrands />
+      <WhoWeAre />
+      {/* <FeaturedBrands /> */}
       <WhyPartner />
       <TrainingSupport />
       <EducationHub />

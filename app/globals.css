@@ -58,6 +58,16 @@
   --color-secondary: #625d65;
   --color-border: #eae5e9;
   --color-border-accent: #f4b8d7;
+  --animate-hero-rail: hero-rail 5.5s linear forwards;
+
+  @keyframes hero-rail {
+    from {
+      transform: scaleX(0);
+    }
+    to {
+      transform: scaleX(1);
+    }
+  }
 }
 
 * {
@@ -74,12 +84,15 @@ body {
   overflow-x: clip;
   background: var(--color-background);
   color: var(--color-text-primary);
-  font-family: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  font-feature-settings: "ss01" on, "cv11" on;
   -webkit-font-smoothing: antialiased;
 }
 
 .font-display {
-  font-family: var(--font-cormorant), ui-serif, Georgia, "Times New Roman", serif;
+  font-family: var(--font-display), var(--font-sans), ui-sans-serif, system-ui,
+    sans-serif;
+  letter-spacing: -0.02em;
 }
 
 @keyframes fade-up {
@@ -99,6 +112,43 @@ body {
   }
   to {
     opacity: 1;
+  }
+}
+
+@keyframes card-spawn {
+  0% {
+    opacity: 0;
+    transform: perspective(900px) translateY(46px) scale(0.92) rotateX(10deg);
+    filter: blur(12px);
+  }
+  55% {
+    opacity: 1;
+    filter: blur(0);
+  }
+  78% {
+    transform: perspective(900px) translateY(-4px) scale(1.012) rotateX(-1.2deg);
+  }
+  100% {
+    opacity: 1;
+    transform: perspective(900px) translateY(0) scale(1) rotateX(0deg);
+    filter: blur(0);
+  }
+}
+
+.card-spawn {
+  opacity: 0;
+}
+
+.card-spawn-visible {
+  animation: card-spawn 0.95s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card-spawn {
+    opacity: 1;
+  }
+  .card-spawn-visible {
+    animation: none;
   }
 }
 
@@ -139,4 +189,10 @@ body {
 }
 .delay-5 {
   animation-delay: 0.65s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-slide {
+    transition: none !important;
+  }
 }

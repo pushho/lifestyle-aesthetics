@@ -107,32 +107,32 @@ export function TrainingSupport() {
   return (
     <section id="training" className="bg-(--color-background-white)">
       <div className="mx-auto">
-        <div className="relative overflow-hidden bg-[#fde8f2]">
+        <div className="relative overflow-hidden bg-(--color-background-soft)">
           <div className="grid lg:grid-cols-[minmax(0,0.88fr)_minmax(0,1.12fr)]">
             <div className="relative min-h-[280px] sm:min-h-[360px] lg:min-h-full">
               <Image
-                src="/facial-treatment.webp"
-                alt="Clinician performing a facial treatment with a handheld device"
+                src="/education.png"
+                alt="Hands-on product training for aesthetic professionals"
                 fill
                 sizes="(max-width: 1024px) 100vw, 44vw"
-                className="object-cover object-[38%_22%]"
+                className="object-cover object-center"
               />
               {/* Match the panel color so the seam blends without washing out the faces */}
               <div
-                className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-linear-to-t from-[#fde8f2] to-transparent lg:hidden"
+                className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-linear-to-t from-(--color-background-soft) to-transparent lg:hidden"
                 aria-hidden="true"
               />
               <div
-                className="pointer-events-none absolute inset-y-0 right-0 hidden w-28 bg-linear-to-r from-transparent to-[#fde8f2] lg:block"
+                className="pointer-events-none absolute inset-y-0 right-0 hidden w-28 bg-linear-to-r from-transparent to-(--color-background-soft) lg:block"
                 aria-hidden="true"
               />
 
               <p className="absolute top-[38%] left-6 z-10 max-w-[9rem] text-[11px] leading-[1.65] font-semibold tracking-[0.22em] text-white uppercase drop-shadow-[0_1px_8px_rgba(0,0,0,0.35)] sm:left-8 sm:text-[12px] sm:tracking-[0.26em]">
-                Knowledge
+                Supply
                 <br />
-                Builds
+                Training
                 <br />
-                Confidence
+                Support
               </p>
             </div>
 

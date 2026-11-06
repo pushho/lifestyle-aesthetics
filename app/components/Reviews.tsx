@@ -57,11 +57,11 @@ export function Reviews() {
             Partner Reviews
           </p>
           <h2 className="mt-4 font-display text-[clamp(1.9rem,3.4vw,2.85rem)] leading-[1.12] font-semibold tracking-[-0.015em] text-foreground">
-            Trusted by Clinics Across the Region
+            Trusted by Partners Across the Region
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-[15px] leading-relaxed text-secondary sm:text-base">
-            Aesthetic practices choose Lifestyle Aesthetics for dependable
-            brands, practical training, and support that stays with the clinic.
+            Professional buyers choose Lifestyle Aesthetics for dependable
+            brands, practical training, and support that continues after supply.
           </p>
         </header>
 

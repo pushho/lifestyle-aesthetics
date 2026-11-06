@@ -3,23 +3,23 @@ import Image from "next/image";
 const cards = [
   {
     eyebrow: "Training & Workshops",
-    title: "Learn Each Brand in Practice",
+    title: "Product Training for Your Team",
     description:
-      "Product orientation, hands-on product training, and round-table workshops for clinic teams and aesthetic practitioners.",
+      "Orientation, hands-on product workshops, and round tables so buyer teams can stock, operate, and sell with confidence.",
     href: "#training",
     cta: "Explore Training",
     image: {
       src: "/training-education.jpg",
-      alt: "Clinician guiding a hands-on facial treatment during a training session",
+      alt: "Hands-on product training session for aesthetic professionals",
     },
   },
   {
     eyebrow: "Marketing Services",
     title: "Open Days, Events, and Print",
     description:
-      "Social media, open days, exhibitions, and print marketing that support how a practice introduces its treatments.",
+      "Social media, open days, exhibitions, and print support to help partners launch and promote the brands they stock.",
     href: "#contact",
-    cta: "Plan a Clinic Event",
+    cta: "Plan a Partner Event",
     image: {
       src: "/knowledge-hub.jpg",
       alt: "Aesthetic professional reviewing industry insights on a laptop",
@@ -36,11 +36,11 @@ export function EducationHub() {
             Education & Events
           </p>
           <h2 className="mt-4 font-display text-[clamp(1.9rem,3.4vw,2.85rem)] leading-[1.12] font-semibold tracking-[-0.015em] text-foreground">
-            Train the Team. Support the Practice.
+            Train the Team. Grow the Partnership.
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-[15px] leading-relaxed text-secondary sm:text-base">
-            Workshops and marketing support so clinics can adopt a brand and
-            present it to their patients with confidence.
+            Workshops and marketing support so partners can adopt a brand,
+            operate it well, and launch it commercially.
           </p>
         </header>
 

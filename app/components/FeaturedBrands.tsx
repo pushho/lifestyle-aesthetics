@@ -114,8 +114,8 @@ export function FeaturedBrands() {
             </h2>
           </div>
           <p className="max-w-md text-[13.5px] leading-relaxed text-secondary sm:pb-1 sm:text-right sm:text-[14px]">
-            Two German cosmeceutical houses for clinics, medical spas, and
-            aesthetic practitioners.
+            Two German cosmeceutical houses we distribute for professional
+            buyers across the region.
           </p>
         </header>
 

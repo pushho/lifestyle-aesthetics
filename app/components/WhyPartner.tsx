@@ -128,8 +128,9 @@ export function WhyPartner() {
             More Than Products. Complete Partnership.
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-[15px] leading-relaxed text-secondary sm:text-base">
-            Distribution plus the support clinics need to adopt, operate, and
-            market each aesthetic solution.
+            Product supply backed by training, logistics, maintenance, and
+            after-sales support — so your team can stock, operate, and sell with
+            confidence.
           </p>
         </header>
 

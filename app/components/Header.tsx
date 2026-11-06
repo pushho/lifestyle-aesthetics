@@ -61,7 +61,7 @@ export function Header() {
             href="/contact"
             className="inline-flex items-center gap-1.5 rounded-full bg-(--color-button-primary) px-4 py-2.5 text-[12.5px] font-semibold whitespace-nowrap text-white transition-colors hover:bg-(--color-button-primary-hover) sm:px-5"
           >
-            Get in Touch
+            Request a Quote
             <span aria-hidden="true">→</span>
           </Link>
         </div>
