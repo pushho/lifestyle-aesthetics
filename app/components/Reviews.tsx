@@ -44,7 +44,7 @@ export function Reviews() {
   return (
     <section
       id="reviews"
-      className="relative overflow-hidden bg-(--color-background-soft) py-16 sm:py-20 lg:py-16"
+      className="relative overflow-hidden bg-(--color-background-muted) py-16 sm:py-20 lg:py-16"
     >
       <div
         className="pointer-events-none absolute top-0 left-1/2 h-64 w-[min(90vw,640px)] -translate-x-1/2 rounded-full bg-primary/8 blur-3xl"
