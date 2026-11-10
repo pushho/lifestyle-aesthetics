@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 };
 
 type ProductsPageProps = {
-  searchParams: Promise<{ category?: string | string[]; q?: string | string[] }>;
+  searchParams: Promise<{ brand?: string | string[]; q?: string | string[] }>;
 };
 
 function CatalogueFallback() {
@@ -19,7 +19,7 @@ function CatalogueFallback() {
     <div className="mt-8">
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div className="flex flex-wrap gap-2">
-          {Array.from({ length: 4 }).map((_, index) => (
+          {Array.from({ length: 6 }).map((_, index) => (
             <div
               key={index}
               className="h-10 w-28 animate-pulse rounded-full bg-border/60"

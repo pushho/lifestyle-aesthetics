@@ -196,3 +196,144 @@ body {
     transition: none !important;
   }
 }
+
+/* Hero background ambience */
+.hero-ambience {
+  animation: fade-in 1.6s ease 0.9s both;
+}
+
+.ha-ring-breathe {
+  animation: ha-breathe 5s ease-in-out infinite;
+}
+
+@keyframes ha-breathe {
+  0%,
+  100% {
+    opacity: 0.08;
+  }
+  50% {
+    opacity: 0.45;
+  }
+}
+
+.ha-pulse {
+  animation: ha-pulse-fade 4.5s linear infinite;
+}
+
+.ha-pulse path {
+  stroke-dasharray: var(--len) 200;
+  animation: ha-pulse-run 5.5s cubic-bezier(0.55, 0.1, 0.45, 0.9) infinite;
+}
+
+@keyframes ha-pulse-run {
+  from {
+    stroke-dashoffset: var(--from);
+  }
+  to {
+    stroke-dashoffset: var(--to);
+  }
+}
+
+@keyframes ha-pulse-fade {
+  0% {
+    opacity: 0;
+  }
+  10%,
+  88% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.ha-ribbon {
+  stroke-dasharray: 12 88;
+  animation: ha-ribbon 6s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+}
+
+@keyframes ha-ribbon {
+  0% {
+    stroke-dashoffset: 14;
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.4;
+  }
+  70% {
+    opacity: 0.4;
+  }
+  85%,
+  100% {
+    stroke-dashoffset: -100;
+    opacity: 0;
+  }
+}
+
+.ha-ping {
+  opacity: 0;
+  animation: ha-ping 3.2s cubic-bezier(0.2, 0.6, 0.35, 1) infinite;
+}
+
+@keyframes ha-ping {
+  0% {
+    transform: scale(0.6);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(2.1);
+    opacity: 0;
+  }
+}
+
+.ha-sweep {
+  animation: ha-sweep 9s ease-in-out infinite;
+}
+
+@keyframes ha-sweep {
+  0%,
+  20% {
+    transform: translateX(0);
+  }
+  70%,
+  100% {
+    transform: translateX(440px);
+  }
+}
+
+.ha-mote {
+  opacity: 0;
+  transform-box: fill-box;
+  animation-name: ha-mote;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+@keyframes ha-mote {
+  0% {
+    transform: translate(0, 0);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.85;
+  }
+  50% {
+    transform: translate(18px, -110px);
+  }
+  80% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translate(-10px, -230px);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-ambience {
+    display: none;
+  }
+}

@@ -1,19 +1,12 @@
-import { Playfair_Display } from "next/font/google";
 import Link from "next/link";
 import { SolutionCard } from "./SolutionCard";
-
-const solutionsDisplay = Playfair_Display({
-  subsets: ["latin"],
-  weight: "600",
-  display: "swap",
-});
 
 const solutions = [
   {
     title: "Aesthetic Devices",
     description:
       "Clinic-grade lasers, RF, and treatment platforms with installation and ongoing support.",
-    href: "/products?category=devices",
+    href: "/products?brand=zimmer#catalogue",
     image: {
       src: "/assets/treatment-machine.webp",
       alt: "Aesthetic treatment device from the Lifestyle Aesthetics catalogue",
@@ -24,7 +17,7 @@ const solutions = [
     title: "Injectables",
     description:
       "Clinically trusted fillers and biostimulators for volume, contour, and revitalisation.",
-    href: "/products?category=injectables",
+    href: "/products?brand=hyalure#catalogue",
     image: {
       src: "/products/mitelier/mitelier.png",
       alt: "Professional injectable products for aesthetic clinics",
@@ -57,7 +50,7 @@ export function OurSolutions() {
           </p>
 
           <h2
-            className={`${solutionsDisplay.className} mt-4 text-[clamp(2rem,3.4vw,3.15rem)] leading-[1.12] text-foreground`}
+            className="mt-4 text-[clamp(2rem,3.4vw,3.15rem)] leading-[1.12] text-foreground font-semibold"
           >
             A Complete Aesthetic Portfolio{" "}
             <span className="text-primary">for Your Practice</span>

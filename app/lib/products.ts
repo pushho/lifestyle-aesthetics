@@ -622,6 +622,16 @@ export function getProductsByCategory(category?: string) {
   return products.filter((product) => product.category === category);
 }
 
+export function getProductsByBrand(brandSlug?: string) {
+  const products = getAllProducts();
+  if (!brandSlug || brandSlug === "all") return products;
+  return products.filter((product) => product.brandSlug === brandSlug);
+}
+
+export function isBrandSlug(value: string): boolean {
+  return BRANDS.some((brand) => brand.slug === value);
+}
+
 export function getRelatedProducts(product: CatalogueProduct, limit = 3) {
   return getAllProducts()
     .filter(

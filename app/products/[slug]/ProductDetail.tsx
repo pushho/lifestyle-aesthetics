@@ -42,10 +42,10 @@ export async function ProductDetail({ params }: ProductDetailProps) {
               <li aria-hidden="true">/</li>
               <li>
                 <Link
-                  href={`/products?category=${product.category}`}
+                  href={`/products?brand=${product.brandSlug}#catalogue`}
                   className="transition-colors hover:text-primary"
                 >
-                  {getCategoryLabel(product.category)}
+                  {product.brandName}
                 </Link>
               </li>
               <li aria-hidden="true">/</li>
