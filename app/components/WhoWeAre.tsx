@@ -52,19 +52,20 @@ export function WhoWeAre() {
           </Link>
         </div>
 
-        <div className="relative w-full lg:pr-6 xl:pr-10">
-          <div className="relative overflow-hidden rounded-[1.25rem] bg-foreground sm:rounded-3xl">
+        <div className="relative w-full pb-20 sm:pb-24 lg:pr-2 xl:pr-6">
+          <div className="relative overflow-hidden rounded-[1.25rem] bg-[#1a0f1c] sm:rounded-3xl">
             <Image
               src="/about/about_section.png"
-              alt="Professional aesthetic treatment device from the Lifestyle Aesthetics catalogue"
-              width={1024}
-              height={1536}
-              className="aspect-16/10 h-auto w-full object-contain object-[80%_20%]"
+              alt="Lifestyle Aesthetics catalogue of aesthetic devices and injectable products"
+              width={1280}
+              height={720}
+              className="aspect-16/9 h-auto w-full object-cover object-[18%_center]"
               sizes="(max-width: 1024px) 100vw, 55vw"
+              priority
             />
           </div>
 
-          <aside className="relative z-10 mx-3 -mt-12 rounded-2xl border border-border/60 bg-(--color-background-white) p-5 shadow-(--shadow-card) sm:absolute sm:right-0 sm:-bottom-6 sm:mx-0 sm:mt-0 sm:w-[min(100%,320px)] sm:p-6">
+          <aside className="relative z-10 mx-3 -mt-6 rounded-2xl border border-border/60 bg-(--color-background-white) p-5 shadow-(--shadow-card) sm:absolute sm:right-0 sm:-bottom-12 sm:mx-0 sm:mt-0 sm:w-[min(100%,270px)] sm:p-5">
             <div
               className="mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-primary"
               aria-hidden="true"

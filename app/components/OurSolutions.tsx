@@ -8,9 +8,9 @@ const solutions = [
       "Clinic-grade lasers, RF, and treatment platforms with installation and ongoing support.",
     href: "/products?brand=zimmer#catalogue",
     image: {
-      src: "/assets/treatment-machine.webp",
+      src: "/products/shenb/virtue.png",
       alt: "Aesthetic treatment device from the Lifestyle Aesthetics catalogue",
-      fit: "cover" as const,
+      fit: "contain" as const,
     },
   },
   {

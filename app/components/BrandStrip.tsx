@@ -158,7 +158,7 @@ export function BrandStrip() {
             aligns perfectly with the hero's bottom edge */}
         <div className="absolute inset-x-0 top-0 h-[83vh] -scale-y-100 opacity-95 blur-[1px] saturate-[0.9]">
           <Image
-            src="/assets/bg/hero_bg5.png"
+            src="/assets/bg/hero_bg6.png"
             alt=""
             fill
             sizes="100vw"

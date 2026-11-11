@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { Reveal } from "./Reveal";
 
 const services = [
@@ -244,13 +245,13 @@ export function TrainingSupport() {
           </Reveal>
 
           <Reveal delay={200}>
-            <a
-              href="/#contact"
+            <Link
+              href="/services/clinical-training"
               className="mt-9 inline-flex w-fit items-center gap-1.5 rounded-full bg-(--color-button-primary) px-6 py-3 text-[13px] font-semibold text-white transition-all hover:bg-(--color-button-primary-hover) hover:shadow-(--shadow-hover)"
             >
               Explore Our Support Services
               <span aria-hidden="true">→</span>
-            </a>
+            </Link>
           </Reveal>
         </div>
       </div>
