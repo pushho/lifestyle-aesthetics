@@ -4,7 +4,7 @@ import { HERO_IMAGE_RATIO, HeroAmbience } from "./HeroAmbience";
 
 export function Hero() {
   return (
-    <section className="relative isolate overflow-hidden h-[83vh] bg-[#2a2224]">
+    <section className="relative isolate h-[83vh] overflow-hidden bg-[#2a2224]">
       <Image
         src="/assets/bg/hero_bg5.png"
         alt="Aesthetic devices with Neauvia and Janssen Cosmetics professional products"
@@ -21,6 +21,11 @@ export function Hero() {
       />
       <div
         className="pointer-events-none absolute inset-0 bg-[radial-gradient(55%_70%_at_78%_48%,transparent_20%,rgba(28,22,24,0.35)_100%)]"
+        aria-hidden="true"
+      />
+      {/* Softens the bottom edge so the image melts into its reflection below */}
+      <div
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-[linear-gradient(to_bottom,transparent,rgba(255,252,253,0.16))]"
         aria-hidden="true"
       />
 

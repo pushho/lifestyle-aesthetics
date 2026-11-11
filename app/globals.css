@@ -59,6 +59,10 @@
   --color-border: #eae5e9;
   --color-border-accent: #f4b8d7;
   --animate-hero-rail: hero-rail 5.5s linear forwards;
+  --animate-marquee: marquee-scroll 38s linear infinite;
+  --animate-blob-drift: blob-drift 11s ease-in-out infinite;
+  --animate-blob-drift-reverse: blob-drift 14s ease-in-out infinite reverse;
+  --animate-shimmer-line: shimmer-line 5s linear infinite;
 
   @keyframes hero-rail {
     from {
@@ -66,6 +70,33 @@
     }
     to {
       transform: scaleX(1);
+    }
+  }
+
+  @keyframes marquee-scroll {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  @keyframes blob-drift {
+    0%,
+    100% {
+      transform: translate(0, 0) scale(1);
+      opacity: 0.7;
+    }
+    50% {
+      transform: translate(56px, 14px) scale(1.15);
+      opacity: 1;
+    }
+  }
+
+  @keyframes shimmer-line {
+    from {
+      background-position: 200% 0;
+    }
+    to {
+      background-position: -200% 0;
     }
   }
 }
@@ -148,6 +179,41 @@ body {
     opacity: 1;
   }
   .card-spawn-visible {
+    animation: none;
+  }
+}
+
+/* Slow rotation for circular-text badges */
+.animate-spin-slow {
+  animation: spin-slow 18s linear infinite;
+}
+
+@keyframes spin-slow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-spin-slow {
+    animation: none;
+  }
+}
+
+/* Scroll-triggered fade-up, driven by the <Reveal> component */
+.reveal {
+  opacity: 0;
+}
+
+.reveal-visible {
+  animation: fade-up 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+  }
+  .reveal-visible {
     animation: none;
   }
 }
