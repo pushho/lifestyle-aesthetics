@@ -208,6 +208,50 @@ export function HeroMachines() {
   );
 }
 
+/** Centre of the main platform's front face, in image px. */
+const PLATFORM_LABEL = { x: 1260, y: 717, size: 40 };
+
+/** The active brand's name, set on the front of the main platform. */
+export function HeroPlatformLabel() {
+  const { index, plateReady } = useSlideshow();
+  const { x, y, size } = PLATFORM_LABEL;
+  const baseline = y + size * 0.36;
+
+  return (
+    <HeroFrame>
+      <svg
+        viewBox={`0 0 ${IMG_W} ${IMG_H}`}
+        preserveAspectRatio="none"
+        className="absolute inset-0 h-full w-full"
+      >
+        {BRANDS.map((brand, b) => {
+          const active = plateReady && b === index;
+          return (
+            <g
+              key={brand.name}
+              className={`hero-slide font-display transition-[opacity,translate] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                active ? "translate-y-0 opacity-100 delay-200" : "translate-y-1 opacity-0"
+              }`}
+              fontSize={size}
+              fontWeight={600}
+              letterSpacing={size * 0.32}
+              textAnchor="middle"
+            >
+              {/* Light lip under each stroke so the lettering reads as engraved */}
+              <text x={x} y={baseline + 1.5} fill="#fff" fillOpacity={0.55}>
+                {brand.name.toUpperCase()}
+              </text>
+              <text x={x} y={baseline} fill="#4a2c37">
+                {brand.name.toUpperCase()}
+              </text>
+            </g>
+          );
+        })}
+      </svg>
+    </HeroFrame>
+  );
+}
+
 export function HeroBrandTabs({ className = "" }: { className?: string }) {
   const { index, setIndex, playing, setPlaying, reduceMotion, plateReady } = useSlideshow();
   const [hovered, setHovered] = useState(false);

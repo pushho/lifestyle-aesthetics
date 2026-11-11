@@ -5,6 +5,7 @@ import {
   HeroBrandTabs,
   HeroMachines,
   HeroPlate,
+  HeroPlatformLabel,
   HeroSlideshowProvider,
 } from "./HeroSlideshow";
 
@@ -36,6 +37,7 @@ export function Hero() {
         <HeroFrame>
           <HeroAmbience layer="front" />
         </HeroFrame>
+        <HeroPlatformLabel />
 
         <div className="relative z-10 mx-auto flex h-full max-w-430 items-center px-6 pt-16 sm:px-10 sm:pt-28 xl:pt-16">
           <div className="w-full max-w-xl @container lg:max-w-[46%] py-20">
