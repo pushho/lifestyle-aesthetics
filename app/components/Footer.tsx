@@ -6,6 +6,7 @@ const columns = [
     title: "Company",
     links: [
       { label: "About Us", href: "/about" },
+      { label: "Careers", href: "/careers" },
       { label: "Journal", href: "/blogs" },
       { label: "Our Story", href: "/about#our-story" },
       { label: "Regional Presence", href: "/about#presence" },

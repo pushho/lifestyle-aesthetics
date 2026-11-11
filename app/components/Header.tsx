@@ -3,15 +3,20 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
+import { BRANDS } from "../lib/products";
+import { useRouter } from "next/navigation";
 
 const navItems = [
   { label: "Home", href: "/" },
   { label: "About Us", href: "/about" },
-  { label: "Products", href: "/products" },
+  { label: "Brands", href: "/products", hasDropdown: true },
   { label: "Blogs", href: "/blogs" },
+  // { label: "Careers", href: "/careers" },
   { label: "Contact", href: "/contact" },
-];
+] as const;
+
+const upcomingBrands = ["Janssen Cosmetics", "Inspira"] as const;
 
 function isNavActive(pathname: string, href: string) {
   if (href === "/") return pathname === "/";
@@ -21,8 +26,13 @@ function isNavActive(pathname: string, href: string) {
 export function Header() {
   const pathname = usePathname();
   const [atTop, setAtTop] = useState(true);
+  const [brandsOpen, setBrandsOpen] = useState(false);
+  const brandsMenuId = useId();
+  const brandsRef = useRef<HTMLDivElement>(null);
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const isHome = pathname === "/";
   const overHero = isHome && atTop;
+  const router = useRouter();
 
   useEffect(() => {
     const onScroll = () => setAtTop(window.scrollY < 12);
@@ -30,6 +40,49 @@ export function Header() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, [pathname]);
+
+  useEffect(() => {
+    setBrandsOpen(false);
+  }, [pathname]);
+
+  useEffect(() => {
+    if (!brandsOpen) return;
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setBrandsOpen(false);
+    };
+    const onPointerDown = (event: MouseEvent) => {
+      if (
+        brandsRef.current &&
+        !brandsRef.current.contains(event.target as Node)
+      ) {
+        setBrandsOpen(false);
+      }
+    };
+
+    window.addEventListener("keydown", onKeyDown);
+    window.addEventListener("pointerdown", onPointerDown);
+    return () => {
+      window.removeEventListener("keydown", onKeyDown);
+      window.removeEventListener("pointerdown", onPointerDown);
+    };
+  }, [brandsOpen]);
+
+  useEffect(() => {
+    return () => {
+      if (closeTimer.current) clearTimeout(closeTimer.current);
+    };
+  }, []);
+
+  const openBrands = () => {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+    setBrandsOpen(true);
+  };
+
+  const scheduleCloseBrands = () => {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+    closeTimer.current = setTimeout(() => setBrandsOpen(false), 120);
+  };
 
   return (
     <header
@@ -56,21 +109,114 @@ export function Header() {
         >
           {navItems.map((item) => {
             const isActive = isNavActive(pathname, item.href);
+            const linkClass = `relative whitespace-nowrap pb-1 text-[13.5px] font-medium tracking-wide transition-colors ${
+              isActive
+                ? overHero
+                  ? "font-semibold text-white after:absolute after:inset-x-0 after:-bottom-0.5 after:h-0.5 after:rounded-full after:bg-primary"
+                  : "font-semibold text-primary after:absolute after:inset-x-0 after:-bottom-0.5 after:h-0.5 after:rounded-full after:bg-primary"
+                : overHero
+                  ? "text-white/80 hover:text-white"
+                  : "text-secondary hover:text-primary"
+            }`;
+
+            if ("hasDropdown" in item && item.hasDropdown) {
+              return (
+                <div
+                  key={item.label}
+                  ref={brandsRef}
+                  onClick={() => router.push("/products")}
+                  className="relative"
+                  onMouseEnter={openBrands}
+                  onMouseLeave={scheduleCloseBrands}
+                >
+                  <button
+                    type="button"
+                    className={`${linkClass} inline-flex items-center gap-1`}
+                    aria-expanded={brandsOpen}
+                    aria-controls={brandsMenuId}
+                    aria-haspopup="true"
+                    onClick={() => setBrandsOpen((open) => !open)}
+                    onFocus={openBrands}
+                  >
+                    {item.label}
+                    <svg
+                      aria-hidden="true"
+                      viewBox="0 0 12 12"
+                      className={`size-2.5 transition-transform duration-200 ${
+                        brandsOpen ? "rotate-180" : ""
+                      }`}
+                      fill="none"
+                    >
+                      <path
+                        d="M2.5 4.25 6 7.75l3.5-3.5"
+                        stroke="currentColor"
+                        strokeWidth="1.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </button>
+
+                  <div
+                    id={brandsMenuId}
+                    role="menu"
+                    aria-label="Brands and products"
+                    className={`absolute top-full left-1/2 z-50 w-[min(94vw,56rem)] -translate-x-1/2 pt-4 transition-[opacity,transform] duration-200 ${
+                      brandsOpen
+                        ? "pointer-events-auto translate-y-0 opacity-100"
+                        : "pointer-events-none -translate-y-1 opacity-0"
+                    }`}
+                  >
+                    <div className="overflow-hidden rounded-2xl border border-border/80 bg-(--color-surface-dark) text-white shadow-[0_24px_60px_-20px_rgba(41,37,43,0.45)]">
+                      <div className="max-h-[min(62vh,32rem)] overflow-y-auto px-7 py-7 sm:px-8">
+                        <div className="grid grid-cols-2 gap-x-8 gap-y-7 sm:grid-cols-3 md:grid-cols-4">
+                          {BRANDS.map((brand) => (
+                            <div key={brand.slug} className="min-w-0">
+                              <Link
+                                href={`/products?brand=${brand.slug}#catalogue`}
+                                role="menuitem"
+                                className="text-[12px] font-bold tracking-[0.14em] text-white uppercase transition-colors hover:text-primary"
+                                onClick={() => setBrandsOpen(false)}
+                              >
+                                {brand.name}
+                              </Link>
+                              <ul className="mt-3 space-y-1.5">
+                                {brand.products.map((product) => (
+                                  <li key={product.slug}>
+                                    <Link
+                                      href={`/products/${product.slug}`}
+                                      role="menuitem"
+                                      className="block text-[13px] leading-snug text-white/75 transition-colors hover:text-white"
+                                      onClick={() => setBrandsOpen(false)}
+                                    >
+                                      {product.name}
+                                    </Link>
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+
+                      <div className="flex flex-wrap items-center gap-x-8 gap-y-2 border-t border-white/10 px-7 py-4 sm:px-8">
+                        {upcomingBrands.map((brand) => (
+                          <span
+                            key={brand}
+                            className="text-[13px] font-bold tracking-wide text-white"
+                          >
+                            {brand}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              );
+            }
 
             return (
-              <Link
-                key={item.label}
-                href={item.href}
-                className={`relative whitespace-nowrap pb-1 text-[13.5px] font-medium tracking-wide transition-colors ${
-                  isActive
-                    ? overHero
-                      ? "font-semibold text-white after:absolute after:inset-x-0 after:-bottom-0.5 after:h-0.5 after:rounded-full after:bg-primary"
-                      : "font-semibold text-primary after:absolute after:inset-x-0 after:-bottom-0.5 after:h-0.5 after:rounded-full after:bg-primary"
-                    : overHero
-                      ? "text-white/80 hover:text-white"
-                      : "text-secondary hover:text-primary"
-                }`}
-              >
+              <Link key={item.label} href={item.href} className={linkClass}>
                 {item.label}
               </Link>
             );
