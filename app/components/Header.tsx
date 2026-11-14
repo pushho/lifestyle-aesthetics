@@ -5,7 +5,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useId, useRef, useState } from "react";
 import { BRANDS } from "../lib/products";
-import { useRouter } from "next/navigation";
 
 const navItems = [
   { label: "Home", href: "/" },
@@ -32,7 +31,6 @@ export function Header() {
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const isHome = pathname === "/";
   const overHero = isHome && atTop;
-  const router = useRouter();
 
   useEffect(() => {
     const onScroll = () => setAtTop(window.scrollY < 12);
@@ -124,18 +122,17 @@ export function Header() {
                 <div
                   key={item.label}
                   ref={brandsRef}
-                  onClick={() => router.push("/products")}
                   className="relative"
                   onMouseEnter={openBrands}
                   onMouseLeave={scheduleCloseBrands}
                 >
-                  <button
-                    type="button"
+                  <Link
+                    href={item.href}
                     className={`${linkClass} inline-flex items-center gap-1`}
                     aria-expanded={brandsOpen}
                     aria-controls={brandsMenuId}
                     aria-haspopup="true"
-                    onClick={() => setBrandsOpen((open) => !open)}
+                    onClick={() => setBrandsOpen(false)}
                     onFocus={openBrands}
                   >
                     {item.label}
@@ -155,7 +152,7 @@ export function Header() {
                         strokeLinejoin="round"
                       />
                     </svg>
-                  </button>
+                  </Link>
 
                   <div
                     id={brandsMenuId}
@@ -176,7 +173,10 @@ export function Header() {
                                 href={`/products?brand=${brand.slug}#catalogue`}
                                 role="menuitem"
                                 className="text-[12px] font-bold tracking-[0.14em] text-white uppercase transition-colors hover:text-primary"
-                                onClick={() => setBrandsOpen(false)}
+                                onClick={(event) => {
+                                  event.stopPropagation();
+                                  setBrandsOpen(false);
+                                }}
                               >
                                 {brand.name}
                               </Link>
@@ -187,7 +187,10 @@ export function Header() {
                                       href={`/products/${product.slug}`}
                                       role="menuitem"
                                       className="block text-[13px] leading-snug text-white/75 transition-colors hover:text-white"
-                                      onClick={() => setBrandsOpen(false)}
+                                      onClick={(event) => {
+                                        event.stopPropagation();
+                                        setBrandsOpen(false);
+                                      }}
                                     >
                                       {product.name}
                                     </Link>

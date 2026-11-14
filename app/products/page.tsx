@@ -85,7 +85,7 @@ export default function ProductsPage({ searchParams }: ProductsPageProps) {
           {/* Right visual composition */}
           <div className="relative min-h-[280px] overflow-hidden sm:min-h-[340px] lg:min-h-full">
             <Image
-              src="/spa-treatment-room.webp"
+              src="/products/products_hero.webp"
               alt="Modern aesthetic treatment clinic room"
               fill
               priority
