@@ -15,7 +15,7 @@ export const careerRoles: CareerRole[] = [
     location: "Dubai, UAE",
     type: "Full-time",
     summary:
-      "Grow clinic partnerships across the UAE. You already know aesthetic practices, and you can talk products, protocols, and long-term supply with the same ease.",
+      "Find and manage clinic accounts across the UAE. The role covers product conversations, orders, and the relationship after the first sale.",
   },
   {
     slug: "clinical-education-specialist",
@@ -24,7 +24,7 @@ export const careerRoles: CareerRole[] = [
     location: "UAE & GCC",
     type: "Full-time",
     summary:
-      "Train practitioners on the devices and protocols we distribute. Clinic days, workshops, and the follow-up that keeps a new treatment on the menu.",
+      "Train practitioners on the devices and protocols we distribute. The work is clinic visits, workshops, and follow-up after training.",
   },
   {
     slug: "marketing-coordinator",
@@ -33,7 +33,7 @@ export const careerRoles: CareerRole[] = [
     location: "Dubai, UAE",
     type: "Full-time",
     summary:
-      "Shape how brands are introduced to clinics: launches, education materials, and the stories that travel with the portfolio.",
+      "Plan product launches and produce the materials clinics use to learn about our brands.",
   },
 ];
 

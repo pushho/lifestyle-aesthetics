@@ -11,8 +11,8 @@ const navItems = [
   { label: "About Us", href: "/about" },
   { label: "Brands", href: "/products", hasDropdown: true },
   { label: "Blogs", href: "/blogs" },
-  // { label: "Careers", href: "/careers" },
   { label: "Contact", href: "/contact" },
+  { label: "Careers", href: "/careers" },
 ] as const;
 
 const upcomingBrands = ["Janssen Cosmetics", "Inspira"] as const;

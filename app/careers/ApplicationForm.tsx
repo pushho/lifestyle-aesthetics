@@ -217,15 +217,12 @@ export function ApplicationForm() {
       noValidate
       className="rounded-3xl border border-border bg-white px-5 py-6 shadow-(--shadow-card) sm:px-8 sm:py-8 lg:px-9 lg:py-9"
     >
-      <p className="text-[11px] font-semibold tracking-[0.22em] text-primary uppercase">
-        Application
-      </p>
-      <h2 className="mt-2 font-display text-[clamp(1.85rem,2.6vw,2.35rem)] leading-tight font-semibold tracking-[-0.02em] text-foreground">
-        Tell us where you fit
+      <h2 className="font-display text-[clamp(1.85rem,2.6vw,2.35rem)] leading-tight font-semibold tracking-[-0.02em] text-foreground">
+        Apply
       </h2>
       <p className="mt-2 max-w-lg text-[14px] leading-relaxed text-secondary">
-        A short note is enough. Sending opens an email to {CONTACT.email} —
-        attach your CV before you send it.
+        This opens an email to {CONTACT.email}. Attach your CV before you send
+        it.
       </p>
 
       <div className="mt-7 grid gap-4 sm:grid-cols-2 sm:gap-5">
@@ -372,7 +369,7 @@ export function ApplicationForm() {
             htmlFor={`${formId}-message`}
             className="text-[13px] font-semibold text-foreground"
           >
-            A short note
+            Note
           </label>
           <span className="text-[12px] text-muted">{values.message.length}/1000</span>
         </div>
@@ -388,7 +385,7 @@ export function ApplicationForm() {
             errors.message ? `${formId}-message-error` : undefined
           }
           className={`${inputClass(Boolean(errors.message))} resize-y leading-relaxed`}
-          placeholder="Where you have worked, and the kind of work you want to do with clinics."
+          placeholder="Where you have worked, and which role you want."
         />
         <FieldError id={`${formId}-message-error`} message={errors.message} />
       </div>
