@@ -61,17 +61,6 @@ export function CapabilitiesGrid({ service }: { service: Service }) {
                       "radial-gradient(340px circle at var(--cx, 50%) var(--cy, 50%), color-mix(in srgb, var(--svc-accent) 13%, transparent), transparent 68%)",
                   }}
                 />
-                {/* Ghost index */}
-                <span
-                  aria-hidden="true"
-                  className="pointer-events-none absolute -top-3 right-4 font-display text-[4.6rem] leading-none font-semibold tracking-[-0.04em] select-none"
-                  style={{
-                    color:
-                      "color-mix(in srgb, var(--svc-accent) 10%, transparent)",
-                  }}
-                >
-                  {String(i + 1).padStart(2, "0")}
-                </span>
 
                 <div className="relative">
                   <span

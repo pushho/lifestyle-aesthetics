@@ -26,7 +26,6 @@ export function ServiceHero({
   all: Service[];
 }) {
   const sectionRef = useRef<HTMLElement>(null);
-  const glowRef = useRef<HTMLDivElement>(null);
   const cardRef = useRef<HTMLDivElement>(null);
   const rafRef = useRef<number | null>(null);
   const hoveringRef = useRef(false);
@@ -36,9 +35,6 @@ export function ServiceHero({
 
   const applyStyles = () => {
     const c = currentRef.current;
-    if (glowRef.current) {
-      glowRef.current.style.transform = `translate3d(${c.gx}px, ${c.gy}px, 0) translate(-50%, -50%)`;
-    }
     const card = cardRef.current;
     if (card) {
       card.style.transform = `perspective(1100px) rotateX(${c.rx}deg) rotateY(${c.ry}deg)`;
@@ -140,16 +136,6 @@ export function ServiceHero({
       className="relative overflow-hidden bg-[linear-gradient(180deg,#fff5fa_0%,#fffcfd_72%)] pt-12 sm:pt-16"
       style={{ "--svc-accent": service.accent } as CSSProperties}
     >
-      {/* Cursor-following ambient glow */}
-      <div
-        ref={glowRef}
-        aria-hidden="true"
-        className="pointer-events-none absolute top-0 left-0 z-0 h-[34rem] w-[34rem] rounded-full opacity-70 blur-3xl will-change-transform"
-        style={{
-          background:
-            "radial-gradient(circle, color-mix(in srgb, var(--svc-accent) 24%, transparent), transparent 68%)",
-        }}
-      />
       {/* Static brand ambience */}
       <div
         aria-hidden="true"

@@ -5,29 +5,43 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useId, useRef, useState } from "react";
 import { BRANDS } from "../lib/products";
+import { getAllServices } from "../lib/services";
 
 const navItems = [
   { label: "Home", href: "/" },
   { label: "About Us", href: "/about" },
-  { label: "Brands", href: "/products", hasDropdown: true },
+  { label: "Brands", href: "/products", dropdown: "brands" as const },
+  {
+    label: "Services",
+    href: "/services/biomedical-service",
+    dropdown: "services" as const,
+  },
   { label: "Blogs", href: "/blogs" },
   { label: "Contact", href: "/contact" },
   { label: "Careers", href: "/careers" },
 ] as const;
 
 const upcomingBrands = ["Janssen Cosmetics", "Inspira"] as const;
+const services = getAllServices();
+
+type DropdownKey = "brands" | "services";
 
 function isNavActive(pathname: string, href: string) {
   if (href === "/") return pathname === "/";
+  if (href.startsWith("/services/")) {
+    return pathname === "/services" || pathname.startsWith("/services/");
+  }
   return pathname === href || pathname.startsWith(`${href}/`);
 }
 
 export function Header() {
   const pathname = usePathname();
   const [atTop, setAtTop] = useState(true);
-  const [brandsOpen, setBrandsOpen] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState<DropdownKey | null>(null);
   const brandsMenuId = useId();
+  const servicesMenuId = useId();
   const brandsRef = useRef<HTMLDivElement>(null);
+  const servicesRef = useRef<HTMLDivElement>(null);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const isHome = pathname === "/";
   const overHero = isHome && atTop;
@@ -40,21 +54,21 @@ export function Header() {
   }, [pathname]);
 
   useEffect(() => {
-    setBrandsOpen(false);
+    setOpenDropdown(null);
   }, [pathname]);
 
   useEffect(() => {
-    if (!brandsOpen) return;
+    if (!openDropdown) return;
 
     const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setBrandsOpen(false);
+      if (event.key === "Escape") setOpenDropdown(null);
     };
     const onPointerDown = (event: MouseEvent) => {
-      if (
-        brandsRef.current &&
-        !brandsRef.current.contains(event.target as Node)
-      ) {
-        setBrandsOpen(false);
+      const target = event.target as Node;
+      const activeRef =
+        openDropdown === "brands" ? brandsRef : servicesRef;
+      if (activeRef.current && !activeRef.current.contains(target)) {
+        setOpenDropdown(null);
       }
     };
 
@@ -64,7 +78,7 @@ export function Header() {
       window.removeEventListener("keydown", onKeyDown);
       window.removeEventListener("pointerdown", onPointerDown);
     };
-  }, [brandsOpen]);
+  }, [openDropdown]);
 
   useEffect(() => {
     return () => {
@@ -72,14 +86,14 @@ export function Header() {
     };
   }, []);
 
-  const openBrands = () => {
+  const openMenu = (key: DropdownKey) => {
     if (closeTimer.current) clearTimeout(closeTimer.current);
-    setBrandsOpen(true);
+    setOpenDropdown(key);
   };
 
-  const scheduleCloseBrands = () => {
+  const scheduleCloseMenu = () => {
     if (closeTimer.current) clearTimeout(closeTimer.current);
-    closeTimer.current = setTimeout(() => setBrandsOpen(false), 120);
+    closeTimer.current = setTimeout(() => setOpenDropdown(null), 120);
   };
 
   return (
@@ -117,14 +131,15 @@ export function Header() {
                   : "text-secondary hover:text-primary"
             }`;
 
-            if ("hasDropdown" in item && item.hasDropdown) {
+            if ("dropdown" in item && item.dropdown === "brands") {
+              const brandsOpen = openDropdown === "brands";
               return (
                 <div
                   key={item.label}
                   ref={brandsRef}
                   className="relative"
-                  onMouseEnter={openBrands}
-                  onMouseLeave={scheduleCloseBrands}
+                  onMouseEnter={() => openMenu("brands")}
+                  onMouseLeave={scheduleCloseMenu}
                 >
                   <Link
                     href={item.href}
@@ -132,26 +147,11 @@ export function Header() {
                     aria-expanded={brandsOpen}
                     aria-controls={brandsMenuId}
                     aria-haspopup="true"
-                    onClick={() => setBrandsOpen(false)}
-                    onFocus={openBrands}
+                    onClick={() => setOpenDropdown(null)}
+                    onFocus={() => openMenu("brands")}
                   >
                     {item.label}
-                    <svg
-                      aria-hidden="true"
-                      viewBox="0 0 12 12"
-                      className={`size-2.5 transition-transform duration-200 ${
-                        brandsOpen ? "rotate-180" : ""
-                      }`}
-                      fill="none"
-                    >
-                      <path
-                        d="M2.5 4.25 6 7.75l3.5-3.5"
-                        stroke="currentColor"
-                        strokeWidth="1.5"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
+                    <Chevron open={brandsOpen} />
                   </Link>
 
                   <div
@@ -175,7 +175,7 @@ export function Header() {
                                 className="text-[12px] font-bold tracking-[0.14em] text-white uppercase transition-colors hover:text-primary"
                                 onClick={(event) => {
                                   event.stopPropagation();
-                                  setBrandsOpen(false);
+                                  setOpenDropdown(null);
                                 }}
                               >
                                 {brand.name}
@@ -189,7 +189,7 @@ export function Header() {
                                       className="block text-[13px] leading-snug text-white/75 transition-colors hover:text-white"
                                       onClick={(event) => {
                                         event.stopPropagation();
-                                        setBrandsOpen(false);
+                                        setOpenDropdown(null);
                                       }}
                                     >
                                       {product.name}
@@ -218,6 +218,68 @@ export function Header() {
               );
             }
 
+            if ("dropdown" in item && item.dropdown === "services") {
+              const servicesOpen = openDropdown === "services";
+              return (
+                <div
+                  key={item.label}
+                  ref={servicesRef}
+                  className="relative"
+                  onMouseEnter={() => openMenu("services")}
+                  onMouseLeave={scheduleCloseMenu}
+                >
+                  <Link
+                    href={item.href}
+                    className={`${linkClass} inline-flex items-center gap-1`}
+                    aria-expanded={servicesOpen}
+                    aria-controls={servicesMenuId}
+                    aria-haspopup="true"
+                    onClick={() => setOpenDropdown(null)}
+                    onFocus={() => openMenu("services")}
+                  >
+                    {item.label}
+                    <Chevron open={servicesOpen} />
+                  </Link>
+
+                  <div
+                    id={servicesMenuId}
+                    role="menu"
+                    aria-label="Services"
+                    className={`absolute top-full left-1/2 z-50 w-[min(92vw,22rem)] -translate-x-1/2 pt-4 transition-[opacity,transform] duration-200 ${
+                      servicesOpen
+                        ? "pointer-events-auto translate-y-0 opacity-100"
+                        : "pointer-events-none -translate-y-1 opacity-0"
+                    }`}
+                  >
+                    <div className="overflow-hidden rounded-2xl border border-border/80 bg-(--color-surface-dark) text-white shadow-[0_24px_60px_-20px_rgba(41,37,43,0.45)]">
+                      <ul className="py-2">
+                        {services.map((service) => (
+                          <li key={service.slug}>
+                            <Link
+                              href={`/services/${service.slug}`}
+                              role="menuitem"
+                              className="group flex items-center gap-3 px-5 py-3 transition-colors hover:bg-white/5"
+                              onClick={(event) => {
+                                event.stopPropagation();
+                                setOpenDropdown(null);
+                              }}
+                            >
+                              <span className="font-display text-[11px] font-semibold tracking-[0.16em] text-white/40 transition-colors group-hover:text-primary">
+                                {service.index}
+                              </span>
+                              <span className="text-[13.5px] font-semibold text-white transition-colors group-hover:text-primary">
+                                {service.name}
+                              </span>
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              );
+            }
+
             return (
               <Link key={item.label} href={item.href} className={linkClass}>
                 {item.label}
@@ -237,5 +299,26 @@ export function Header() {
         </div>
       </div>
     </header>
+  );
+}
+
+function Chevron({ open }: { open: boolean }) {
+  return (
+    <svg
+      aria-hidden="true"
+      viewBox="0 0 12 12"
+      className={`size-2.5 transition-transform duration-200 ${
+        open ? "rotate-180" : ""
+      }`}
+      fill="none"
+    >
+      <path
+        d="M2.5 4.25 6 7.75l3.5-3.5"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
   );
 }

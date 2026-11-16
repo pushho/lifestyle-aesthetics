@@ -96,8 +96,8 @@ const services: Service[] = [
     ],
     heroChips: ["PPM Programs", "24h Response", "Genuine Parts"],
     image: {
-      src: "/assets/treatment-machine.webp",
-      alt: "Aesthetic treatment device installed and maintained by Lifestyle Aesthetics",
+      src: "/services/biomedical-service.webp",
+      alt: "Technician calibrating an aesthetic laser device in a clinic treatment room",
     },
     accent: "#8b5cf6",
     stats: [
@@ -240,8 +240,8 @@ const services: Service[] = [
     ],
     heroChips: ["Certification", "On-Site & Online", "Live Demos"],
     image: {
-      src: "/training-education.jpg",
-      alt: "Hands-on clinical training session for aesthetic professionals",
+      src: "/services/clinical-training.webp",
+      alt: "Hands-on clinical training demonstration with an aesthetic treatment device",
     },
     accent: "#f59e0b",
     stats: [
@@ -384,8 +384,8 @@ const services: Service[] = [
     ],
     heroChips: ["Cold Chain", "6 Countries", "Clinic-Ready"],
     image: {
-      src: "/about/dubai-skyline.jpg",
-      alt: "Dubai skyline — hub of the Lifestyle Aesthetics regional distribution network",
+      src: "/services/logistics-distribution.webp",
+      alt: "Cold-storage inspection of medical aesthetic supplies before clinic delivery",
     },
     accent: "#0d9488",
     stats: [
@@ -528,8 +528,8 @@ const services: Service[] = [
     ],
     heroChips: ["Campaigns", "Events", "Content"],
     image: {
-      src: "/glamorous-portrait.webp",
-      alt: "Campaign imagery created for an aesthetic brand activation",
+      src: "/services/marketing-support.webp",
+      alt: "Modern clinic reception prepared with brochures for a brand open day",
     },
     accent: "#e90c87",
     stats: [
