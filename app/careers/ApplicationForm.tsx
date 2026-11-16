@@ -86,13 +86,13 @@ function greetingName(name: string) {
 
 function buildMailto(values: FormValues) {
   const roleTitle = careerChoiceTitle(values.role);
-  const subject = `Career application — ${roleTitle}`;
+  const subject = `Career application - ${roleTitle}`;
   const body = [
     `Name: ${values.name.trim()}`,
     `Email: ${values.email.trim()}`,
-    `Phone: ${values.phone.trim() || "—"}`,
+    `Phone: ${values.phone.trim() || "-"}`,
     `Role: ${roleTitle}`,
-    `LinkedIn: ${values.link.trim() || "—"}`,
+    `LinkedIn: ${values.link.trim() || "-"}`,
     "",
     values.message.trim(),
   ].join("\n");

@@ -4,7 +4,7 @@ import type { Service } from "@/app/lib/services";
 import { Reveal } from "../Reveal";
 
 /**
- * "Keep exploring" — large typographic rows linking to the other services.
+ * "Keep exploring" - large typographic rows linking to the other services.
  * Each row lights up in that service's own accent colour on hover.
  */
 export function ServiceSwitcher({ services }: { services: Service[] }) {
@@ -26,7 +26,7 @@ export function ServiceSwitcher({ services }: { services: Service[] }) {
             </div>
             <p className="max-w-sm text-[13.5px] leading-relaxed text-white/55">
               Every service is included in the Lifestyle Aesthetics
-              partnership — explore what else comes with it.
+              partnership - explore what else comes with it.
             </p>
           </header>
         </Reveal>

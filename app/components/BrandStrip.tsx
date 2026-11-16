@@ -226,7 +226,7 @@ export function BrandStrip() {
         </div>
       </div>
 
-      {/* Infinite marquee — pauses on hover / focus */}
+      {/* Infinite marquee - pauses on hover / focus */}
       <div className="group/marquee relative mt-8 pb-10 [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)] motion-reduce:overflow-x-auto sm:pb-12">
         <div className="animate-marquee flex w-max will-change-transform group-hover/marquee:[animation-play-state:paused] group-focus-within/marquee:[animation-play-state:paused] motion-reduce:animate-none">
           {[false, true].map((duplicate) => (

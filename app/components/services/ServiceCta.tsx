@@ -47,7 +47,7 @@ export function ServiceCta({ service }: { service: Service }) {
                 to work for your clinic?
               </h2>
               <p className="mx-auto mt-4 max-w-xl text-[14.5px] leading-relaxed text-white/65">
-                Tell us about your practice and goals — we&apos;ll map the
+                Tell us about your practice and goals - we&apos;ll map the
                 right mix of products, training, and support around them.
               </p>
 

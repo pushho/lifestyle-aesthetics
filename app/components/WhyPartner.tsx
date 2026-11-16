@@ -157,7 +157,7 @@ export function WhyPartner() {
               </span>
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-[15px] leading-relaxed text-secondary sm:text-base">
-              Five pillars behind every supply agreement — so your team can
+              Five pillars behind every supply agreement - so your team can
               stock, operate, and sell with confidence.
             </p>
           </header>

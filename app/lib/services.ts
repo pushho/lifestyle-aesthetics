@@ -81,9 +81,9 @@ const services: Service[] = [
     titleLead: "Biomedical",
     titleAccent: "Service.",
     tagline:
-      "Factory-level care for every device we deliver — installation, calibration, maintenance, and rapid repair across the region.",
+      "Factory-level care for every device we deliver - installation, calibration, maintenance, and rapid repair across the region.",
     description:
-      "A treatment room that stops earning is every clinic's nightmare. Our biomedical engineers keep your devices running at peak performance — from the day we install them to years after the warranty conversation ends.",
+      "A treatment room that stops earning is every clinic's nightmare. Our biomedical engineers keep your devices running at peak performance - from the day we install them to years after the warranty conversation ends.",
     keywords: [
       "Professional Installation",
       "Calibration",
@@ -127,7 +127,7 @@ const services: Service[] = [
       },
     ],
     capabilitiesIntro:
-      "From first install to emergency call-outs, our biomedical team covers the full life of your device — so it keeps performing like the day it arrived.",
+      "From first install to emergency call-outs, our biomedical team covers the full life of your device - so it keeps performing like the day it arrived.",
     capabilities: [
       {
         icon: "wrench",
@@ -139,7 +139,7 @@ const services: Service[] = [
         icon: "calendar",
         title: "Preventive Maintenance",
         description:
-          "Scheduled PPM visits built around your usage — extending device lifespan and preventing mid-week breakdowns.",
+          "Scheduled PPM visits built around your usage - extending device lifespan and preventing mid-week breakdowns.",
       },
       {
         icon: "gauge",
@@ -151,13 +151,13 @@ const services: Service[] = [
         icon: "bolt",
         title: "Emergency Service Visits",
         description:
-          "Rapid on-site response when a device goes down — so your diary stays full and your patients stay happy.",
+          "Rapid on-site response when a device goes down - so your diary stays full and your patients stay happy.",
       },
       {
         icon: "headset",
         title: "Technical Support",
         description:
-          "Direct access to engineers who know your device, your protocol, and your clinic setup — by phone or WhatsApp.",
+          "Direct access to engineers who know your device, your protocol, and your clinic setup - by phone or WhatsApp.",
       },
       {
         icon: "chip",
@@ -167,7 +167,7 @@ const services: Service[] = [
       },
     ],
     processIntro:
-      "A clear, proactive cycle keeps your equipment healthy — and keeps surprises off your schedule.",
+      "A clear, proactive cycle keeps your equipment healthy - and keeps surprises off your schedule.",
     process: [
       {
         title: "Install & calibrate",
@@ -177,7 +177,7 @@ const services: Service[] = [
       {
         title: "Schedule maintenance",
         description:
-          "A preventive plan is built around your treatment volume — with reminders so nothing slips through the cracks.",
+          "A preventive plan is built around your treatment volume - with reminders so nothing slips through the cracks.",
       },
       {
         title: "Monitor & support",
@@ -194,7 +194,7 @@ const services: Service[] = [
       {
         question: "Do you only service devices purchased from Lifestyle Aesthetics?",
         answer:
-          "Our engineers are trained and certified on every brand we distribute. If your device comes from our portfolio — even if you bought it elsewhere — get in touch and we will confirm coverage for your model.",
+          "Our engineers are trained and certified on every brand we distribute. If your device comes from our portfolio - even if you bought it elsewhere - get in touch and we will confirm coverage for your model.",
       },
       {
         question: "What's included in a preventive maintenance visit?",
@@ -209,7 +209,7 @@ const services: Service[] = [
       {
         question: "Do you handle installation and staff orientation?",
         answer:
-          "Yes. Every device we deliver is installed, calibrated, and signed off by our engineers — followed by a practical safety and operation walkthrough for your team.",
+          "Yes. Every device we deliver is installed, calibrated, and signed off by our engineers - followed by a practical safety and operation walkthrough for your team.",
       },
       {
         question: "Are spare parts genuine?",
@@ -227,7 +227,7 @@ const services: Service[] = [
     tagline:
       "Hands-on programs that turn new technology into confident, everyday treatments for your team.",
     description:
-      "A device only performs as well as the hands using it. Our clinical trainers take your practitioners from first principles to advanced protocols — on-site at your clinic or at our Dubai facility — with certification and long-term protocol support.",
+      "A device only performs as well as the hands using it. Our clinical trainers take your practitioners from first principles to advanced protocols - on-site at your clinic or at our Dubai facility - with certification and long-term protocol support.",
     keywords: [
       "Foundation Training",
       "Advanced Protocols",
@@ -289,7 +289,7 @@ const services: Service[] = [
         icon: "building",
         title: "On-Site Clinic Training",
         description:
-          "Our trainers come to you — coaching your team on your own devices, rooms, and patient flow.",
+          "Our trainers come to you - coaching your team on your own devices, rooms, and patient flow.",
       },
       {
         icon: "video",
@@ -311,7 +311,7 @@ const services: Service[] = [
       },
     ],
     processIntro:
-      "Every program is shaped around your team's experience level — never a one-size-fits-all slideshow.",
+      "Every program is shaped around your team's experience level - never a one-size-fits-all slideshow.",
     process: [
       {
         title: "Assess",
@@ -326,7 +326,7 @@ const services: Service[] = [
       {
         title: "Deliver",
         description:
-          "Hands-on sessions at your clinic or our Dubai facility — with live demonstration and supervised practice.",
+          "Hands-on sessions at your clinic or our Dubai facility - with live demonstration and supervised practice.",
       },
       {
         title: "Follow up",
@@ -348,7 +348,7 @@ const services: Service[] = [
       {
         question: "Can training happen at our clinic?",
         answer:
-          "Absolutely — most of our training is delivered on-site so your team learns on the exact device and setup they'll use daily. We also host sessions at our Dubai facility.",
+          "Absolutely - most of our training is delivered on-site so your team learns on the exact device and setup they'll use daily. We also host sessions at our Dubai facility.",
       },
       {
         question: "Do you train both doctors and clinic staff?",
@@ -369,7 +369,7 @@ const services: Service[] = [
     titleLead: "Logistics &",
     titleAccent: "Distribution.",
     tagline:
-      "Climate-controlled warehousing and clinic-ready delivery across the region — handled end to end.",
+      "Climate-controlled warehousing and clinic-ready delivery across the region - handled end to end.",
     description:
       "Great products are only half the promise; getting them to your clinic safely, on time, and in perfect condition is the other half. Our logistics operation runs warehousing, cold chain, customs, and delivery so you never have to think about it.",
     keywords: [
@@ -415,7 +415,7 @@ const services: Service[] = [
       },
     ],
     capabilitiesIntro:
-      "From port to treatment room, every step is controlled, tracked, and compliant — so what you ordered is exactly what arrives.",
+      "From port to treatment room, every step is controlled, tracked, and compliant - so what you ordered is exactly what arrives.",
     capabilities: [
       {
         icon: "warehouse",
@@ -427,13 +427,13 @@ const services: Service[] = [
         icon: "snowflake",
         title: "Cold-Chain Handling",
         description:
-          "Continuously monitored temperature control for sensitive biologics and skincare — from shelf to doorstep.",
+          "Continuously monitored temperature control for sensitive biologics and skincare - from shelf to doorstep.",
       },
       {
         icon: "truck",
         title: "Clinic-Ready Delivery",
         description:
-          "Deliveries coordinated with your schedule — including training-day and installation-day timing.",
+          "Deliveries coordinated with your schedule - including training-day and installation-day timing.",
       },
       {
         icon: "clipboard",
@@ -455,7 +455,7 @@ const services: Service[] = [
       },
     ],
     processIntro:
-      "A supply chain you never have to chase — every order moves through the same disciplined cycle.",
+      "A supply chain you never have to chase - every order moves through the same disciplined cycle.",
     process: [
       {
         title: "Receive",
@@ -470,7 +470,7 @@ const services: Service[] = [
       {
         title: "Dispatch",
         description:
-          "Orders are picked, packed, and routed — devices travel with installation scheduling attached.",
+          "Orders are picked, packed, and routed - devices travel with installation scheduling attached.",
       },
       {
         title: "Deliver",
@@ -502,7 +502,7 @@ const services: Service[] = [
       {
         question: "Do you deliver large devices as well?",
         answer:
-          "Yes — devices are delivered by our own team and timed with biomedical installation, so your equipment arrives and goes live in one coordinated visit.",
+          "Yes - devices are delivered by our own team and timed with biomedical installation, so your equipment arrives and goes live in one coordinated visit.",
       },
     ],
   },
@@ -513,9 +513,9 @@ const services: Service[] = [
     titleLead: "Marketing",
     titleAccent: "Support.",
     tagline:
-      "Campaigns, content, and events that fill your treatment rooms — powered by the brands you stock.",
+      "Campaigns, content, and events that fill your treatment rooms - powered by the brands you stock.",
     description:
-      "Stocking a great brand is step one; getting patients asking for it by name is step two. Our marketing team co-creates campaigns, content, and events with partner clinics — so the brands you carry become the treatments your city talks about.",
+      "Stocking a great brand is step one; getting patients asking for it by name is step two. Our marketing team co-creates campaigns, content, and events with partner clinics - so the brands you carry become the treatments your city talks about.",
     keywords: [
       "Campaigns",
       "Social Media",
@@ -559,7 +559,7 @@ const services: Service[] = [
       },
     ],
     capabilitiesIntro:
-      "Partner clinics get a marketing team they didn't have to hire — plugged into every brand we represent.",
+      "Partner clinics get a marketing team they didn't have to hire - plugged into every brand we represent.",
     capabilities: [
       {
         icon: "book",
@@ -589,17 +589,17 @@ const services: Service[] = [
         icon: "sparkles",
         title: "Events & Activations",
         description:
-          "Open days, masterclasses, and exhibition presence planned end to end — from invites to follow-ups.",
+          "Open days, masterclasses, and exhibition presence planned end to end - from invites to follow-ups.",
       },
       {
         icon: "rocket",
         title: "Launch Support",
         description:
-          "New device or brand in your clinic? We build the launch buzz around you — PR, content, and campaign in one push.",
+          "New device or brand in your clinic? We build the launch buzz around you - PR, content, and campaign in one push.",
       },
     ],
     processIntro:
-      "A simple rhythm keeps your marketing consistent — and tied to real bookings, not vanity metrics.",
+      "A simple rhythm keeps your marketing consistent - and tied to real bookings, not vanity metrics.",
     process: [
       {
         title: "Discover",
@@ -619,29 +619,29 @@ const services: Service[] = [
       {
         title: "Launch & measure",
         description:
-          "Campaigns go live, and we report back on reach, engagement, and — most importantly — enquiries.",
+          "Campaigns go live, and we report back on reach, engagement, and - most importantly - enquiries.",
       },
     ],
     faqs: [
       {
         question: "Is marketing support included when we stock your brands?",
         answer:
-          "Partner clinics get access to our marketing support stack as part of the partnership. The exact scope depends on the brand and your plan — talk to us and we'll map it out.",
+          "Partner clinics get access to our marketing support stack as part of the partnership. The exact scope depends on the brand and your plan - talk to us and we'll map it out.",
       },
       {
         question: "Do you manage social media for clinics?",
         answer:
-          "We co-create: our team supplies brand-approved assets, content calendars, and campaign creative, while day-to-day posting stays with you — or with your agency, supported by us.",
+          "We co-create: our team supplies brand-approved assets, content calendars, and campaign creative, while day-to-day posting stays with you - or with your agency, supported by us.",
       },
       {
         question: "Can you help us launch a new device or treatment?",
         answer:
-          "Yes — launches are our favourite brief. We combine patient education, digital campaigns, PR, and an event or open day to put your new offering on the map fast.",
+          "Yes - launches are our favourite brief. We combine patient education, digital campaigns, PR, and an event or open day to put your new offering on the map fast.",
       },
       {
         question: "Do you cover both digital and print?",
         answer:
-          "Both. From Instagram assets and ad creative to brochures, roll-ups, and in-clinic signage — all produced to the brand's global standard.",
+          "Both. From Instagram assets and ad creative to brochures, roll-ups, and in-clinic signage - all produced to the brand's global standard.",
       },
       {
         question: "How do we know it's working?",

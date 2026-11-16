@@ -307,7 +307,7 @@ export default function AboutPage() {
             </div>
           </div>
 
-          {/* Right product visual — compact height, still fills width */}
+          {/* Right product visual - compact height, still fills width */}
           <div className="relative z-[1] flex min-h-[360px] items-end justify-center sm:min-h-[420px] lg:min-h-full lg:items-end lg:justify-center">
             <div
               className="pointer-events-none absolute bottom-[4%] left-1/2 h-28 w-[75%] -translate-x-1/2 rounded-[100%] bg-primary/28 blur-3xl"
@@ -465,7 +465,7 @@ export default function AboutPage() {
                       aisth&#275;tikos
                     </p>
                     <p className="mt-1.5 text-[13.5px] leading-relaxed text-secondary sm:text-[14px]">
-                      From the Greek — a perception of beauty by the senses.
+                      From the Greek - a perception of beauty by the senses.
                       The philosophy our entire journey is built on.
                     </p>
                   </div>
@@ -577,7 +577,7 @@ export default function AboutPage() {
                     </span>
                   </Link>
 
-                  {/* Clinical peels / ampoules — crop tightly to product */}
+                  {/* Clinical peels / ampoules - crop tightly to product */}
                   <Link
                     href="/products"
                     className="group relative col-span-4 row-span-2 overflow-hidden rounded-[1.25rem] bg-[#1c1416] sm:rounded-[1.5rem]"

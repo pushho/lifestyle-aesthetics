@@ -58,7 +58,7 @@ export function OurSolutions() {
 
           <p className="mt-5 text-[15px] leading-relaxed text-secondary sm:text-[16px]">
             From clinic-grade devices and injectables to professional skincare,
-            we supply the technologies and products aesthetic practices need —
+            we supply the technologies and products aesthetic practices need -
             with training and support behind every line.
           </p>
 

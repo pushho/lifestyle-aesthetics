@@ -6,7 +6,7 @@ import type { Service } from "@/app/lib/services";
 import { Reveal } from "../Reveal";
 
 /**
- * "How it works" — a sticky intro column with a live step indicator and
+ * "How it works" - a sticky intro column with a live step indicator and
  * progress bar, next to a scroll-driven step list. The active step is
  * whichever card crosses the middle of the viewport.
  */

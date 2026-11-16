@@ -6,7 +6,7 @@ import { Reveal } from "../Reveal";
 import { ServiceIcon } from "./ServiceIcon";
 
 /**
- * "What this service covers" — a grid of capability cards. Each card has a
+ * "What this service covers" - a grid of capability cards. Each card has a
  * cursor-tracking radial spotlight in the service accent colour, a ghost
  * index number, and a tilting icon tile.
  */
