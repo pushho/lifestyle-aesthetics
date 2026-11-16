@@ -28,7 +28,7 @@ const solutions = [
     title: "Professional Skincare",
     description:
       "Science-backed cosmeceuticals and clinical peels for professional treatment protocols.",
-    href: "/#brands",
+    href: "/brands/janssen-cosmetics",
     image: {
       src: "/brands/janssen/ampoules.jpg",
       alt: "Professional skincare products for aesthetic practices",

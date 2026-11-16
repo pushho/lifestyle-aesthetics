@@ -2,18 +2,27 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { Reveal } from "../components/Reveal";
+import { CONTACT, getTelHref } from "../lib/contact";
+import { AwardsGallery, type AwardItem } from "./AwardsGallery";
 
 export const metadata: Metadata = {
   title: "About Us | Lifestyle Aesthetics",
   description:
-    "Since 2011, Lifestyle Aesthetics has been a leading distributor of world-class aesthetic products, devices, and professional solutions across the Middle East.",
+    "Founded in Dubai in December 2011, Lifestyle Aesthetics Group is an award-winning distributor of medical-aesthetic devices, injectables, and cosmeceutical solutions across the Middle East.",
 };
 
-const pillars = [
+const visionAndMission = [
   {
-    title: "Our Vision",
+    index: "01",
+    label: "Our Vision",
+    headline: "Technology that elevates confidence.",
     description:
-      "To work tirelessly to bring our clients the best aesthetic solutions, powered by innovative technology, for a more confident and beautiful world.",
+      "Our vision at Lifestyle Aesthetics is to tirelessly leverage cutting-edge technology to bring our clients the finest aesthetic and cosmeceutical solutions. Continuously innovating and adapting to the latest advancements in the field, we focus not only on enhancing external beauty, but on enriching lives — enabling individuals to express their inner confidence and satisfaction globally.",
+    highlights: [
+      "Cutting-edge technology",
+      "Aesthetic & cosmeceutical innovation",
+      "Lasting patient confidence",
+    ],
     icon: (
       <svg
         width="24"
@@ -32,9 +41,18 @@ const pillars = [
     ),
   },
   {
-    title: "Our Mission",
+    index: "02",
+    label: "Our Mission",
+    headline: "Pioneering clinical outcomes across the region.",
     description:
-      "To be the pioneers in the region, delivering safe, effective and advanced aesthetic solutions that drive real results for professionals and their clients.",
+      "Our mission is to stand at the forefront in our region for safe, effective, and innovative anti-aging and aesthetic solutions. We are dedicated to achieving long-term satisfactory results for medical and aesthetic specialists — exceeding expectations through tailored protocols, uncompromising product quality, and responsive customer care.",
+    highlights: [
+      "Plastic Surgeons",
+      "Dermatologists",
+      "Laser Technicians",
+      "Cosmetic Therapists",
+    ],
+    highlightsLabel: "Specialists We Support",
     icon: (
       <svg
         width="24"
@@ -55,13 +73,38 @@ const pillars = [
       </svg>
     ),
   },
+];
+
+const coreValues = [
   {
-    title: "Our Values",
-    values: ["Improvement", "Quality", "Passion", "Integrity", "Customer Focus"],
+    title: "Improvement",
+    description:
+      "Our success comes from our will to continually improve and deliver best-in-class breakthroughs and technologies — exploring every opportunity to help men and women reflect their inner self.",
     icon: (
       <svg
-        width="24"
-        height="24"
+        width="22"
+        height="22"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.7"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        aria-hidden="true"
+      >
+        <path d="M3 17 9 11l4 4 8-8" />
+        <path d="M15 7h6v6" />
+      </svg>
+    ),
+  },
+  {
+    title: "Quality",
+    description:
+      "We commit to seeking best-in-class products and pursuing excellence across our portfolio, customer service, and clinical communication — ensuring every solution delivers on its promise.",
+    icon: (
+      <svg
+        width="22"
+        height="22"
         viewBox="0 0 24 24"
         fill="none"
         stroke="currentColor"
@@ -77,11 +120,52 @@ const pillars = [
       </svg>
     ),
   },
+  {
+    title: "Passion",
+    description:
+      "Our passion has never waned. We deliver through our people, whose clinical knowledge, talent, and dedication to our partner clinics drive us forward into the future.",
+    icon: (
+      <svg
+        width="22"
+        height="22"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.7"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        aria-hidden="true"
+      >
+        <path d="M12 20.5s-7-4.4-7-10.2A4.3 4.3 0 0 1 9.3 6c1.2 0 2.2.5 2.7 1.4.5-.9 1.5-1.4 2.7-1.4A4.3 4.3 0 0 1 19 10.3c0 5.8-7 10.2-7 10.2Z" />
+      </svg>
+    ),
+  },
+  {
+    title: "Integrity",
+    description:
+      "We stand by what we do. Willing to adapt and evolve, we work with transparency and have the courage as a team to take initiative and explore new opportunities responsibly.",
+    icon: (
+      <svg
+        width="22"
+        height="22"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.7"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        aria-hidden="true"
+      >
+        <path d="M12 3.2 5 6.3v5.4c0 4.6 3 7.9 7 9.1 4-1.2 7-4.5 7-9.1V6.3l-7-3.1Z" />
+        <path d="m9.2 12.1 2 2 3.8-4" />
+      </svg>
+    ),
+  },
 ];
 
 const stats = [
   {
-    value: "Since 2011",
+    value: "Dec 2011",
     label: "Founded in Dubai, UAE",
     icon: (
       <svg
@@ -108,7 +192,7 @@ const stats = [
     ),
   },
   {
-    value: "7+",
+    value: "8+",
     label: "Global Brands",
     icon: (
       <svg
@@ -130,7 +214,7 @@ const stats = [
   },
   {
     value: "6",
-    label: "Countries",
+    label: "Countries Served",
     icon: (
       <svg
         width="24"
@@ -173,6 +257,106 @@ const stats = [
         <path d="M21.2 17.8c-.4-1.9-1.7-3.1-3.5-3.2" />
       </svg>
     ),
+  },
+];
+
+const awards: AwardItem[] = [
+  {
+    id: "dubai-derma-2012-2019",
+    year: "2012 – 2019",
+    title: "Certificate of Appreciation",
+    organization: "Dubai Derma",
+    detail:
+      "Recognized across eight consecutive editions of the Dubai World Dermatology & Laser Conference & Exhibition for outstanding exhibitor contribution.",
+    location: "Dubai, UAE",
+    image: "/about/awards/dubai-derma.webp",
+    width: 1920,
+    height: 1358,
+  },
+  {
+    id: "apa-cocoona-2016",
+    year: "2016",
+    title: "Medical Product Partner Award",
+    organization: "The Aesthetic Practice Awards · Cocoona",
+    detail:
+      "Honored as Medical Product Partner at The Aesthetic Practice Awards (APA) for clinical supply reliability and clinic partnership.",
+    location: "Dubai, UAE",
+    image: "/about/awards/apa-cocoona-2016.webp",
+    width: 1920,
+    height: 1794,
+  },
+  {
+    id: "neauvia-growth-2016-2017",
+    year: "2016 – 2017",
+    title: "Best Yearly Growth Award",
+    organization: "Neauvia Organic · Matexlab",
+    detail:
+      "Presented at New Art Aesthetics (2nd Edition) in recognition of leading regional growth across the United Arab Emirates.",
+    location: "Brindisi, Italy",
+    image: "/about/awards/neauvia-growth-2016-2017.webp",
+    width: 1920,
+    height: 1650,
+  },
+  {
+    id: "aida-2017-2019",
+    year: "2017 – 2019",
+    title: "Trophy & Certificate of Appreciation",
+    organization: "AIDA Conference",
+    detail:
+      "Awarded by the Abu Dhabi International Conference in Dermatology & Aesthetics in recognition of valuable scientific and industry contribution.",
+    location: "Abu Dhabi, UAE",
+    image: "/about/awards/aida-2017-2019.webp",
+    width: 2560,
+    height: 1707,
+    darkBackdrop: true,
+  },
+  {
+    id: "neauvia-overtarget-2018",
+    year: "2018",
+    title: "Best Overtarget Achievement Award",
+    organization: "Neauvia · Matexlab",
+    detail:
+      "Awarded at New Art Aesthetics (4th Edition) for surpassing annual distribution targets across the United Arab Emirates.",
+    location: "Paris, France",
+    image: "/about/awards/neauvia-overtarget-2018.webp",
+    width: 1920,
+    height: 1682,
+  },
+  {
+    id: "meidam-2019",
+    year: "2019",
+    title: "Platinum Sponsor Appreciation",
+    organization: "MEIDAM · House of Dermatology",
+    detail:
+      "Presented at the 4th Middle East International Dermatology & Aesthetic Medicine Conference & Exhibition for Platinum Sponsor support.",
+    location: "Dubai, UAE",
+    image: "/about/awards/meidam-2019.webp",
+    width: 1811,
+    height: 2560,
+  },
+  {
+    id: "uaq-women-council-2019",
+    year: "2019",
+    title: "Certificate of Appreciation",
+    organization: "UAQ Business Women Council",
+    detail:
+      "Awarded by the Umm Al Quwain Business Women Council & Chamber for active contribution to the 1st Umm Al Quwain Health Exhibition.",
+    location: "Umm Al Quwain, UAE",
+    image: "/about/awards/uaq-women-council-2019.webp",
+    width: 1920,
+    height: 1358,
+  },
+  {
+    id: "icgc-2019",
+    year: "2019",
+    title: "Sponsor Recognition Plaque",
+    organization: "2nd International Cosmetic Gynecology Conference",
+    detail:
+      "Special recognition presented by ICGC for dedicated sponsorship, clinical commitment, and support of aesthetic medicine education.",
+    location: "Dubai, UAE",
+    image: "/about/awards/icgc-2019.webp",
+    width: 1920,
+    height: 1816,
   },
 ];
 
@@ -252,7 +436,7 @@ export default function AboutPage() {
           {/* Left copy */}
           <div className="relative z-10 flex flex-col justify-center px-6 pt-10 pb-4 sm:px-10 lg:py-12 xl:pl-16 xl:pr-0">
             <p className="animate-fade-up flex items-center gap-3 text-[11px] font-semibold tracking-[0.22em] text-primary uppercase">
-              About Lifestyle Aesthetics
+              Lifestyle Aesthetics Group
               <span
                 className="hidden h-px w-12 bg-primary/40 sm:block"
                 aria-hidden="true"
@@ -267,9 +451,9 @@ export default function AboutPage() {
             </h1>
 
             <p className="animate-fade-up delay-2 mt-4 max-w-md text-[15px] leading-relaxed text-secondary sm:text-base">
-              Since 2011, Lifestyle Aesthetics has been a leading distributor
-              of world-class aesthetic products, devices and professional
-              solutions across the Middle East.
+              Founded in Dubai in December 2011, Lifestyle Aesthetics is
+              committed to delivering safe, effective aesthetic, anti-aging, and
+              cosmeceutical solutions for practitioners across the Middle East.
             </p>
 
             <div className="animate-fade-up delay-3 mt-6 flex flex-wrap items-center gap-3.5">
@@ -280,30 +464,32 @@ export default function AboutPage() {
                 Our Story
                 <span aria-hidden="true">→</span>
               </a>
-              <Link
-                href="/contact"
+              <a
+                href="#awards"
                 className="inline-flex items-center rounded-full border border-primary/35 bg-white/70 px-6 py-3 text-[13.5px] font-semibold text-primary-dark backdrop-blur-sm transition-colors hover:border-primary hover:bg-primary-light"
               >
-                Partner With Us
-              </Link>
+                Awards &amp; Recognition
+              </a>
             </div>
 
             {/* Sticker stat pills */}
             <div className="animate-fade-up delay-4 mt-7 flex flex-wrap gap-x-3 gap-y-3">
-              {["Est. 2011 · Dubai", "7+ Global Brands", "6 Countries Served"].map(
-                (text, index) => (
+              {[
+                "Est. Dec 2011 · Dubai",
+                "8+ Global Brands",
+                "6 Countries Served",
+              ].map((text, index) => (
+                <span
+                  key={text}
+                  className={`${index % 2 === 0 ? "-rotate-1" : "rotate-1"} flex items-center gap-2 rounded-full border border-(--color-border-accent) bg-white/90 px-4 py-2 text-[12px] font-semibold whitespace-nowrap text-foreground shadow-(--shadow-card) backdrop-blur-sm transition-transform duration-300 ease-out hover:rotate-0`}
+                >
                   <span
-                    key={text}
-                    className={`${index % 2 === 0 ? "-rotate-1" : "rotate-1"} flex items-center gap-2 rounded-full border border-(--color-border-accent) bg-white/90 px-4 py-2 text-[12px] font-semibold whitespace-nowrap text-foreground shadow-(--shadow-card) backdrop-blur-sm transition-transform duration-300 ease-out hover:rotate-0`}
-                  >
-                    <span
-                      className="h-1.5 w-1.5 rounded-full bg-primary"
-                      aria-hidden="true"
-                    />
-                    {text}
-                  </span>
-                ),
-              )}
+                    className="h-1.5 w-1.5 rounded-full bg-primary"
+                    aria-hidden="true"
+                  />
+                  {text}
+                </span>
+              ))}
             </div>
           </div>
 
@@ -332,8 +518,8 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* 2. Vision, Mission & Values */}
-      <section className="relative overflow-hidden bg-(--color-background-white) py-16 sm:py-20">
+      {/* 2. Vision, Mission & Core Values */}
+      <section className="relative overflow-hidden bg-(--color-background-white) py-16 sm:py-20 lg:py-24">
         <div
           className="pointer-events-none absolute top-1/2 left-1/2 h-72 w-[52rem] -translate-x-1/2 rounded-full bg-primary/[0.07] blur-3xl"
           aria-hidden="true"
@@ -362,56 +548,113 @@ export default function AboutPage() {
             </header>
           </Reveal>
 
-          <ul className="mt-11 grid list-none grid-cols-1 gap-5 md:grid-cols-3 sm:mt-12">
-            {pillars.map((pillar, index) => (
-              <li key={pillar.title}>
-                <Reveal delay={index * 110} className="h-full">
-                  <article className="group relative h-full rounded-[1.5rem] border border-(--color-border-accent)/60 bg-white p-6 shadow-(--shadow-card) transition-[transform,box-shadow,border-color] duration-500 ease-out hover:-translate-y-2 hover:border-primary/50 hover:shadow-(--shadow-hover) sm:p-7">
-                    <span
-                      aria-hidden="true"
-                      className="font-display absolute top-5 right-6 text-sm font-semibold text-primary/30 transition-colors duration-500 group-hover:text-primary"
-                    >
-                      {String(index + 1).padStart(2, "0")}
-                    </span>
-                    <span
-                      aria-hidden="true"
-                      className="absolute right-6 bottom-5 text-[10px] text-primary/30 transition-colors duration-500 group-hover:text-primary"
-                    >
-                      ✦
-                    </span>
+          {/* Vision & Mission — full editorial two-column feature */}
+          <div className="mt-11 grid grid-cols-1 gap-5 lg:grid-cols-2 sm:mt-12">
+            {visionAndMission.map((item, idx) => (
+              <Reveal key={item.label} delay={idx * 110} className="h-full">
+                <article className="group relative flex h-full flex-col justify-between rounded-[1.75rem] border border-(--color-border-accent)/60 bg-white p-7 shadow-(--shadow-card) transition-[transform,box-shadow,border-color] duration-500 ease-out hover:-translate-y-1.5 hover:border-primary/50 hover:shadow-(--shadow-hover) sm:p-8">
+                  <span
+                    aria-hidden="true"
+                    className="font-display absolute top-6 right-7 text-sm font-semibold text-primary/30 transition-colors duration-500 group-hover:text-primary"
+                  >
+                    {item.index}
+                  </span>
 
-                    <span className="flex h-12 w-12 items-center justify-center rounded-full bg-primary-light text-primary ring-1 ring-(--color-border-accent) transition-colors duration-500 group-hover:bg-primary group-hover:text-white group-hover:ring-primary">
-                      {pillar.icon}
-                    </span>
+                  <div>
+                    <div className="flex items-center gap-3.5">
+                      <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-primary-light text-primary ring-1 ring-(--color-border-accent) transition-colors duration-500 group-hover:bg-primary group-hover:text-white group-hover:ring-primary">
+                        {item.icon}
+                      </span>
+                      <p className="text-[11px] font-semibold tracking-[0.22em] text-primary uppercase">
+                        {item.label}
+                      </p>
+                    </div>
 
-                    <h3 className="mt-5 font-display text-[1.35rem] leading-tight font-semibold text-foreground">
-                      {pillar.title}
+                    <h3 className="mt-5 font-display text-[clamp(1.35rem,2.1vw,1.7rem)] leading-tight font-semibold text-foreground">
+                      {item.headline}
                     </h3>
 
-                    {pillar.description ? (
-                      <p className="mt-3 text-[13.5px] leading-relaxed text-secondary sm:text-[14px]">
-                        {pillar.description}
+                    <p className="mt-3.5 text-[14px] leading-relaxed text-secondary sm:text-[14.5px]">
+                      {item.description}
+                    </p>
+                  </div>
+
+                  <div className="mt-6 border-t border-border/70 pt-5">
+                    {item.highlightsLabel ? (
+                      <p className="mb-2.5 text-[11px] font-semibold tracking-[0.18em] text-muted uppercase">
+                        {item.highlightsLabel}
                       </p>
-                    ) : (
-                      <ul className="mt-3.5 flex list-none flex-wrap gap-2">
-                        {pillar.values?.map((val) => (
-                          <li key={val}>
-                            <span className="inline-flex items-center gap-1.5 rounded-full border border-(--color-border-accent)/70 bg-(--color-background-soft) px-3 py-1.5 text-[12px] font-semibold text-foreground transition-colors duration-300 group-hover:border-primary/40">
-                              <span
-                                className="h-1 w-1 rounded-full bg-primary"
-                                aria-hidden="true"
-                              />
-                              {val}
-                            </span>
-                          </li>
-                        ))}
-                      </ul>
-                    )}
-                  </article>
-                </Reveal>
-              </li>
+                    ) : null}
+                    <ul className="flex list-none flex-wrap gap-2">
+                      {item.highlights.map((tag) => (
+                        <li key={tag}>
+                          <span className="inline-flex items-center gap-1.5 rounded-full border border-(--color-border-accent)/70 bg-(--color-background-soft) px-3 py-1.5 text-[12px] font-semibold text-foreground transition-colors duration-300 group-hover:border-primary/40">
+                            <span
+                              className="h-1.5 w-1.5 rounded-full bg-primary"
+                              aria-hidden="true"
+                            />
+                            {tag}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </article>
+              </Reveal>
             ))}
-          </ul>
+          </div>
+
+          {/* 4 Core Values — full definitions from old About Us page */}
+          <div className="mt-10 sm:mt-12">
+            <Reveal>
+              <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+                <h3 className="font-display text-[clamp(1.45rem,2.3vw,1.9rem)] leading-tight font-semibold text-foreground">
+                  Our Core{" "}
+                  <span className="font-medium italic text-primary">
+                    Values
+                  </span>
+                </h3>
+                <p className="text-[13.5px] text-secondary">
+                  Four principles behind every product, clinical training, and
+                  partnership since 2011.
+                </p>
+              </div>
+            </Reveal>
+
+            <ul className="mt-6 grid list-none grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              {coreValues.map((value, index) => (
+                <li key={value.title}>
+                  <Reveal delay={index * 90} className="h-full">
+                    <article className="group relative h-full rounded-[1.5rem] border border-(--color-border-accent)/55 bg-(--color-background) p-6 shadow-(--shadow-card) transition-[transform,box-shadow,border-color,background-color] duration-500 ease-out hover:-translate-y-1.5 hover:border-primary/50 hover:bg-white hover:shadow-(--shadow-hover)">
+                      <span
+                        aria-hidden="true"
+                        className="font-display absolute top-5 right-6 text-xs font-semibold text-primary/30 transition-colors duration-500 group-hover:text-primary"
+                      >
+                        {String(index + 1).padStart(2, "0")}
+                      </span>
+                      <span
+                        aria-hidden="true"
+                        className="absolute right-6 bottom-5 text-[10px] text-primary/30 transition-colors duration-500 group-hover:text-primary"
+                      >
+                        ✦
+                      </span>
+
+                      <span className="flex h-11 w-11 items-center justify-center rounded-full bg-primary-light text-primary ring-1 ring-(--color-border-accent) transition-colors duration-500 group-hover:bg-primary group-hover:text-white group-hover:ring-primary">
+                        {value.icon}
+                      </span>
+
+                      <h4 className="mt-4 font-display text-[1.25rem] leading-tight font-semibold text-foreground">
+                        {value.title}
+                      </h4>
+                      <p className="mt-2.5 text-[13.5px] leading-relaxed text-secondary">
+                        {value.description}
+                      </p>
+                    </article>
+                  </Reveal>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </section>
 
@@ -475,20 +718,23 @@ export default function AboutPage() {
               <Reveal delay={200}>
                 <div className="mt-6 space-y-4 text-[14.5px] leading-relaxed text-secondary sm:text-[15px]">
                   <p>
-                    At Lifestyle Aesthetics, we combine science, innovation and
-                    a deep understanding of beauty to bring advanced, reliable
-                    and results-driven solutions to the aesthetic industry.
+                    Founded in Dubai in{" "}
+                    <strong className="font-semibold text-foreground">
+                      December 2011
+                    </strong>
+                    , Lifestyle Aesthetics Group was built with a clear
+                    commitment: providing safe, effective aesthetic, anti-aging,
+                    and cosmeceutical solutions tailored for modern, demanding
+                    lifestyles.
                   </p>
                   <p>
-                    Headquartered in Dubai, we partner with{" "}
+                    Headquartered in the UAE, we partner with{" "}
                     <strong className="font-semibold text-foreground">
-                      globally renowned brands
+                      globally renowned manufacturers
                     </strong>{" "}
-                    to support clinics,{" "}
-                    <strong className="font-semibold text-foreground">
-                      dermatologists
-                    </strong>{" "}
-                    and aesthetic practitioners across the region.
+                    across injectables, clinical peels, and energy-based devices
+                    — driven by continual progress, clinical education, a
+                    passionate team, and the highest standards of integrity.
                   </p>
                 </div>
               </Reveal>
@@ -634,7 +880,7 @@ export default function AboutPage() {
                     className="h-1.5 w-1.5 rounded-full bg-primary"
                     aria-hidden="true"
                   />
-                  8 Global Brands
+                  8+ Global Brands
                 </span>
               </div>
             </Reveal>
@@ -677,10 +923,132 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* 4. Our Presence */}
+      {/* 4. Our People — Real Lifestyle Aesthetics Group Team Photo */}
+      <section
+        id="team"
+        className="relative scroll-mt-8 overflow-hidden bg-(--color-background-white) py-16 sm:py-20 lg:py-24"
+      >
+        <div
+          className="pointer-events-none absolute top-1/3 right-[8%] h-64 w-96 rounded-full bg-primary/[0.06] blur-3xl"
+          aria-hidden="true"
+        />
+
+        <div className="relative mx-auto max-w-430 px-6 sm:px-10 xl:px-16">
+          <div className="grid items-end gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.85fr)] lg:gap-12">
+            <Reveal>
+              <p className="flex items-center gap-3 text-[11px] font-semibold tracking-[0.22em] text-primary uppercase">
+                Our People
+                <span
+                  className="hidden h-px w-12 bg-primary/40 sm:block"
+                  aria-hidden="true"
+                />
+              </p>
+              <h2 className="mt-4 font-display text-[clamp(1.95rem,3.6vw,2.95rem)] leading-[1.1] font-semibold tracking-[-0.015em] text-foreground">
+                Driven by People.{" "}
+                <span className="font-medium italic text-primary">
+                  United by Passion.
+                </span>
+              </h2>
+            </Reveal>
+
+            <Reveal delay={120}>
+              <div className="flex flex-col items-start gap-4 lg:pb-1">
+                <p className="text-[14.5px] leading-relaxed text-secondary sm:text-[15px]">
+                  Behind every device installation, hands-on clinical workshop,
+                  and regional supply partnership is our dedicated team of
+                  product specialists, clinical educators, biomedical engineers,
+                  and logistics coordinators in Dubai.
+                </p>
+                <Link
+                  href="/careers"
+                  className="inline-flex items-center gap-1.5 text-[13.5px] font-semibold text-primary-dark transition-colors hover:text-primary"
+                >
+                  Explore Careers in Dubai
+                  <span aria-hidden="true">→</span>
+                </Link>
+              </div>
+            </Reveal>
+          </div>
+
+          <Reveal delay={160}>
+            <figure className="relative mt-9 overflow-hidden rounded-[1.75rem] border border-(--color-border-accent)/60 bg-white p-2.5 shadow-(--shadow-card) sm:mt-11 sm:rounded-[2.25rem] sm:p-3.5">
+              <div className="relative overflow-hidden rounded-[1.35rem] bg-[#1a1820] sm:rounded-[1.75rem]">
+                <Image
+                  src="/about/team-group.webp"
+                  alt="The Lifestyle Aesthetics Group team gathered at the Dubai headquarters"
+                  width={2500}
+                  height={1053}
+                  sizes="(max-width: 1024px) 95vw, 1340px"
+                  className="h-auto w-full object-cover"
+                />
+                <div
+                  className="pointer-events-none absolute inset-0 bg-linear-to-t from-black/45 via-transparent to-transparent"
+                  aria-hidden="true"
+                />
+                <figcaption className="absolute right-4 bottom-3.5 left-4 flex flex-wrap items-center justify-between gap-2 text-white sm:right-6 sm:bottom-5 sm:left-6">
+                  <span className="inline-flex items-center gap-2 rounded-full bg-black/45 px-3.5 py-1.5 text-[12px] font-semibold backdrop-blur-md">
+                    <span
+                      className="h-1.5 w-1.5 rounded-full bg-primary"
+                      aria-hidden="true"
+                    />
+                    Lifestyle Aesthetics Group · Dubai Team
+                  </span>
+                  <span className="hidden rounded-full bg-white/90 px-3.5 py-1 text-[11.5px] font-semibold text-foreground shadow-xs sm:inline-block">
+                    Clinical · Biomedical · Commercial Support
+                  </span>
+                </figcaption>
+              </div>
+            </figure>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* 5. Achievements & Awards */}
+      <section
+        id="awards"
+        className="relative scroll-mt-8 overflow-hidden bg-[linear-gradient(180deg,#fffcfd_0%,#fff5fa_52%,#ffffff_100%)] py-16 sm:py-20 lg:py-24"
+      >
+        <div
+          className="pointer-events-none absolute top-16 left-1/2 h-64 w-[48rem] -translate-x-1/2 rounded-full bg-primary/[0.07] blur-3xl"
+          aria-hidden="true"
+        />
+
+        <div className="relative mx-auto max-w-430 px-6 sm:px-10 xl:px-16">
+          <Reveal>
+            <header className="mx-auto max-w-3xl text-center">
+              <p className="flex flex-wrap items-center justify-center gap-3 text-[11px] font-semibold tracking-[0.28em] text-primary uppercase">
+                <span
+                  className="hidden h-px w-14 bg-gradient-to-r from-transparent to-primary/60 sm:block"
+                  aria-hidden="true"
+                />
+                Achievements &amp; Awards
+                <span
+                  className="hidden h-px w-14 bg-gradient-to-l from-transparent to-primary/60 sm:block"
+                  aria-hidden="true"
+                />
+              </p>
+              <h2 className="mt-4 font-display text-[clamp(1.9rem,3.4vw,2.85rem)] leading-[1.12] font-semibold tracking-[-0.015em] text-foreground">
+                Recognized Across{" "}
+                <span className="font-medium italic text-primary">
+                  Conferences &amp; Global Partners
+                </span>
+              </h2>
+              <p className="mx-auto mt-4 max-w-2xl text-[14.5px] leading-relaxed text-secondary sm:text-[15.5px]">
+                Over a decade of industry awards, international distributor
+                distinctions, and medical conference sponsorships across the UAE
+                and Europe. Select any award to inspect it in detail.
+              </p>
+            </header>
+          </Reveal>
+
+          <AwardsGallery awards={awards} />
+        </div>
+      </section>
+
+      {/* 6. Our Presence & Corporate Office */}
       <section
         id="presence"
-        className="relative overflow-hidden bg-(--color-background-white) pt-14 pb-0 sm:pt-18 lg:pt-20"
+        className="relative scroll-mt-8 overflow-hidden bg-(--color-background-white) pt-14 pb-0 sm:pt-18 lg:pt-20"
       >
         <div
           className="pointer-events-none absolute top-8 left-[4%] h-48 w-64 rounded-full bg-primary/[0.07] blur-3xl"
@@ -688,9 +1056,9 @@ export default function AboutPage() {
         />
 
         <div className="relative mx-auto max-w-430">
-          <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-8">
-            {/* Left copy & locations */}
-            <div className="relative z-10 px-6 pb-4 sm:px-10 lg:py-12 xl:pl-16 xl:pr-8">
+          <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] lg:gap-8">
+            {/* Left copy, locations & corporate HQ */}
+            <div className="relative z-10 px-6 pb-8 sm:px-10 lg:py-12 xl:pl-16 xl:pr-8">
               <Reveal>
                 <p className="flex items-center gap-3 text-[11px] font-semibold tracking-[0.22em] text-primary uppercase">
                   Our Presence
@@ -714,7 +1082,7 @@ export default function AboutPage() {
               </Reveal>
 
               <Reveal delay={140}>
-                <ul className="mt-8 flex max-w-lg list-none flex-wrap gap-x-3 gap-y-3.5">
+                <ul className="mt-7 flex max-w-lg list-none flex-wrap gap-x-3 gap-y-3.5">
                   {locations.map((loc) => (
                     <li
                       key={loc.country}
@@ -740,12 +1108,65 @@ export default function AboutPage() {
                   ))}
                 </ul>
               </Reveal>
+
+              {/* Main Corporate Office card (from old About Us corporate block) */}
+              <Reveal delay={220}>
+                <div className="mt-8 max-w-lg rounded-2xl border border-(--color-border-accent)/60 bg-(--color-background-soft)/75 p-5 shadow-(--shadow-card)">
+                  <p className="text-[11px] font-semibold tracking-[0.2em] text-primary uppercase">
+                    Main Corporate Office
+                  </p>
+                  <dl className="mt-3 grid grid-cols-1 gap-x-6 gap-y-2.5 text-[13px] sm:grid-cols-2">
+                    <div>
+                      <dt className="text-[11.5px] font-medium text-muted">
+                        Address
+                      </dt>
+                      <dd className="mt-0.5 font-semibold text-foreground">
+                        {CONTACT.poBox}
+                      </dd>
+                    </div>
+                    <div>
+                      <dt className="text-[11.5px] font-medium text-muted">
+                        Email
+                      </dt>
+                      <dd className="mt-0.5 font-semibold text-foreground">
+                        <a
+                          href={`mailto:${CONTACT.email}`}
+                          className="transition-colors hover:text-primary"
+                        >
+                          {CONTACT.email}
+                        </a>
+                      </dd>
+                    </div>
+                    <div>
+                      <dt className="text-[11.5px] font-medium text-muted">
+                        Telephone
+                      </dt>
+                      <dd className="mt-0.5 font-semibold text-foreground">
+                        <a
+                          href={getTelHref()}
+                          className="transition-colors hover:text-primary"
+                        >
+                          {CONTACT.phoneDisplay}
+                        </a>
+                      </dd>
+                    </div>
+                    <div>
+                      <dt className="text-[11.5px] font-medium text-muted">
+                        Fax
+                      </dt>
+                      <dd className="mt-0.5 font-semibold text-foreground">
+                        {CONTACT.faxDisplay}
+                      </dd>
+                    </div>
+                  </dl>
+                </div>
+              </Reveal>
             </div>
 
             {/* Right arched Dubai skyline */}
             <Reveal>
-              <div className="relative min-h-[300px] w-full overflow-hidden sm:min-h-[380px] lg:min-h-[430px]">
-                <div className="relative h-full min-h-[300px] w-full overflow-hidden rounded-tl-[120px] sm:min-h-[380px] sm:rounded-tl-[200px] lg:min-h-[430px] lg:rounded-tl-[260px]">
+              <div className="relative min-h-[300px] w-full overflow-hidden sm:min-h-[380px] lg:min-h-[480px]">
+                <div className="relative h-full min-h-[300px] w-full overflow-hidden rounded-tl-[120px] sm:min-h-[380px] sm:rounded-tl-[200px] lg:min-h-[480px] lg:rounded-tl-[260px]">
                   <Image
                     src="/about/dubai-skyline.jpg"
                     alt="Dubai skyline with the Burj Khalifa at sunset"
@@ -764,7 +1185,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* 5. Bottom CTA */}
+      {/* 7. Bottom CTA */}
       <section className="bg-(--color-background-white)">
         <div className="relative overflow-hidden bg-[linear-gradient(115deg,#f472b0_0%,#e83684_38%,#c41262_72%,#9f0d50_100%)] shadow-(--shadow-hover)">
           {/* Soft atmospheric light */}

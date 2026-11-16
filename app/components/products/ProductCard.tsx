@@ -33,7 +33,9 @@ export function ProductCard({ product }: ProductCardProps) {
                 className={
                   product.image.fit === "contain"
                     ? "object-contain transition-transform duration-500 group-hover:scale-[1.04]"
-                    : "object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+                    : product.image.position === "left"
+                      ? "object-cover object-left transition-transform duration-500 group-hover:scale-[1.04]"
+                      : "object-cover transition-transform duration-500 group-hover:scale-[1.04]"
                 }
               />
             </div>

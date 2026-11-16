@@ -1,8 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { DeviceHero } from "../../components/products/DeviceHero";
 import { ProductCard } from "../../components/products/ProductCard";
 import { ProductEnquiryCta } from "../../components/products/ProductEnquiryCta";
+import { ProductStory } from "../../components/products/ProductStory";
+import { getDeviceStory } from "../../lib/device-stories";
 import {
   getCategoryLabel,
   getProductBySlug,
@@ -20,9 +23,19 @@ export async function ProductDetail({ params }: ProductDetailProps) {
   if (!product) notFound();
 
   const related = getRelatedProducts(product);
+  const story = getDeviceStory(product.slug);
+
+  const chapters = story
+    ? story.blocks.map((block, index) => ({
+        href: `#device-story-${index}`,
+        label: block.eyebrow ?? block.title,
+      }))
+    : [];
 
   return (
     <>
+      {story ? <DeviceHero product={product} chapters={chapters} /> : null}
+      {story ? null : (
       <section className="relative overflow-hidden bg-(--color-background) pt-12 pb-10 sm:pt-14 sm:pb-12">
         <div
           className="pointer-events-none absolute inset-0 bg-linear-to-b from-primary-light/70 via-transparent to-transparent"
@@ -70,7 +83,7 @@ export async function ProductDetail({ params }: ProductDetailProps) {
                   {product.indications.map((indication) => (
                     <li
                       key={indication}
-                      className="rounded-full border border-border bg-(--color-background-white) px-3 py-1.5 text-[12px] font-semibold tracking-wide text-secondary"
+                      className="rounded-full border border-border-accent bg-(--color-background-white) px-3 py-1.5 text-[12px] font-semibold tracking-wide text-primary-dark"
                     >
                       {indication}
                     </li>
@@ -98,7 +111,12 @@ export async function ProductDetail({ params }: ProductDetailProps) {
             </div>
 
             {product.image ? (
-              <div className="relative aspect-[4/3] overflow-hidden rounded-[1.5rem] border border-border/50 bg-(--color-background-soft) shadow-(--shadow-card)">
+              <div className="relative">
+                <div
+                  className="pointer-events-none absolute inset-8 rounded-full bg-primary/12 blur-3xl"
+                  aria-hidden="true"
+                />
+                <div className="relative aspect-[4/3] overflow-hidden rounded-[2rem] border border-white bg-[radial-gradient(circle_at_50%_38%,#ffffff,#fff1f7_78%)] shadow-(--shadow-card)">
                 <div
                   className={
                     product.image.fit === "contain"
@@ -116,9 +134,12 @@ export async function ProductDetail({ params }: ProductDetailProps) {
                     className={
                       product.image.fit === "contain"
                         ? "object-contain"
-                        : "object-cover"
+                        : product.image.position === "left"
+                          ? "object-cover object-left"
+                          : "object-cover"
                     }
                   />
+                </div>
                 </div>
               </div>
             ) : (
@@ -134,39 +155,72 @@ export async function ProductDetail({ params }: ProductDetailProps) {
           </div>
         </div>
       </section>
+      )}
 
-      <section className="bg-(--color-background-white) py-14 sm:py-16">
-        <div className="mx-auto max-w-430 px-6 sm:px-10 xl:px-16">
-          <header className="max-w-2xl">
-            <p className="text-[11px] font-semibold tracking-[0.22em] text-primary uppercase">
-              From {product.brandName}
-            </p>
-            <h2 className="mt-3 font-display text-[clamp(1.7rem,3vw,2.35rem)] leading-[1.12] font-semibold tracking-[-0.01em] text-foreground">
-              {product.brandTagline}
-            </h2>
-            <p className="mt-4 text-[15px] leading-relaxed text-secondary">
-              {product.brandDescription}
-            </p>
-          </header>
-        </div>
-      </section>
+      {story ? (
+        <ProductStory story={story} />
+      ) : (
+        <section className="bg-(--color-background-white) py-14 sm:py-16">
+          <div className="mx-auto max-w-430 px-6 sm:px-10 xl:px-16">
+            <header className="max-w-2xl">
+              <p className="text-[11px] font-semibold tracking-[0.22em] text-primary uppercase">
+                From {product.brandName}
+              </p>
+              <h2 className="mt-3 font-display text-[clamp(1.7rem,3vw,2.35rem)] leading-[1.12] font-semibold tracking-[-0.01em] text-foreground">
+                {product.brandTagline}
+              </h2>
+              <p className="mt-4 text-[15px] leading-relaxed text-secondary">
+                {product.brandDescription}
+              </p>
+            </header>
+          </div>
+        </section>
+      )}
 
       {related.length > 0 ? (
         <section className="bg-(--color-background) py-14 sm:py-16">
           <div className="mx-auto max-w-430 px-6 sm:px-10 xl:px-16">
-            <header className="max-w-2xl">
-              <p className="text-[11px] font-semibold tracking-[0.22em] text-primary uppercase">
-                More from {product.brandName}
-              </p>
-              <h2 className="mt-3 font-display text-[clamp(1.7rem,3vw,2.35rem)] leading-[1.12] font-semibold tracking-[-0.01em] text-foreground">
-                Related products
-              </h2>
-            </header>
-            <ul className="mt-10 grid list-none gap-5 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6">
-              {related.map((item) => (
-                <ProductCard key={item.slug} product={item} />
-              ))}
-            </ul>
+            {related.length === 1 ? (
+              <div className="grid items-center gap-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-12">
+                <header className="max-w-lg">
+                  <p className="text-[11px] font-semibold tracking-[0.22em] text-primary uppercase">
+                    More from {product.brandName}
+                  </p>
+                  <h2 className="mt-3 font-display text-[clamp(1.75rem,3vw,2.45rem)] leading-[1.1] font-semibold tracking-[-0.015em] text-foreground">
+                    Explore the rest of the{" "}
+                    <span className="font-medium italic text-primary">
+                      {product.brandName} line.
+                    </span>
+                  </h2>
+                  <p className="mt-3.5 text-[15px] leading-relaxed text-secondary">
+                    {product.brandDescription}
+                  </p>
+                </header>
+                <ul className="list-none">
+                  <ProductCard product={related[0]} />
+                </ul>
+              </div>
+            ) : (
+              <>
+                <header className="max-w-2xl">
+                  <p className="text-[11px] font-semibold tracking-[0.22em] text-primary uppercase">
+                    More from {product.brandName}
+                  </p>
+                  <h2 className="mt-3 font-display text-[clamp(1.7rem,3vw,2.35rem)] leading-[1.12] font-semibold tracking-[-0.01em] text-foreground">
+                    Related products
+                  </h2>
+                </header>
+                <ul
+                  className={`mt-10 grid list-none gap-5 sm:grid-cols-2 lg:gap-6 ${
+                    related.length === 2 ? "lg:grid-cols-2" : "lg:grid-cols-3"
+                  }`}
+                >
+                  {related.map((item) => (
+                    <ProductCard key={item.slug} product={item} />
+                  ))}
+                </ul>
+              </>
+            )}
           </div>
         </section>
       ) : null}

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 const brands = [
   {
@@ -209,15 +210,35 @@ export function FeaturedBrands() {
                       </ul>
                     </div>
 
-                    <a
-                      href={brand.website}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="mt-4 inline-flex w-fit items-center gap-1.5 text-[13px] font-semibold text-primary transition-colors hover:text-primary-hover"
-                    >
-                      Visit brand website
-                      <span aria-hidden="true">→</span>
-                    </a>
+                    <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-1">
+                      {brand.name === "Janssen Cosmetics" ? (
+                        <Link
+                          href="/brands/janssen-cosmetics"
+                          className="inline-flex w-fit items-center gap-1.5 text-[13px] font-semibold text-primary transition-colors hover:text-primary-hover"
+                        >
+                          Explore the range
+                          <span aria-hidden="true">→</span>
+                        </Link>
+                      ) : null}
+                      {brand.name === "Inspira Cosmetics" ? (
+                        <Link
+                          href="/brands/inspira-cosmetics"
+                          className="inline-flex w-fit items-center gap-1.5 text-[13px] font-semibold text-primary transition-colors hover:text-primary-hover"
+                        >
+                          Explore the range
+                          <span aria-hidden="true">→</span>
+                        </Link>
+                      ) : null}
+                      <a
+                        href={brand.website}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex w-fit items-center gap-1.5 text-[13px] font-semibold text-primary transition-colors hover:text-primary-hover"
+                      >
+                        Visit brand website
+                        <span aria-hidden="true">→</span>
+                      </a>
+                    </div>
                   </div>
                 </article>
               </li>

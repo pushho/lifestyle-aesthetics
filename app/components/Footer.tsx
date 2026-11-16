@@ -9,6 +9,7 @@ const columns = [
       { label: "Careers", href: "/careers" },
       { label: "Journal", href: "/blogs" },
       { label: "Our Story", href: "/about#our-story" },
+      { label: "Awards & Recognition", href: "/about#awards" },
       { label: "Regional Presence", href: "/about#presence" },
       { label: "Partner With Us", href: "/contact" },
     ],
@@ -34,6 +35,8 @@ const columns = [
       { label: "Wontech", href: "/products?brand=wontech#catalogue" },
       { label: "GTG", href: "/products?brand=gtg#catalogue" },
       { label: "Zimmer Aesthetics", href: "/products?brand=zimmer#catalogue" },
+      { label: "Janssen Cosmetics", href: "/brands/janssen-cosmetics" },
+      { label: "Inspira Cosmetics", href: "/brands/inspira-cosmetics" },
     ],
   },
 ];

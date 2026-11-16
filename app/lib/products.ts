@@ -27,6 +27,7 @@ export type Product = {
     src: string;
     alt: string;
     fit?: "cover" | "contain";
+    position?: "center" | "left";
   };
 };
 
@@ -220,8 +221,15 @@ export const BRANDS: Brand[] = [
       {
         slug: "nobleen",
         name: "Nobleen",
-        summary: "Dual long-pulse laser platform at 755 nm and 1064 nm.",
-        indications: ["Hair removal", "Vascular", "Pigment"],
+        summary:
+          "Dual long-pulse Alexandrite and Nd:YAG platform for hair removal, pigment, vascular lesions, and rejuvenation.",
+        indications: ["Hair removal", "Vascular", "Pigment", "Rejuvenation"],
+        image: {
+          src: "/products/finemec/nobleen.webp",
+          alt: "FineMEC Nobleen dual long-pulse laser",
+          fit: "cover",
+          position: "left",
+        },
       },
       {
         slug: "noblex",
@@ -267,8 +275,8 @@ export const BRANDS: Brand[] = [
         slug: "virtue",
         name: "Virtue RF",
         summary:
-          "Needle RF platform with cooling and multiple handpiece options.",
-        indications: ["Tightening", "Wrinkles", "Remodelling"],
+          "Microneedle RF platform with Smart, Deep, and Exact handpieces, cooling, and adjustable depth.",
+        indications: ["Tightening", "Texture", "Remodelling"],
         image: {
           src: "/products/shenb/virtue.png",
           alt: "ShenB Virtue RF needle platform",
@@ -387,8 +395,9 @@ export const BRANDS: Brand[] = [
       {
         slug: "investa",
         name: "Investa",
-        summary: "Q-switched Nd:YAG laser for toning and pigment management.",
-        indications: ["Toning", "Pigment"],
+        summary:
+          "Q-switched Nd:YAG laser at 1064 nm and 532 nm, with optional dye wavelengths for pigment, tattoo, and toning.",
+        indications: ["Toning", "Pigment", "Tattoo"],
         image: {
           src: "/products/gtg/investa.jpg",
           alt: "GTG Investa Q-switched Nd:YAG laser",
@@ -399,8 +408,8 @@ export const BRANDS: Brand[] = [
         slug: "inpure",
         name: "Inpure",
         summary:
-          "Aqua peel, hydrogen water, and galvanic facial system for cleansing and permeation.",
-        indications: ["Cleansing", "Hydration", "Prep"],
+          "Aqua peel, hydrogen water, and galvanic facial system for cleansing, permeation, and a roller finish.",
+        indications: ["Cleansing", "Hydration", "Sebum", "Lifting"],
         image: {
           src: "/products/gtg/inpure.jpg",
           alt: "GTG Inpure aqua peel and hydrogen facial system",

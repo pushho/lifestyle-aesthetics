@@ -21,7 +21,10 @@ const navItems = [
   { label: "Careers", href: "/careers" },
 ] as const;
 
-const upcomingBrands = ["Janssen Cosmetics", "Inspira"] as const;
+const upcomingBrands: readonly { name: string; href?: string }[] = [
+  { name: "Janssen Cosmetics", href: "/brands/janssen-cosmetics" },
+  { name: "Inspira Cosmetics", href: "/brands/inspira-cosmetics" },
+];
 const services = getAllServices();
 
 type DropdownKey = "brands" | "services";
@@ -203,14 +206,28 @@ export function Header() {
                       </div>
 
                       <div className="flex flex-wrap items-center gap-x-8 gap-y-2 border-t border-white/10 px-7 py-4 sm:px-8">
-                        {upcomingBrands.map((brand) => (
-                          <span
-                            key={brand}
-                            className="text-[13px] font-bold tracking-wide text-white"
-                          >
-                            {brand}
-                          </span>
-                        ))}
+                        {upcomingBrands.map((brand) =>
+                          brand.href ? (
+                            <Link
+                              key={brand.name}
+                              href={brand.href}
+                              className="text-[13px] font-bold tracking-wide text-white transition-colors hover:text-primary"
+                              onClick={(event) => {
+                                event.stopPropagation();
+                                setOpenDropdown(null);
+                              }}
+                            >
+                              {brand.name}
+                            </Link>
+                          ) : (
+                            <span
+                              key={brand.name}
+                              className="text-[13px] font-bold tracking-wide text-white"
+                            >
+                              {brand.name}
+                            </span>
+                          ),
+                        )}
                       </div>
                     </div>
                   </div>

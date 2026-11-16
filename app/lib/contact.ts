@@ -3,6 +3,8 @@ export const CONTACT = {
   email: "info@ls-aesthetics.com",
   phoneDisplay: "+971 4 435 7689",
   phoneTel: "+97144357689",
+  faxDisplay: "+971 4 435 7671",
+  poBox: "P.O. Box 296397, Dubai, U.A.E.",
   whatsappE164: "97144357689",
   whatsappMessage:
     "Hello Lifestyle Aesthetics team, I'd like to learn more about partnering with your team.",
