@@ -3,12 +3,11 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   images: {
     qualities: [75, 90],
+    unoptimized: true
   },
   experimental: {
     agentFeedback: true,
   },
-  cacheComponents: true,
-  partialPrefetching: true,
   turbopack: {
     rules: {
       "*.css": {
@@ -17,6 +16,8 @@ const nextConfig: NextConfig = {
       },
     },
   },
+  trailingSlash: true,
+  output: "export",
 };
 
 export default nextConfig;

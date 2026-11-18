@@ -10,10 +10,6 @@ export const metadata: Metadata = {
     "Explore injectables, clinical peels, and aesthetic devices from Hyalure, Mitelier, Supernova, FineMEC, ShenB, Wontech, GTG, and Zimmer Aesthetics.",
 };
 
-type ProductsPageProps = {
-  searchParams: Promise<{ brand?: string | string[]; q?: string | string[] }>;
-};
-
 function CatalogueFallback() {
   return (
     <div className="mt-8">
@@ -40,7 +36,7 @@ function CatalogueFallback() {
   );
 }
 
-export default function ProductsPage({ searchParams }: ProductsPageProps) {
+export default function ProductsPage() {
   return (
     <main>
       {/* Split Hero Banner */}
@@ -128,7 +124,7 @@ export default function ProductsPage({ searchParams }: ProductsPageProps) {
           </header>
 
           <Suspense fallback={<CatalogueFallback />}>
-            <ProductsCatalogue searchParams={searchParams} />
+            <ProductsCatalogue />
           </Suspense>
         </div>
       </section>

@@ -1,19 +1,15 @@
+"use client";
+
+import { useSearchParams } from "next/navigation";
 import { BrandFilter } from "../components/products/BrandFilter";
 import { ProductCard } from "../components/products/ProductCard";
 import { ProductSearch } from "../components/products/ProductSearch";
 import { getProductsByBrand, isBrandSlug } from "../lib/products";
 
-type ProductsCatalogueProps = {
-  searchParams: Promise<{ brand?: string | string[]; q?: string | string[] }>;
-};
-
-export async function ProductsCatalogue({
-  searchParams,
-}: ProductsCatalogueProps) {
-  const params = await searchParams;
-  const rawBrand = Array.isArray(params.brand) ? params.brand[0] : params.brand;
-  const rawQuery = Array.isArray(params.q) ? params.q[0] : params.q;
-  const query = rawQuery?.trim() ?? "";
+export function ProductsCatalogue() {
+  const searchParams = useSearchParams();
+  const rawBrand = searchParams.get("brand") ?? undefined;
+  const query = searchParams.get("q")?.trim() ?? "";
 
   const activeBrand =
     rawBrand && isBrandSlug(rawBrand) ? rawBrand : "all";
