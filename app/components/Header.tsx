@@ -21,7 +21,7 @@ const navItems = [
   { label: "Careers", href: "/careers" },
 ] as const;
 
-const upcomingBrands: readonly { name: string; href?: string }[] = [
+const skinCareBrands: readonly { name: string; href: string }[] = [
   { name: "Janssen Cosmetics", href: "/brands/janssen-cosmetics" },
   { name: "Inspira Cosmetics", href: "/brands/inspira-cosmetics" },
 ];
@@ -170,6 +170,28 @@ export function Header() {
                     <div className="overflow-hidden rounded-2xl border border-border/80 bg-(--color-surface-dark) text-white shadow-[0_24px_60px_-20px_rgba(41,37,43,0.45)]">
                       <div className="max-h-[min(62vh,32rem)] overflow-y-auto px-7 py-7 sm:px-8">
                         <div className="grid grid-cols-2 gap-x-8 gap-y-7 sm:grid-cols-3 md:grid-cols-4">
+                          <div className="min-w-0">
+                            <p className="text-[12px] font-bold tracking-[0.14em] text-white uppercase">
+                              Skin care and facial
+                            </p>
+                            <ul className="mt-3 space-y-1.5">
+                              {skinCareBrands.map((brand) => (
+                                <li key={brand.href}>
+                                  <Link
+                                    href={brand.href}
+                                    role="menuitem"
+                                    className="block text-[13px] leading-snug text-white/90 font-medium transition-colors hover:text-white"
+                                    onClick={(event) => {
+                                      event.stopPropagation();
+                                      setOpenDropdown(null);
+                                    }}
+                                  >
+                                    {brand.name}
+                                  </Link>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
                           {BRANDS.map((brand) => (
                             <div key={brand.slug} className="min-w-0">
                               <Link
@@ -189,7 +211,7 @@ export function Header() {
                                     <Link
                                       href={`/products/${product.slug}`}
                                       role="menuitem"
-                                      className="block text-[13px] leading-snug text-white/75 transition-colors hover:text-white"
+                                      className="block text-[13px] leading-snug text-white/90 font-medium transition-colors hover:text-white"
                                       onClick={(event) => {
                                         event.stopPropagation();
                                         setOpenDropdown(null);
@@ -203,31 +225,6 @@ export function Header() {
                             </div>
                           ))}
                         </div>
-                      </div>
-
-                      <div className="flex flex-wrap items-center gap-x-8 gap-y-2 border-t border-white/10 px-7 py-4 sm:px-8">
-                        {upcomingBrands.map((brand) =>
-                          brand.href ? (
-                            <Link
-                              key={brand.name}
-                              href={brand.href}
-                              className="text-[13px] font-bold tracking-wide text-white transition-colors hover:text-primary"
-                              onClick={(event) => {
-                                event.stopPropagation();
-                                setOpenDropdown(null);
-                              }}
-                            >
-                              {brand.name}
-                            </Link>
-                          ) : (
-                            <span
-                              key={brand.name}
-                              className="text-[13px] font-bold tracking-wide text-white"
-                            >
-                              {brand.name}
-                            </span>
-                          ),
-                        )}
                       </div>
                     </div>
                   </div>
